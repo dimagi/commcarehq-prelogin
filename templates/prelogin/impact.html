@@ -1,9 +1,9 @@
-{% extends 'public/base.html' %}
+{% extends 'prelogin/base.html' %}
 {% load i18n %}
 {% load hq_shared_tags %}
 
 {% block content %}
-{% include 'public/_sections/impact/lead.html' %}
+{% include 'prelogin/_sections/impact/lead.html' %}
 <div class="bg-static-fixed bg-impact-first"></div>
 <section class="section section-aside">
 <div class="container">
@@ -25,11 +25,11 @@
     </div>
 </div>
 </section>
-{% include 'public/_sections/impact/sectors.html' %}
+{% include 'prelogin/_sections/impact/sectors.html' %}
 <div class="bg-static-fixed bg-impact-second"></div>
-{% include 'public/_sections/impact/case_studies.html' %}
+{% include 'prelogin/_sections/impact/case_studies.html' %}
 <div class="bg-static-fixed bg-impact-third"></div>
-{% include 'public/_sections/impact/partners.html' %}
+{% include 'prelogin/_sections/impact/partners.html' %}
 <div class="bg-static-fixed bg-impact-fourth"></div>
-{% include 'public/_sections/impact/publications.html' %}
+{% include 'prelogin/_sections/impact/publications.html' %}
 {% endblock content %}

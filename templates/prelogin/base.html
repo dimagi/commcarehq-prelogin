@@ -32,7 +32,7 @@
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'public/less/public-style.less' %}" />
+                  href="{% new_static 'prelogin/less/public-style.less' %}" />
         {% endcompress %}
 
         {% block stylesheets %}{% endblock stylesheets %}
@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="{% new_static 'public/images/commcare-flower.png' %}"
+                        <img src="{% new_static 'prelogin/images/commcare-flower.png' %}"
                              alt="CommCare"
                              title="" />
                     </a>
@@ -122,7 +122,7 @@
             <script type="text/javascript" src="{% new_static 'style/lib/angular-1.2.27/angular-sanitize.min.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'style/lib/angular-ui/ui-bootstrap-tpls-0.11.2.min.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'djangular/js/django-angular.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'public/js/backgrounds.ng.js' %}"></script>
+            <script type="text/javascript" src="{% new_static 'prelogin/js/backgrounds.ng.js' %}"></script>
         {% endcompress %}
 
         {% compress js %}

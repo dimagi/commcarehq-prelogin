@@ -1,12 +1,12 @@
-{% extends 'public/base.html' %}
+{% extends 'prelogin/base.html' %}
 {% load i18n %}
 {% load hq_shared_tags %}
 
 {% block content %}
-{% include 'public/_sections/solutions/lead.html' %}
+{% include 'prelogin/_sections/solutions/lead.html' %}
 <div class="bg-static-fixed bg-solutions-first"></div>
-{% include 'public/_sections/solutions/supply_intro.html' %}
-{% include 'public/_sections/solutions/supply_details.html' %}
+{% include 'prelogin/_sections/solutions/supply_intro.html' %}
+{% include 'prelogin/_sections/solutions/supply_details.html' %}
 <div class="bg-static-fixed bg-solutions-second"></div>
-{% include 'public/_sections/solutions/last.html' %}
+{% include 'prelogin/_sections/solutions/last.html' %}
 {% endblock content %}

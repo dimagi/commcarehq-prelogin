@@ -95,4 +95,4 @@ class ContactDimagiForm(forms.Form):
         )
 
     def send_email(self):
-        print "sending email, todo"
+        pass #todo

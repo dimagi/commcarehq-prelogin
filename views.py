@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from djangular.views.mixins import allow_remote_invocation, JSONResponseMixin
-from corehq.apps.public.forms import ContactDimagiForm
+from corehq.apps.prelogin.forms import ContactDimagiForm
 
 
 def public_default(request):
@@ -15,7 +15,7 @@ def public_default(request):
 
 class HomePublicView(JSONResponseMixin, TemplateView):
     urlname = 'public_home'
-    template_name = 'public/home.html'
+    template_name = 'prelogin/home.html'
 
     def get_context_data(self, **kwargs):
         kwargs['contact_form'] = ContactDimagiForm()
@@ -32,7 +32,7 @@ class HomePublicView(JSONResponseMixin, TemplateView):
 
 class ImpactPublicView(TemplateView):
     urlname = 'public_impact'
-    template_name = 'public/impact.html'
+    template_name = 'prelogin/impact.html'
 
     def get_context_data(self, **kwargs):
         pub_col1 = os.path.join(
@@ -54,7 +54,7 @@ class ImpactPublicView(TemplateView):
 
 class ServicesPublicView(TemplateView):
     urlname = 'public_services'
-    template_name = 'public/services.html'
+    template_name = 'prelogin/services.html'
 
     def get_context_data(self, **kwargs):
         kwargs['is_services'] = True
@@ -63,7 +63,7 @@ class ServicesPublicView(TemplateView):
 
 class PricingPublicView(TemplateView):
     urlname = 'public_pricing'
-    template_name = 'public/pricing.html'
+    template_name = 'prelogin/pricing.html'
 
     def get_context_data(self, **kwargs):
         kwargs['is_pricing'] = True
@@ -72,7 +72,7 @@ class PricingPublicView(TemplateView):
 
 class ServicesDetailsPublicView(TemplateView):
     urlname = 'public_services_details'
-    template_name = 'public/services_details.html'
+    template_name = 'prelogin/services_details.html'
 
     def get_context_data(self, **kwargs):
         kwargs['is_services'] = True
@@ -81,7 +81,7 @@ class ServicesDetailsPublicView(TemplateView):
 
 class SolutionsPublicView(TemplateView):
     urlname = 'public_solutions'
-    template_name = 'public/solutions.html'
+    template_name = 'prelogin/solutions.html'
 
     def get_context_data(self, **kwargs):
         kwargs['is_solutions'] = True

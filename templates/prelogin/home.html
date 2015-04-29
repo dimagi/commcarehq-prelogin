@@ -1,4 +1,4 @@
-{% extends 'public/base.html' %}
+{% extends 'prelogin/base.html' %}
 {% load i18n %}
 {% load hq_shared_tags %}
 {% load crispy_forms_tags_b3 %}
@@ -6,7 +6,7 @@
 
 {% block js %}
 <script type="text/javascript" src="{% new_static 'style/lib/ui-select/dist/select.js' %}"></script>
-<script type="text/javascript" src="{% new_static 'public/js/hq_public_contact.ng.js' %}"></script>
+<script type="text/javascript" src="{% new_static 'prelogin/js/hq_public_contact.ng.js' %}"></script>
 {% endblock js %}
 
 {% block js-uncompressed %}
@@ -37,7 +37,7 @@ $(function () {
 {% endblock stylesheets %}
 
 {% block content %}
-{% include 'public/_sections/home/lead.html' %}
+{% include 'prelogin/_sections/home/lead.html' %}
 <div class="bg-static-fixed bg-home-main"></div>
 <section class="section section-aside">
     <div class="container">
@@ -58,15 +58,15 @@ $(function () {
         </div>
     </div>
 </section>
-{% include 'public/_sections/home/build.html' %}
+{% include 'prelogin/_sections/home/build.html' %}
 <div class="bg-static-fixed bg-home-first"></div>
-{% include 'public/_sections/home/use.html' %}
+{% include 'prelogin/_sections/home/use.html' %}
 <div class="bg-static-fixed bg-home-second"></div>
-{% include 'public/_sections/home/track.html' %}
+{% include 'prelogin/_sections/home/track.html' %}
 <div class="bg-static-fixed bg-home-third"></div>
-{% include 'public/_sections/home/analyze.html' %}
+{% include 'prelogin/_sections/home/analyze.html' %}
 <div class="bg-static-fixed bg-home-fourth"></div>
-{% include 'public/_sections/home/about_dimagi.html' %}
+{% include 'prelogin/_sections/home/about_dimagi.html' %}
 {% endblock content %}
 
 {% block modals %}
