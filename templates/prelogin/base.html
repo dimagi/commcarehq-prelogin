@@ -69,10 +69,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse cc-navbar-collapse"
                      id="primary-nav">
-                    <button type="button"
-                            class="btn btn-primary navbar-btn navbar-right">
+                    <a href="https://www.commcarehq.org/accounts/login/"
+                       class="btn btn-primary navbar-btn navbar-right">
                         {% trans 'Sign In' %}
-                    </button>
+                    </a>
                     <ul class="nav navbar-nav">
                         <li{% if is_home %} class="active"{% endif %}><a href="{% url 'public_home' %}">CommCare</a></li>
                         <li{% if is_solutions %} class="active"{% endif %}><a href="{% url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
