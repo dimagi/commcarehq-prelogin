@@ -1,0 +1,20 @@
+First Name:
+{{ contact_form.first_name.value }}
+
+Last Name:
+{{ contact_form.last_name.value }}
+
+Company:
+{{ contact_form.company.value }}
+
+Email:
+{{ contact_form.email.value }}
+
+Phone Number:
+{{ contact_form.phone_number.value }}
+
+Country:
+{{ contact_form.country.value }}
+
+Details:
+{{ contact_form.details.value }}

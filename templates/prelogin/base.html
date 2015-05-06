@@ -1,4 +1,4 @@
-{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}<!DOCTYPE html>
+{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}{% load crispy_forms_tags_b3 %}{% load djangular_tags %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -69,10 +69,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse cc-navbar-collapse"
                      id="primary-nav">
-                    <button type="button"
-                            class="btn btn-primary navbar-btn navbar-right">
+                    <a href="https://www.commcarehq.org/accounts/login/"
+                       class="btn btn-primary navbar-btn navbar-right">
                         {% trans 'Sign In' %}
-                    </button>
+                    </a>
                     <ul class="nav navbar-nav">
                         <li{% if is_home %} class="active"{% endif %}><a href="{% url 'public_home' %}">CommCare</a></li>
                         <li{% if is_solutions %} class="active"{% endif %}><a href="{% url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
@@ -81,19 +81,20 @@
                         <li{% if is_services %} class="active"{% endif %}><a href="{% url 'public_services' %}">{% trans "Services" %}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#"
-                               class="dropdown-toggle"
-                               data-toggle="dropdown"
-                               aria-expanded="false">
-                                English
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">French (to-do)</a></li>
-                            </ul>
-                        </li>
+{#                        todo add translations #}
+{#                        <li class="dropdown">#}
+{#                            <a href="#"#}
+{#                               class="dropdown-toggle"#}
+{#                               data-toggle="dropdown"#}
+{#                               aria-expanded="false">#}
+{#                                English#}
+{#                                <span class="caret"></span>#}
+{#                            </a>#}
+{#                            <ul class="dropdown-menu" role="menu">#}
+{#                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>#}
+{#                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">French (to-do)</a></li>#}
+{#                            </ul>#}
+{#                        </li>#}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -106,12 +107,104 @@
                 <p class="text-copyright text-center">
                     {% blocktrans %}
                         Copyright &copy; {{ year }} Dimagi, Inc. All Rights Reserved.
-                        Read the <a href="#">End User License Agreement</a>.
+                        Read the <a href="https://www.commcarehq.org/eula/">End User License Agreement</a>.
                     {% endblocktrans %}
                 </p>
             </div>
         </footer>
 
+        <div id="contactDimagi"
+             class="modal fade" ng-app="contactApp">
+            <div class="modal-dialog"
+                 ng-controller="contactFormValidationController">
+                <form id="contact-dimagi-form"
+                      name="contactDimagi"
+                      class="form form-horizontal"
+                      novalidate>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+                            <h3 class="modal-title">
+                                {% trans "Contact Dimagi" %}
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            {% crispy_b3 contact_form %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="thanksForContactingUs"
+             class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+                        <h3 class="modal-title">
+                            {% trans "Thanks for contacting us!" %}
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">
+                            {% blocktrans %}
+                            Thank you for your interest in working with Dimagi.
+                            {% endblocktrans %}
+                        </p>
+                        <p>
+                            {% blocktrans %}
+                            One of our team members will get back to you shortly
+                            with answers to your questions or further discussion.
+                            {% endblocktrans %}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            {% trans 'OK' %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contactUsFormIssues"
+             class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+                        <h3 class="modal-title">
+                            {% trans "Ooops!" %}
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">
+                            {% blocktrans %}
+                             We're terribly sorry! It seems like our servers are having issues today.
+                            {% endblocktrans %}
+                        </p>
+                        <p>
+                            {% blocktrans %}
+                                We've alerted one of our engineers of issues submitting
+                                this form. It should be fixed very soon. Our apologies
+                                for the inconvenience.
+                            {% endblocktrans %}
+                        </p>
+                        <p>
+                            {% blocktrans %}
+                                You can send an email directly to
+                                <a href="mailto:info@dimagi.com">info@dimagi.com</a> if
+                                this is an urgent request.
+                            {% endblocktrans %}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            {% trans 'OK' %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% block modals %}{% endblock modals %}
 
         {# Javascript #}
@@ -125,10 +218,34 @@
             <script type="text/javascript" src="{% new_static 'prelogin/js/backgrounds.ng.js' %}"></script>
         {% endcompress %}
 
+        {# Contact JS #}
+        {% compress js %}
+            <script type="text/javascript" src="{% new_static 'style/lib/ui-select/dist/select.js' %}"></script>
+            <script type="text/javascript" src="{% new_static 'prelogin/js/hq_public_contact.ng.js' %}"></script>
+        {% endcompress %}
+
         {% compress js %}
         {% block js %}{% endblock js %}
         {% endcompress %}
 
+
+        <script type="text/javascript">
+            $(function () {
+                $('.flower-home [data-toggle="tooltip"]').tooltip();
+            });
+            (function (angular, undefined) {
+                'use strict';
+                var contactApp = angular.module('contactApp', [
+                    'hq.public.contact'
+                ]);
+                contactApp.config(['$httpProvider', function($httpProvider) {
+                    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+                }]);
+                contactApp.config(["djangoRMIProvider", function(djangoRMIProvider) {
+                    djangoRMIProvider.configure({% djng_current_rmi %});
+                }]);
+            }(window.angular));
+        </script>
         {% block js-uncompressed %}{% endblock %}
 
         {% if ANALYTICS_ID_PUBLIC_COMMCARE %}

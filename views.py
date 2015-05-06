@@ -13,24 +13,35 @@ def public_default(request):
     return HttpResponseRedirect(reverse(HomePublicView.urlname))
 
 
-class HomePublicView(JSONResponseMixin, TemplateView):
-    urlname = 'public_home'
-    template_name = 'prelogin/home.html'
-
+class BasePreloginView(JSONResponseMixin, TemplateView):
+    """Have the contact dimagi form logic present always, as pretty much
+    every page needs access to it.
+    """
     def get_context_data(self, **kwargs):
         kwargs['contact_form'] = ContactDimagiForm()
-        kwargs['is_home'] = True
-        return super(HomePublicView, self).get_context_data(**kwargs)
+        return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @allow_remote_invocation
     def send_email(self, in_data):
-        # todo send and validate form
+        print in_data
+        contact_form = ContactDimagiForm(in_data)
+        if contact_form.is_valid():
+            contact_form.send_email()
         return {
             'success': True,
         }
 
 
-class ImpactPublicView(TemplateView):
+class HomePublicView(BasePreloginView):
+    urlname = 'public_home'
+    template_name = 'prelogin/home.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['is_home'] = True
+        return super(HomePublicView, self).get_context_data(**kwargs)
+
+
+class ImpactPublicView(BasePreloginView):
     urlname = 'public_impact'
     template_name = 'prelogin/impact.html'
 
@@ -52,7 +63,7 @@ class ImpactPublicView(TemplateView):
         return super(ImpactPublicView, self).get_context_data(**kwargs)
 
 
-class ServicesPublicView(TemplateView):
+class ServicesPublicView(BasePreloginView):
     urlname = 'public_services'
     template_name = 'prelogin/services.html'
 
@@ -61,7 +72,7 @@ class ServicesPublicView(TemplateView):
         return super(ServicesPublicView, self).get_context_data(**kwargs)
 
 
-class PricingPublicView(TemplateView):
+class PricingPublicView(BasePreloginView):
     urlname = 'public_pricing'
     template_name = 'prelogin/pricing.html'
 
@@ -70,7 +81,7 @@ class PricingPublicView(TemplateView):
         return super(PricingPublicView, self).get_context_data(**kwargs)
 
 
-class ServicesDetailsPublicView(TemplateView):
+class ServicesDetailsPublicView(BasePreloginView):
     urlname = 'public_services_details'
     template_name = 'prelogin/services_details.html'
 
@@ -79,7 +90,7 @@ class ServicesDetailsPublicView(TemplateView):
         return super(ServicesDetailsPublicView, self).get_context_data(**kwargs)
 
 
-class SolutionsPublicView(TemplateView):
+class SolutionsPublicView(BasePreloginView):
     urlname = 'public_solutions'
     template_name = 'prelogin/solutions.html'
 
