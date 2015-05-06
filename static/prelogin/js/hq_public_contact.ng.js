@@ -13,20 +13,20 @@
         var self = {};
 
         self.showSuccessMessage = function (resp) {
-            // todo: success message
-            console.log('success');
-            console.log(resp);
+            // hide modal
+            $('#contactDimagi').modal('hide');
+            // reset form
+            $('#contact-dimagi-form')[0].reset();
+            // show success modal
+            $('#thanksForContactingUs').modal('show');
         };
 
         self.showErrorMessage = function () {
-            // todo: error message
-            console.log('error');
+            $('#contactUsFormIssues').modal('show');
         };
 
         $scope.send_email = function(contact) {
             $scope.master = angular.copy(contact);
-
-            // todo: add in validation
             djangoRMI.send_email(contact).success(
                 self.showSuccessMessage
             ).error(self.showErrorMessage);
