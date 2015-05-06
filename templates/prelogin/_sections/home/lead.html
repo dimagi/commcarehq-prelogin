@@ -44,14 +44,14 @@
                             {% endblocktrans %}
                         </p>
                     </header>
-                    <form class="form-signup" role="form">
+                    <form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
                         <label class="sr-only"
                                for="signUpEmail">{% trans "Email" %}</label>
                         <div class="row">
                             <div class="col-xs-6 col-sm-7 col-lg-8">
                                 <input type="text"
                                        class="form-control input-xl"
-                                       name="email"
+                                       name="e"
                                        id="signUpEmail"
                                        placeholder="{% trans 'enter your email' %}" />
                             </div>
