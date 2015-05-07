@@ -23,7 +23,6 @@ class BasePreloginView(JSONResponseMixin, TemplateView):
 
     @allow_remote_invocation
     def send_email(self, in_data):
-        print in_data
         contact_form = ContactDimagiForm(in_data)
         if contact_form.is_valid():
             contact_form.send_email()
