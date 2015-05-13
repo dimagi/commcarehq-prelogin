@@ -28,9 +28,9 @@ class ContactDimagiForm(forms.Form):
         label=ugettext_noop("Company / Organization"),
         required=False,
     )
-    email = forms.CharField(
+    email = forms.EmailField(
         label=ugettext_noop("Email Address"),
-        required=False,
+        required=True,
     )
     phone_number = forms.CharField(
         label=ugettext_noop("Phone Number"),
