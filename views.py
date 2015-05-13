@@ -26,9 +26,9 @@ class BasePreloginView(JSONResponseMixin, TemplateView):
         contact_form = ContactDimagiForm(in_data)
         if contact_form.is_valid():
             contact_form.send_email()
-        return {
-            'success': True,
-        }
+            return {'success': True}
+        else:
+            return {'success': False, 'errors': contact_form.errors}
 
 
 class HomePublicView(BasePreloginView):

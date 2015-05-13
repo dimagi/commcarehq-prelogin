@@ -13,12 +13,18 @@
         var self = {};
 
         self.showSuccessMessage = function (resp) {
-            // hide modal
-            $('#contactDimagi').modal('hide');
-            // reset form
-            $('#contact-dimagi-form')[0].reset();
-            // show success modal
-            $('#thanksForContactingUs').modal('show');
+            // This gets called when we get a 200 <= status code < 300, even
+            // if there were form errors, so we need to check for them.
+            if (!resp.success) {
+                $('#contactUsFormErrors').modal('show');
+            } else {
+                // hide modal
+                $('#contactDimagi').modal('hide');
+                // reset form
+                $('#contact-dimagi-form')[0].reset();
+                // show success modal
+                $('#thanksForContactingUs').modal('show');
+            }
         };
 
         self.showErrorMessage = function () {
