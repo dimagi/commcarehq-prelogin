@@ -2,6 +2,21 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
+{% block js %}{{ block.super }}
+    <script>
+        $(function(){
+            var signUpForm = $('form.form-signup');
+            var signUpFormHandler = function() {
+                _kmq.push(['record', 'Clicked "Sign up"', {}, function(){
+                    signUpForm.off('submit', signUpFormHandler).submit();
+                }]);
+                return false;
+            };
+            signUpForm.on('submit', signUpFormHandler);
+        });
+    </script>
+{% endblock %}
+
 {% block stylesheets %}
 <link type="text/css"
       rel="stylesheet"
