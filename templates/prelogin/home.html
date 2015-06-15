@@ -14,11 +14,8 @@
 
                 // Track event on KISSmetrics
                 _kmq.push(['record', 'Clicked "Sign up"', {}, callback]);
-
                 // Execute the callback after 2 seconds in case KISSmetrics has not loaded properly.
-                setTimeout(function(){
-                    callback();
-                }, 2000);
+                setTimeout(callback, 2000);
 
                 return false;
             };
