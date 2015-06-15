@@ -7,16 +7,9 @@
         $(function(){
             var signUpForm = $('form.form-signup');
             var signUpFormHandler = function() {
-
-                var callback = _.once(function(){
+                kmqPushSafe(['record', 'Clicked "Sign up"', {}, function() {
                     signUpForm.off('submit', signUpFormHandler).submit();
-                });
-
-                // Track event on KISSmetrics
-                _kmq.push(['record', 'Clicked "Sign up"', {}, callback]);
-                // Execute the callback after 2 seconds in case KISSmetrics has not loaded properly.
-                setTimeout(callback, 2000);
-
+                }]);
                 return false;
             };
             signUpForm.on('submit', signUpFormHandler);
