@@ -1,5 +1,6 @@
 import codecs
 import os
+from django.utils.decorators import method_decorator
 import markdown
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
@@ -7,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from djangular.views.mixins import allow_remote_invocation, JSONResponseMixin
 from corehq.apps.prelogin.forms import ContactDimagiForm
+from corehq.apps.style.decorators import use_bootstrap3
 
 
 def public_default(request):
@@ -17,6 +19,11 @@ class BasePreloginView(JSONResponseMixin, TemplateView):
     """Have the contact dimagi form logic present always, as pretty much
     every page needs access to it.
     """
+
+    @method_decorator(use_bootstrap3())
+    def dispatch(self, request, *args, **kwargs):
+        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         kwargs['contact_form'] = ContactDimagiForm()
         return super(BasePreloginView, self).get_context_data(**kwargs)
