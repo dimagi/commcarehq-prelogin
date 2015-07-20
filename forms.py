@@ -1,7 +1,7 @@
 import logging
 from django import forms
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_noop, ugettext as _
+from django.utils.translation import ugettext_lazy, ugettext as _
 from django.conf import settings
 from dimagi.utils.django.email import send_HTML_email
 
@@ -17,31 +17,31 @@ logger = logging.getLogger(__name__)
 
 class ContactDimagiForm(forms.Form):
     first_name = forms.CharField(
-        label=ugettext_noop("First Name"),
+        label=ugettext_lazy("First Name"),
         required=False,
     )
     last_name = forms.CharField(
-        label=ugettext_noop("Last Name"),
+        label=ugettext_lazy("Last Name"),
         required=False,
     )
     company = forms.CharField(
-        label=ugettext_noop("Company / Organization"),
+        label=ugettext_lazy("Company / Organization"),
         required=False,
     )
     email = forms.EmailField(
-        label=ugettext_noop("Email Address"),
+        label=ugettext_lazy("Email Address"),
         required=True,
     )
     phone_number = forms.CharField(
-        label=ugettext_noop("Phone Number"),
+        label=ugettext_lazy("Phone Number"),
         required=False,
     )
     country = forms.CharField(
-        label=ugettext_noop("Country"),
+        label=ugettext_lazy("Country"),
         required=False,
     )
     details = forms.CharField(
-        label=ugettext_noop(
+        label=ugettext_lazy(
             "What is your interest in CommCare and "
             "any specific questions you have?"
         ),
