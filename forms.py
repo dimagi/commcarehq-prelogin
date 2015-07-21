@@ -3,14 +3,13 @@ from django import forms
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy, ugettext as _
 from django.conf import settings
-from dimagi.utils.django.email import send_HTML_email
 
 # Bootstrap 3 Crispy Forms
 from crispy_forms import layout as cb3_layout
 from crispy_forms import helper as cb3_helper
 from crispy_forms import bootstrap as twbscrispy
 from corehq.apps.style import crispy as hqcrispy
-
+from corehq.apps.hqwebapp.tasks import send_html_email_async
 
 logger = logging.getLogger(__name__)
 
@@ -110,8 +109,9 @@ class ContactDimagiForm(forms.Form):
             text_content = render_to_string("prelogin/_email/contact_form_email.txt", params)
             recipient = settings.CONTACT_EMAIL
             subject = "Contact Dimagi Request from prelogin"
-            send_HTML_email(subject, recipient, html_content, text_content=text_content,
-                            email_from=settings.DEFAULT_FROM_EMAIL)
+            send_html_email_async.delay(subject, recipient, html_content,
+                                        text_content=text_content,
+                                        email_from=settings.DEFAULT_FROM_EMAIL)
         except Exception:
             logging.error("Couldn't send pre-login contact email. "
                           "Contact: %s" % self.cleaned_data['contact_email']
