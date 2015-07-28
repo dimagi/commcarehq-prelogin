@@ -1,0 +1,35 @@
+.next-nav {
+  display: block;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  font-size: 40px;
+  left: 50%;
+  bottom: -25px;
+  z-index: 1000;
+  margin-left: -30px;
+  background-color: fade(@cc-brand-low, 50);
+  color: fade(#ffffff, 20);
+  .border-top-radius(5px);
+  .border-bottom-radius(5px);
+
+  .fa {
+    padding: 0 30px;
+  }
+
+  &:hover {
+    .transition(background-color .5s);
+    .transition(color .5s);
+    background-color: @cc-brand-low;
+    color: #ffffff;
+  }
+}
+
+.next-nav-last {
+  top: -25px;
+  bottom: auto;
+}
+
+section.appear {
+  position: relative;
+}

@@ -45,7 +45,7 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-static-hq" role="navigation">
+        <nav class="navbar navbar-default navbar-static-hq navbar-fixed-top" role="navigation">
             <div class="container">
 
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -248,6 +248,9 @@
         {% compress js %}
             <script type="text/javascript" src="{% new_static 'style/lib/ui-select/dist/select.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'prelogin/js/hq_public_contact.ng.js' %}"></script>
+            <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.appear.js' %}"></script>
+            <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.scrollTo.min.js' %}"></script>
+            <script type="text/javascript" src="{% new_static 'prelogin/js/section_appear.js' %}"></script>
         {% endcompress %}
 
         {% compress js %}
