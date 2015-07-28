@@ -1,26 +1,45 @@
-.services-bg-img (@gName, @gSize) {
+.solutions-bg-img (@gName, @gSize) {
   background-image: url('@{pub-images}/solutions/@{gName}-@{gSize}.png');
 }
 
+.solutions-icon-img (@graphicType, @gName, @gSize) {
+  background-image: url('@{pub-images}/solutions-@{graphicType}/@{gName}-@{gSize}.png');
+}
+
 .make-solutions-graphic (@type, @wLG, @hLG, @wMD, @hMD, @wSM, @hSM) {
-  .services-bg-img(@type, 'md');
+  .solutions-bg-img(@type, 'md');
   width: @wMD;
   height: @hMD;
 
   @media (min-width: @screen-sm-min) {
-    .services-bg-img(@type, 'sm');
+    .solutions-bg-img(@type, 'sm');
     width: @wSM;
     height: @hSM;
   }
   @media (min-width: @screen-md-min) {
-    .services-bg-img(@type, 'md');
+    .solutions-bg-img(@type, 'md');
     width: @wMD;
     height: @hMD;
   }
   @media (min-width: @screen-lg-min) {
-    .services-bg-img(@type, 'lg');
+    .solutions-bg-img(@type, 'lg');
     width: @wLG;
     height: @hLG;
+  }
+}
+
+.make-solutions-icon (@type, @name) {
+  background-position: center center;
+  background-repeat: no-repeat;
+  .solutions-icon-img(@type, @name, 'sm');
+  @media (min-width: @screen-sm-min) {
+    .solutions-icon-img(@type, @name, 'sm');
+  }
+  @media (min-width: @screen-md-min) {
+    .solutions-icon-img(@type, @name, 'md');
+  }
+  @media (min-width: @screen-lg-min) {
+    .solutions-icon-img(@type, @name, 'lg');
   }
 }
 
@@ -84,7 +103,7 @@
   margin: 0 auto;
 
   @media (max-width: @screen-xs-max) {
-    .services-bg-img('solutions-supply', 'sm');
+    .solutions-bg-img('solutions-supply', 'sm');
     width: @supply-width-sm;
     height: @supply-height-sm;
     margin-bottom: 40px;
@@ -105,3 +124,28 @@
 .solutions-detail-row {
   margin-bottom: 20px;
 }
+
+.solutions-icon-forecasting {
+  .make-solutions-icon('double', 'forecasting');
+}
+
+.solutions-icon-monitoring {
+  .make-solutions-icon('double', 'monitoring');
+}
+
+.solutions-icon-orders {
+  .make-solutions-icon('double', 'orders');
+}
+
+.solutions-icon-reports {
+  .make-solutions-icon('double', 'reports');
+}
+
+.solutions-icon-setup {
+  .make-solutions-icon('double', 'setup');
+}
+
+.solutions-icon-smsreports {
+  .make-solutions-icon('double', 'smsreports');
+}
+
