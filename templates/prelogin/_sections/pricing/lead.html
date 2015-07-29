@@ -7,19 +7,31 @@
                     <h1>
                         {% trans 'CommCare Software Plans' %}
                     </h1>
-                    <p class="lead">
-                        {% blocktrans %}
-                            Core Features are always FREE. Choose a plan
-                            to help your project scale.
-                        {% endblocktrans %}
-                    </p>
                 </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-8">
+                <p class="lead">
+                    {% blocktrans %}
+                        Core Features are always FREE. Choose a plan
+                        to help your project scale.
+                    {% endblocktrans %}
+                </p>
                 <p>
                     {% blocktrans %}
                     For additional questions, please see our
                     <a class="btn-primary-dark"
                        href="https://confluence.dimagi.com/display/commcarepublic/CommCare+Pricing+FAQs?__hstc=187943799.ba674a1a3cdef13c5d09b2a54d65c2b8.1431286503613.1435340206977.1435342587932.124&__hssc=187943799.6.1435342587932&__hsfp=312587752">FAQs</a>.
                     {% endblocktrans %}
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4" style="position: relative;">
+                <p class="lead text-center pricing-cta">
+                    {% blocktrans %}
+                        Want to try CommCare for FREE?
+                    {% endblocktrans %}<br />
+                    <a class="btn btn-success btn-xl" href="{% url 'login' %}">{% trans 'Sign up for a FREE account' %}</a>
                 </p>
             </div>
         </div>
