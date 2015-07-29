@@ -19,6 +19,7 @@ class BasePreloginView(JSONResponseMixin, TemplateView):
     """Have the contact dimagi form logic present always, as pretty much
     every page needs access to it.
     """
+    is_solutions_contact = False
 
     @method_decorator(use_bootstrap3())
     def dispatch(self, request, *args, **kwargs):
@@ -32,7 +33,7 @@ class BasePreloginView(JSONResponseMixin, TemplateView):
     def send_email(self, in_data):
         contact_form = ContactDimagiForm(in_data)
         if contact_form.is_valid():
-            contact_form.send_email()
+            contact_form.send_email(is_solutions_contact=self.is_solutions_contact)
             return {'success': True}
         else:
             return {'success': False, 'errors': contact_form.errors}
@@ -99,6 +100,7 @@ class ServicesDetailsPublicView(BasePreloginView):
 class SolutionsPublicView(BasePreloginView):
     urlname = 'public_solutions'
     template_name = 'prelogin/solutions.html'
+    is_solutions_contact = True
 
     def get_context_data(self, **kwargs):
         kwargs['is_solutions'] = True
