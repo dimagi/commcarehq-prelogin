@@ -45,6 +45,7 @@
 
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+        <script charset="utf-8" src="{% new_static 'prelogin/js/style_form.js' %}"></script>
 
     </head>
     <body>
@@ -117,118 +118,36 @@
         </footer>
 
         <div id="contactDimagi"
-             class="modal fade" ng-app="contactApp">
-            <div class="modal-dialog"
-                 ng-controller="contactFormValidationController">
-                <form id="contact-dimagi-form"
-                      name="contactDimagi"
-                      class="form form-horizontal"
-                      novalidate>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
-                            <h3 class="modal-title">
-                                {% trans "Get in Touch With Us: Contact Dimagi" %}
-                            </h3>
-                        </div>
-                        <div class="modal-body">
-                            {% crispy contact_form %}
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="thanksForContactingUs"
              class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
                         <h3 class="modal-title">
-                            {% trans "Thanks for contacting us!" %}
+                            {% trans "Get in Touch With Us: Contact Dimagi" %}
                         </h3>
                     </div>
                     <div class="modal-body">
-                        <p class="lead">
-                            {% blocktrans %}
-                            Thank you for your interest in working with Dimagi.
-                            {% endblocktrans %}
-                        </p>
-                        <p>
-                            {% blocktrans %}
-                            One of our team members will get back to you shortly
-                            with answers to your questions or further discussion.
-                            {% endblocktrans %}
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            {% trans 'OK' %}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="contactUsFormIssues"
-             class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
-                        <h3 class="modal-title">
-                            {% trans "Ooops!" %}
-                        </h3>
-                    </div>
-                    <div class="modal-body">
-                        <p class="lead">
-                            {% blocktrans %}
-                             We're terribly sorry! It seems like our servers are having issues today.
-                            {% endblocktrans %}
-                        </p>
-                        <p>
-                            {% blocktrans %}
-                                We've alerted one of our engineers of issues submitting
-                                this form. It should be fixed very soon. Our apologies
-                                for the inconvenience.
-                            {% endblocktrans %}
-                        </p>
-                        <p>
-                            {% blocktrans %}
-                                You can send an email directly to
-                                <a href="mailto:info@dimagi.com">info@dimagi.com</a> if
-                                this is an urgent request.
-                            {% endblocktrans %}
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            {% trans 'OK' %}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="contactUsFormErrors"
-             class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
-                        <h3 class="modal-title">
-                            {% trans "Ooops!" %}
-                        </h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            {% comment %}
-                                There is only one field that can result in errors,
-                                so it's safe to assume the problem is the e-mail
-                                address.
-                            {% endcomment %}
-                            {% blocktrans %}
-                                Please provide a valid e-mail address where we can reach you.
-                            {% endblocktrans %}
-                        </p>
+                        {% block contact-form %}
+                        <!--[if lte IE 8]>
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                        <![endif]-->
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                        <script>
+                            hbspt.forms.create({
+                                css: '',
+                                cssClass: 'form form-horizontal',
+                                submitButtonClass: 'btn btn-primary',
+                                errorClass: 'form-control',
+                                cssRequired: 'required',
+                                errorMessageClass: 'help-block col-xs-8 col-xs-offset-4 text-danger',
+                                portalId: '503070',
+                                formId: '4e28b3a0-1268-42f2-8d58-6a34b05ed08a',
+                                onFormReady: styleContactForm,
+                                onFormSubmit: endContactForm
+                            });
+                        </script>
+                        {% endblock contact-form %}
                     </div>
                 </div>
             </div>
@@ -249,7 +168,6 @@
         {# Contact JS #}
         {% compress js %}
             <script type="text/javascript" src="{% new_static 'style/lib/ui-select/dist/select.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'prelogin/js/hq_public_contact.ng.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.appear.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.scrollTo.min.js' %}"></script>
             <script type="text/javascript" src="{% new_static 'prelogin/js/section_appear.js' %}"></script>
@@ -264,18 +182,6 @@
             $(function () {
                 $('.flower-home [data-toggle="tooltip"]').tooltip();
             });
-            (function (angular, undefined) {
-                'use strict';
-                var contactApp = angular.module('contactApp', [
-                    'hq.public.contact'
-                ]);
-                contactApp.config(['$httpProvider', function($httpProvider) {
-                    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-                }]);
-                contactApp.config(["djangoRMIProvider", function(djangoRMIProvider) {
-                    djangoRMIProvider.configure({% djng_current_rmi %});
-                }]);
-            }(window.angular));
         </script>
         {% block js-uncompressed %}{% endblock %}
 
