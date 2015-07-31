@@ -8,12 +8,34 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.style.decorators import use_bootstrap3
 
+MAIN_FORM = 'main'
+SUPPLY_FORM = 'supply'
+
+HUBSPOT_PORTAL_IDS = {
+    MAIN_FORM: '503070',
+    SUPPLY_FORM: '503070',
+}
+
+HUBSPOT_FORM_IDS = {
+    MAIN_FORM: '4e28b3a0-1268-42f2-8d58-6a34b05ed08a',
+    SUPPLY_FORM: '6ac30a6d-2ab9-4ad2-8c67-2da973535b4f',
+}
+
 
 def public_default(request):
     return HttpResponseRedirect(reverse(HomePublicView.urlname))
 
 
 class BasePreloginView(TemplateView):
+    hubspot_portal_id = HUBSPOT_PORTAL_IDS[MAIN_FORM]
+    hubspot_form_id = HUBSPOT_FORM_IDS[MAIN_FORM]
+
+    def get_context_data(self, **kwargs):
+        kwargs['hubspot'] = {
+            'portal_id': self.hubspot_portal_id,
+            'form_id': self.hubspot_form_id,
+        }
+        return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @method_decorator(use_bootstrap3())
     def dispatch(self, request, *args, **kwargs):
@@ -81,6 +103,8 @@ class ServicesDetailsPublicView(BasePreloginView):
 class SolutionsPublicView(BasePreloginView):
     urlname = 'public_solutions'
     template_name = 'prelogin/solutions.html'
+    hubspot_portal_id = HUBSPOT_PORTAL_IDS[SUPPLY_FORM]
+    hubspot_form_id = HUBSPOT_FORM_IDS[SUPPLY_FORM]
 
     def get_context_data(self, **kwargs):
         kwargs['is_solutions'] = True

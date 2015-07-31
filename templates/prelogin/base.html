@@ -128,7 +128,6 @@
                         </h3>
                     </div>
                     <div class="modal-body">
-                        {% block contact-form %}
                         <!--[if lte IE 8]>
                         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                         <![endif]-->
@@ -141,13 +140,12 @@
                                 errorClass: 'form-control',
                                 cssRequired: 'required',
                                 errorMessageClass: 'help-block col-xs-8 col-xs-offset-4 text-danger',
-                                portalId: '503070',
-                                formId: '4e28b3a0-1268-42f2-8d58-6a34b05ed08a',
+                                portalId: '{{ hubspot.portal_id }}',
+                                formId: '{{ hubspot.form_id }}',
                                 onFormReady: styleContactForm,
                                 onFormSubmit: endContactForm
                             });
                         </script>
-                        {% endblock contact-form %}
                     </div>
                 </div>
             </div>
