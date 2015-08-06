@@ -3,11 +3,18 @@
 @pricing-row-single-height-md: 50px;
 @pricing-row-single-height-lg: 58px;
 
+@pricing-row-double-height-xs: 55px;
+@pricing-row-double-height-sm: 60px;
 @pricing-row-double-height-md: 65px;
 @pricing-row-double-height-lg: 73px;
 
+@pricing-row-triple-height-md: 80px;
 @pricing-row-triple-height-sm: 75px;
+@pricing-row-triple-height-lg: 90px;
+
 @pricing-row-quad-height-sm: 93px;
+
+@pricing-row-penta-height-xs: 103px;
 
 .pricing-table-bg-container {
   position: relative;
@@ -37,39 +44,6 @@
   }
 }
 
-.pricing-header {
-  background-color: @cc-neutral-mid;
-  text-align: center;
-  font-size: 14px !important;
-  margin-bottom: 0;
-  line-height: @pricing-row-single-height-md;
-  color: #FFFFFF;
-
-  @media (max-width: @screen-sm-max) {
-    font-size: 12px !important;
-    line-height: @pricing-row-single-height-sm;
-  }
-
-  @media (min-width: @screen-lg-min) {
-    font-size: 16px !important;
-    line-height: @pricing-row-single-height-lg;
-  }
-}
-
-.pricing-row-main-header .pricing-header {
-  margin: 0;
-  height: @pricing-row-single-height-md;
-  font-size: 11px !important;
-
-  @media (max-width: @screen-sm-max) {
-    height: @pricing-row-single-height-sm;
-  }
-
-  @media (min-width: @screen-lg-min) {
-    height: @pricing-row-single-height-lg;
-  }
-}
-
 .pricing-cost {
   background-color: @cc-neutral-hi;
   color: @cc-neutral-mid;
@@ -93,23 +67,6 @@
 
   @media (min-width: @screen-lg-min) {
     height: @pricing-row-single-height-lg;
-  }
-
-  h2 {
-    margin: 0;
-    line-height: @pricing-row-single-height-sm;
-    font-size: 12px;
-    font-weight: 200;
-    color: @cc-brand-low;
-
-    @media (min-width: @screen-md-min) {
-      font-size: 16px;
-      line-height: @pricing-row-single-height-md;
-    }
-    @media (min-width: @screen-lg-min) {
-      font-size: 18px;
-      line-height: @pricing-row-single-height-lg;
-    }
   }
 
   h4 {
@@ -174,6 +131,22 @@
   }
 }
 
+.pricing-row-triple {
+  height: @pricing-row-triple-height-md;
+
+  @media (min-width: @screen-lg-min) {
+    height: @pricing-row-triple-height-lg;
+  }
+
+  .pricing-info {
+    height: @pricing-row-triple-height-md;
+
+    @media (min-width: @screen-lg-min) {
+      height: @pricing-row-triple-height-lg;
+    }
+  }
+}
+
  .pricing-info .fa {
     @media (max-width: @screen-sm-max) {
       margin-top: 4px;
@@ -182,6 +155,16 @@
       margin-top: 5px;
     }
  }
+
+.pricing-row-triple .pricing-info .fa {
+  margin-top: 16px;
+  @media (max-width: @screen-sm-max) {
+    margin-top: 20px;
+  }
+  @media (min-width: @screen-lg-min) {
+    margin-top: 21px;
+  }
+}
 
 .pricing-row-double .pricing-info .fa {
   margin-top: 10px;
@@ -193,8 +176,8 @@
   }
 }
 
-.pricing-row-quad-xs {
-  @media (max-width: @screen-xs-max) {
+.pricing-row-quad-sm {
+  @media (max-width: @screen-sm-max) {
     height: @pricing-row-quad-height-sm;
     .pricing-info {
       height: @pricing-row-quad-height-sm;
@@ -205,14 +188,27 @@
   }
 }
 
-.pricing-row-quad-sm {
-  @media (max-width: @screen-sm-max) {
-    height: @pricing-row-quad-height-sm;
+.pricing-row-penta-xs {
+  @media (max-width: @screen-xs-max) {
+    height: @pricing-row-penta-height-xs;
     .pricing-info {
-      height: @pricing-row-quad-height-sm;
+      height: @pricing-row-penta-height-xs;
     }
     .pricing-info .fa {
-      margin-top: 26px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.pricing-row-triple-md {
+  @media (max-width: @screen-md-max) {
+    height: @pricing-row-triple-height-md;
+    .pricing-info {
+      height: @pricing-row-triple-height-md;
+    }
+
+    .pricing-info .fa {
+      margin-top: 19px;
     }
   }
 }
@@ -241,14 +237,39 @@
   }
 }
 
-.pricing-row-double-sm {
-  @media (max-width: @screen-sm-max) {
+.pricing-row-double-md {
+  @media (max-width: @screen-md-max) {
     height: @pricing-row-double-height-md;
     .pricing-info {
       height: @pricing-row-double-height-md;
     }
+
+    .pricing-info .fa {
+      margin-top: 19px;
+    }
+  }
+}
+
+.pricing-row-double-sm {
+  @media (max-width: @screen-sm-max) {
+    height: @pricing-row-double-height-sm;
+    .pricing-info {
+      height: @pricing-row-double-height-sm;
+    }
     .pricing-info .fa {
       margin-top: 12px;
+    }
+  }
+}
+
+.pricing-row-double-xs {
+  @media (max-width: @screen-xs-max) {
+    height: @pricing-row-double-height-xs;
+    .pricing-info {
+      height: @pricing-row-double-height-xs;
+    }
+    .pricing-info .fa {
+      margin-top: 6px;
     }
   }
 }
@@ -315,43 +336,13 @@
   }
 }
 
-.pricing-row-main-header {
-  @media (max-width: @screen-sm-max) {
-    height: @pricing-row-single-height-sm;
-  }
-  .pricing-col-community .pricing-header {
-    color: @cc-brand-hi;
-  }
-  .pricing-col-standard .pricing-header {
-    color: @cc-att-pos-hi;
-  }
-  .pricing-col-pro .pricing-header {
-    color: @cc-light-cool-accent-hi;
-  }
-  .pricing-col-advanced .pricing-header {
-    color: @cc-dark-cool-accent-hi;
-  }
-  .pricing-col-enterprise .pricing-header {
-    color: @cc-neutral-hi;
+.pricing-col-enterprise {
+  .pricing-header {
+    background-color: @cc-neutral-mid;
   }
 }
 
-.pricing-section-header-container {
-  background-color: @cc-neutral-low;
-  a:link, a, a:visited{
-    color: @cc-neutral-hi;
-    display: inline-block;
-    line-height: 48px;
-  }
-  a:hover {
-    color: #ffffff;
-  }
-  h2 {
-    color: @cc-neutral-hi;
-  }
-}
-
-.pricing-cta {
+.section p.pricing-cta {
   background-color: @cc-brand-hi;
   color: @cc-brand-low !important;
   padding: 20px;
@@ -361,6 +352,15 @@
   right: 0px;
   top: -50px;
   line-height: 2.5em;
+
+  @media (min-width: @screen-md-min) {
+    padding-top: 5px;
+  }
+  @media (min-width: @screen-lg-min) {
+    font-size: 18px;
+    line-height: 48px;
+    padding-top: 5px;
+  }
   @media (max-width: @screen-sm-max) {
     padding-top: 10px;
     top: -25px;
@@ -370,4 +370,76 @@
     right: 0px;
     top: 10px;
   }
+
+}
+
+.pricing-section-header-container {
+  background-color: @cc-neutral-low;
+  a:link, a, a:visited{
+    color: @cc-neutral-hi;
+    display: inline-block;
+  }
+  a:hover {
+    color: #ffffff;
+  }
+  h2 {
+    color: @cc-neutral-hi;
+  }
+}
+
+.pricing-row-main-header {
+  height: 30px;
+
+  h2 {
+    margin: 0;
+    font-size: 12px;
+    line-height: 30px;
+    font-weight: 200;
+
+    @media (min-width: @screen-md-min) {
+      font-size: 16px;
+      line-height: 35px;
+    }
+    @media (min-width: @screen-lg-min) {
+      font-size: 18px;
+      line-height: 48px;
+    }
+  }
+
+  @media (min-width: @screen-md-min) {
+    height: 35px;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    height: 48px;
+  }
+}
+
+.pricing-row-plan-names{
+  height: 30px;
+}
+
+.section h3.pricing-header {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  line-height: @pricing-row-single-height-md;
+  color: #FFFFFF;
+
+  @media (max-width: @screen-sm-max) {
+    font-size: 12px;
+    line-height: @pricing-row-single-height-sm;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    font-size: 16px;
+    line-height: @pricing-row-single-height-lg;
+  }
+}
+
+.section .pricing-row-plan-names h3.pricing-header {
+  font-size: 11px;
+  line-height: 30px;
+  margin-top: 0px;
 }
