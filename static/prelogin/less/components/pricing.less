@@ -12,6 +12,13 @@
 @pricing-row-triple-height-sm: 75px;
 @pricing-row-triple-height-lg: 90px;
 
+@pricing-row-summary-height-sm: 277px;
+@pricing-row-summary-height-md: 185px;
+@pricing-row-summary-height-lg: 185px;
+
+@pricing-row-more-height-md: 80px;
+@pricing-row-more-height-lg: 80px;
+
 @pricing-row-quad-height-sm: 93px;
 
 @pricing-row-penta-height-xs: 103px;
@@ -41,6 +48,20 @@
     @media (min-width: @screen-lg-min) {
       height: 291px;
     }
+  }
+}
+
+.section-software-services-pricing .pricing-table-bg .col-bg {
+  height: 439px;
+  @media (min-width: @screen-sm-min) {
+    height: 436px;
+  }
+  @media (min-width: @screen-md-min) {
+    height: 355px;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    height: 370px;
   }
 }
 
@@ -442,4 +463,71 @@
   font-size: 11px;
   line-height: 30px;
   margin-top: 0px;
+}
+
+.section-software-services-pricing {
+  .lead-link {
+    color: @cc-brand-hi;
+  }
+}
+
+.pricing-more a {
+  display: block;
+  color: #ffffff;
+  background-color: @cc-neutral-mid;
+  line-height: 48px;
+  text-align: center;
+  &:hover {
+    background-color: @cc-text;
+    text-decoration: none;
+  }
+}
+
+.pricing-info-summary {
+  height: 150px;
+  line-height: 18px;
+  color: @cc-neutral-low;
+  text-align: center;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 5px 10px;
+      border-top: 1px solid @cc-bg;
+    }
+  }
+}
+
+.pricing-row-summary {
+  height: @pricing-row-summary-height-sm;
+  @media (min-width: @screen-md-min) {
+    height: @pricing-row-summary-height-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    height: @pricing-row-summary-height-lg;
+  }
+  .pricing-info {
+    height: @pricing-row-summary-height-sm;
+    @media (min-width: @screen-md-min) {
+      height: @pricing-row-summary-height-md;
+    }
+    @media (min-width: @screen-lg-min) {
+      height: @pricing-row-summary-height-lg;
+    }
+  }
+}
+
+.pricing-row-more {
+  height: @pricing-row-more-height-md;
+  @media (min-width: @screen-lg-min) {
+    height: @pricing-row-more-height-lg;
+  }
+  .pricing-info {
+    height: @pricing-row-more-height-md;
+
+    @media (min-width: @screen-lg-min) {
+      height: @pricing-row-more-height-lg;
+    }
+  }
 }

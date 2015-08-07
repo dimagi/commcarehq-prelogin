@@ -1,0 +1,195 @@
+{% load i18n %}
+<section id="software-services-pricing" class="section section-primary section-software-services-pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <header>
+                    <h1>
+                        {% trans 'CommCare Software Plans' %}
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-8">
+                <p class="lead">
+                    {% blocktrans %}
+                        Core Features are always FREE. Choose a plan
+                        to help your project scale.
+                    {% endblocktrans %}
+                </p>
+                <p>
+                    {% blocktrans %}
+                    For additional questions, please see our
+                    <a class="lead-link"
+                       href="https://confluence.dimagi.com/display/commcarepublic/CommCare+Pricing+FAQs?__hstc=187943799.ba674a1a3cdef13c5d09b2a54d65c2b8.1431286503613.1435340206977.1435342587932.124&__hssc=187943799.6.1435342587932&__hsfp=312587752">FAQs</a>.
+                    {% endblocktrans %}
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4" style="position: relative;">
+                <p class="lead text-center pricing-cta">
+                    {% blocktrans %}
+                        Want to try CommCare for FREE?
+                    {% endblocktrans %}<br />
+                    <a class="btn btn-success btn-xl" href="{% url 'login' %}">{% trans 'Sign up for a FREE account' %}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="pricing-table-container">
+        <div class="pricing-table-container-inner">
+            <div class="container">
+                <div class="pricing-table-bg-container">
+                    <div class="pricing-table-bg">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-2 col-bg"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-xs-offset-2 pricing-col-community">
+                        <h3 class="pricing-header text-uppercase">
+                            {% trans 'Community' %}
+                        </h3>
+                    </div>
+                    <div class="col-xs-2 pricing-col-standard">
+                        <h3 class="pricing-header text-uppercase">
+                            {% trans 'Standard' %}
+                        </h3>
+                    </div>
+                    <div class="col-xs-2 pricing-col-pro">
+                        <h3 class="pricing-header text-uppercase">
+                            {% trans 'Pro' %}
+                        </h3>
+                    </div>
+                    <div class="col-xs-2 pricing-col-advanced">
+                        <h3 class="pricing-header text-uppercase">
+                            {% trans 'Advanced' %}
+                        </h3>
+                    </div>
+                    <div class="col-xs-2 pricing-col-enterprise">
+                        <h3 class="pricing-header text-uppercase">
+                            {% trans 'Enterprise' %}
+                        </h3>
+                    </div>
+                </div>
+                <div class="row pricing-row">
+                    <div class="col-xs-2">
+                        <h4>{% trans 'Pricing' %}*</h4>
+                    </div>
+                    <div class="col-xs-2 pricing-col-community">
+                        <div class="pricing-cost text-uppercase">
+                            {% trans 'Free' %}
+                        </div>
+                    </div>
+                    <div class="col-xs-2 pricing-col-standard">
+                        <div class="pricing-cost">
+                            {% trans '$100 /month' %}
+                        </div>
+                    </div>
+                    <div class="col-xs-2 pricing-col-pro">
+                        <div class="pricing-cost">
+                            {% trans '$500 /month' %}
+                        </div>
+                    </div>
+                    <div class="col-xs-2 pricing-col-advanced">
+                        <div class="pricing-cost">
+                            {% trans '$1,000 /month' %}
+                        </div>
+                    </div>
+                    <div class="col-xs-2 pricing-col-enterprise">
+                        <div class="pricing-cost">
+                            <a href="#contactDimagi"
+                               data-toggle="modal">{% trans 'Contact Us' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pricing-row pricing-row-lead pricing-row-summary">
+                    <div class="col-xs-2">
+                        <h4>{% trans 'Feature Summary' %}</h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info pricing-info-summary">
+                            <ul>
+                                <li>{% trans 'Up to 50 users' %}</li>
+                                <li>{% trans 'CommCare App Builder' %}</li>
+                                <li>{% trans 'Case Management' %}</li>
+                                <li>{% trans 'Pre-Built Reports' %}</li>
+                                <li>{% trans 'Online Learning Resources' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info pricing-info-summary">
+                            <ul>
+                                <li>{% trans 'Up to 100 users' %}</li>
+                                <li>{% trans 'Lookup Tables' %}</li>
+                                <li>{% trans 'Case Importer' %}</li>
+                                <li>{% trans 'API Access' %}</li>
+                                <li>{% trans 'One-way SMS' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info pricing-info-summary">
+                            <ul>
+                                <li>{% trans 'Up to 500 users' %}</li>
+                                <li>{% trans 'Report builder' %}</li>
+                                <li>{% trans 'Data management tools' %}</li>
+                                <li>{% trans 'Web-based applications' %}</li>
+                                <li>{% trans 'Two-way SMS' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info pricing-info-summary">
+                            <ul>
+                                <li>{% trans 'Up to 1,000 users' %}</li>
+                                <li>{% trans 'Custom branding' %}</li>
+                                <li>{% trans 'HIPAA compliance assurance' %}</li>
+                                <li>{% trans 'External app integration framework' %}</li>
+                                <li>{% trans 'Priority Support' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info pricing-info-summary">
+                            <ul>
+                                <li>{% trans '1,000+ users' %}</li>
+                                <li>{% trans 'Custom pricing is available for large scale projects.' %}</li>
+                                <li>{% trans 'Dedicated Account Manager' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pricing-row pricing-row-more">
+                    <div class="col-xs-2 col-xs-offset-2">
+                        <div class="pricing-more">
+                            <a href="{% url 'public_pricing' %}">See More...</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-more">
+                            <a href="{% url 'public_pricing' %}">See More...</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-more">
+                            <a href="{% url 'public_pricing' %}">See More...</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-more">
+                            <a href="{% url 'public_pricing' %}">See More...</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-more">
+                            <a href="{% url 'public_pricing' %}">See More...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

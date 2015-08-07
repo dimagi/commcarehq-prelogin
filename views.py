@@ -73,13 +73,13 @@ class ImpactPublicView(BasePreloginView):
         return super(ImpactPublicView, self).get_context_data(**kwargs)
 
 
-class ServicesPublicView(BasePreloginView):
-    urlname = 'public_services'
-    template_name = 'prelogin/services.html'
+class SoftwareServicesPublicView(BasePreloginView):
+    urlname = 'public_software_services'
+    template_name = 'prelogin/software_services.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['is_services'] = True
-        return super(ServicesPublicView, self).get_context_data(**kwargs)
+        kwargs['is_software_services'] = True
+        return super(SoftwareServicesPublicView, self).get_context_data(**kwargs)
 
 
 class PricingPublicView(BasePreloginView):
@@ -87,17 +87,17 @@ class PricingPublicView(BasePreloginView):
     template_name = 'prelogin/pricing.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['is_pricing'] = True
+        kwargs['is_software_services'] = True
         return super(PricingPublicView, self).get_context_data(**kwargs)
 
 
-class ServicesDetailsPublicView(BasePreloginView):
-    urlname = 'public_services_details'
-    template_name = 'prelogin/services_details.html'
+class ServicesPublicView(BasePreloginView):
+    urlname = 'public_services'
+    template_name = 'prelogin/services.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['is_services'] = True
-        return super(ServicesDetailsPublicView, self).get_context_data(**kwargs)
+        kwargs['is_software_services'] = True
+        return super(ServicesPublicView, self).get_context_data(**kwargs)
 
 
 class SolutionsPublicView(BasePreloginView):
