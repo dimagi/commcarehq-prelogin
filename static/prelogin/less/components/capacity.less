@@ -47,10 +47,20 @@
   }
 }
 
-.capacity-more {
+.capacity-options li.capacity-more {
   font-size: 14px;
   line-height: 50px;
   margin-top: 1px;
+  background-color: @cc-neutral-low;
+  color: #ffffff;
+  a {
+    color: #ffffff;
+    display: block;
+    &:hover {
+      background-color: @cc-neutral-mid;
+      text-decoration: none;
+    }
+  }
 }
 
 .capacity-table {

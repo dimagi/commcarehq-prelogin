@@ -107,7 +107,7 @@
 
 .section-primary {
   background-color: @cc-brand-mid;
-  
+
   h1, h2, h3, p {
     color: #ffffff;
   }
@@ -491,7 +491,7 @@
 
 }
 
-.section-services-bundles {
+.section-software-services-bundles {
   height: auto;
   > .container {
     margin-top: 20px;
@@ -505,7 +505,7 @@
   }
 }
 
-.section-services-capacity {
+.section-software-services-capacity {
   height: auto;
   > .container {
     margin-top: 20px;
@@ -513,7 +513,7 @@
   }
 }
 
-.section-services-last {
+.section-software-services-last {
   height: auto;
   padding-bottom: 100px;
 
@@ -522,6 +522,21 @@
   }
 }
 
+.section-software-services-lead {
+  padding: 60px 0 80px;
+  height: auto;
+
+  .col-sm-6 .btn-xl {
+    display: block;
+    margin-top: 20px;
+  }
+  p:not(.lead) {
+    font-size: 14px;
+  }
+  p.lead {
+    margin-bottom: 40px;
+  }
+}
 
 .section-pricing-lead {
   height: 450px;
@@ -575,17 +590,8 @@
   }
 }
 
-.section-details-lead {
-  height: auto;
-  padding-bottom: 40px;
-
-  @media (max-width: @screen-xs-max) {
-    min-height: 150px;
-  }
-}
-
-.section-details-bundles,
-.section-details-capacity {
+.section-services-bundles,
+.section-services-capacity {
   height: auto;
   padding: 40px 0 100px;
 
@@ -594,7 +600,7 @@
   }
 }
 
-.section-details-bundles {
+.section-services-bundles {
   @media (max-width: @screen-xs-max) {
     h3 {
       text-align: left;
@@ -603,7 +609,7 @@
   }
 }
 
-.section-details-capacity {
+.section-services-capacity {
   h3 {
     font-size: 20px;
   }
@@ -810,4 +816,9 @@
 
 .section-lead a.lead-link {
   color: @cc-brand-hi;
+}
+
+.section-services-last {
+  height: auto;
+  padding-bottom: 100px;
 }
