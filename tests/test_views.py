@@ -8,7 +8,7 @@ class TestViews(TestCase):
             ImpactPublicView,
             PricingPublicView,
             ServicesPublicView,
-            ServicesDetailsPublicView,
+            SoftwareServicesPublicView,
             SolutionsPublicView,
         ]:
             response = self.client.get(reverse(view.urlname), follow=False)
