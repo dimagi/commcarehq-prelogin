@@ -28,12 +28,19 @@
         {% endcompress %}
 
         <link rel="shortcut icon" href="{% new_static 'style/img/favicon.png' %}" />
+        {% if less_debug %}
+            <link type="text/less"
+                  rel="stylesheet"
+                  media="all"
+                  href="{% new_static 'prelogin/less/public-style.debug.less' %}" />
+        {% else %}
         {% compress css %}
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
                   href="{% new_static 'prelogin/less/public-style.less' %}" />
         {% endcompress %}
+        {% endif %}
 
         {% block stylesheets %}{% endblock stylesheets %}
 
@@ -46,6 +53,29 @@
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
         <script charset="utf-8" src="{% new_static 'prelogin/js/style_form.js' %}"></script>
+
+        {% if less_debug %}
+            <script>
+                less = {
+                    env: "development",
+                    useFileCache: true,
+                    logLevel: 2,
+                    errorReporting: 'console',
+                    async: false,
+                    fileAsync: false,
+                    poll: 1000,
+                    functions: {},
+                    dumpLineNumbers: "comments",
+                    relativeUrls: false,
+                    globalVars: {
+                        'b3-import-mixins-prelogin': "'/static/style/less/bootstrap3/includes/mixins'",
+                        'b3-import-variables-prelogin': "'/static/style/less/bootstrap3/includes/variables'"
+                    }
+                };
+            </script>
+            <script src="{% new_static 'style/lib/lessjs/less-1.7.3.min.js' cache=True %}"></script>
+            {% if less_watch %}<script>less.watch();</script>{% endif %}
+        {% endif %}
 
     </head>
     <body>
