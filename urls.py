@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.views.generic import RedirectView
 from corehq.apps.prelogin.views import *
 
 urlpatterns = patterns(
@@ -13,4 +14,5 @@ urlpatterns = patterns(
         name=PricingPublicView.urlname),
     url(r'^solutions/$', SolutionsPublicView.as_view(),
         name=SolutionsPublicView.urlname),
+    url(r'^supply/$', RedirectView.as_view(url='/solutions/#supply', permanent=True)),
 )
