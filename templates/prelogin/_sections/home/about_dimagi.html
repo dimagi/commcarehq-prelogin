@@ -1,5 +1,5 @@
 {% load i18n %}
-<section id="about-dimagi" class="section section-primary section-detail section-home-last appear appear-last">
+<section id="about-dimagi" class="section section-primary section-detail section-home-last appear">
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -16,20 +16,6 @@
             <div class="col-sm-4 col-sm-offset-2">
                 <p>
                     {% blocktrans %}
-                        CommCare Users is a community-supported Google Group
-                        for questions related to using CommCare.
-                    {% endblocktrans %}
-                </p>
-                <p>
-                    <a href="https://groups.google.com/forum/#!forum/commcare-users/join"
-                       class="btn btn-primary-dark btn-lg btn-block">
-                        {% trans 'Visit CommCare Users' %}
-                    </a>
-                </p>
-            </div>
-            <div class="col-sm-4">
-                <p>
-                    {% blocktrans %}
                         If you have questions about CommCare in general or
                         about your specific CommCare project, please contact
                         Dimagi directly.
@@ -43,8 +29,22 @@
                     </a>
                 </p>
             </div>
+            <div class="col-sm-4">
+                <p>
+                    {% blocktrans %}
+                        CommCare Users is a community-supported Google Group
+                        for questions related to using CommCare.
+                    {% endblocktrans %}
+                </p>
+                <p>
+                    <a href="https://groups.google.com/forum/#!forum/commcare-users/join"
+                       class="btn btn-primary-dark btn-lg btn-block">
+                        {% trans 'Visit CommCare Users' %}
+                    </a>
+                </p>
+            </div>
         </div>
-        <div class="row row-details">
+        <div class="row row-padded-sm">
             <div class="col-sm-4 col-sm-offset-2">
                 <p>
                     {% blocktrans %}

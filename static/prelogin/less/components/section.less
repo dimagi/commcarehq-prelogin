@@ -113,6 +113,14 @@
   }
 }
 
+.section-primary-dark {
+  background-color: @cc-brand-low;
+
+  h1, h2, h3, p {
+    color: #ffffff;
+  }
+}
+
 .section-detail {
   @media (max-width: @screen-xs-max) {
     h3 {
@@ -280,6 +288,8 @@
     color: #ffffff;
   }
 
+  height: 600px;
+
   @media (min-width: @screen-sm-min) {
     > .container {
       margin-top: @grid-gutter-width*2.5;
@@ -302,6 +312,13 @@
     > .container {
       margin-top: @grid-gutter-width * 2;
     }
+  }
+}
+
+.section-home-signup-reminder {
+  height: auto;
+  > .container {
+    margin: 20px auto;
   }
 }
 
