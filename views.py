@@ -37,7 +37,7 @@ class BasePreloginView(TemplateView):
         }
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
-    @method_decorator(use_bootstrap3())
+    @use_bootstrap3
     def dispatch(self, request, *args, **kwargs):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
