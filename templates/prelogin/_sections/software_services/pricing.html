@@ -126,7 +126,7 @@
                                 <li>{% trans 'Lookup Tables' %}</li>
                                 <li>{% trans 'Case Importer' %}</li>
                                 <li>{% trans 'API Access' %}</li>
-                                <li>{% trans 'One-way SMS' %}</li>
+                                <li>{% trans 'One-way SMS' %}*</li>
                             </ul>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                                 <li>{% trans 'Report builder' %}</li>
                                 <li>{% trans 'Data management tools' %}</li>
                                 <li>{% trans 'Web-based applications' %}</li>
-                                <li>{% trans 'Two-way SMS' %}</li>
+                                <li>{% trans 'Two-way SMS' %}*</li>
                             </ul>
                         </div>
                     </div>
@@ -191,5 +191,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+        <p><small>
+            *{% blocktrans %}
+                Dimagi charges incoming and outgoing messages on a per-message
+                fee. For a full list,
+                <a class="lead-link" href="https://www.commcarehq.org/messaging-pricing">
+                    click here</a>.
+            {% endblocktrans %}
+        </small></p>
     </div>
 </section>
