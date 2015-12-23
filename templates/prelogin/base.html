@@ -54,6 +54,10 @@
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
         <script charset="utf-8" src="{% new_static 'prelogin/js/style_form.js' %}"></script>
 
+        {% block js-inline %}
+        {# needed for child pages #}
+        {% endblock js-inline %}
+
         {% if less_debug %}
             <script>
                 less = {
