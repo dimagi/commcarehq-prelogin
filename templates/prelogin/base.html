@@ -1,4 +1,4 @@
-{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}{% load crispy_forms_tags %}{% load djangular_tags %}<!DOCTYPE html>
+{% load menu_tags %}{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}{% load crispy_forms_tags %}{% load djangular_tags %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -108,27 +108,27 @@
                         {% trans 'Sign In' %}
                     </a>
                     <ul class="nav navbar-nav">
-                        <li{% if is_home %} class="active"{% endif %}><a href="{% url 'public_home' %}">CommCare</a></li>
-                        <li{% if is_solutions %} class="active"{% endif %}><a href="{% url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
-                        <li{% if is_impact %} class="active"{% endif %}><a href="{% url 'public_impact' %}">{% trans "Impact" %}</a></li>
-                        <li{% if is_software_services %} class="active"{% endif %}><a href="{% url 'public_software_services' %}">{% trans "Software & Services" %}</a></li>
+                        <li{% if is_home %} class="active"{% endif %}><a href="{% url 'public_home' LANGUAGE_CODE %}">CommCare</a></li>
+                        <li{% if is_solutions %} class="active"{% endif %}><a href="{% url 'public_solutions' LANGUAGE_CODE %}">{% trans "Solutions" %}</a></li>
+                        <li{% if is_impact %} class="active"{% endif %}><a href="{% url 'public_impact' LANGUAGE_CODE %}">{% trans "Impact" %}</a></li>
+                        <li{% if is_software_services %} class="active"{% endif %}><a href="{% url 'public_software_services' LANGUAGE_CODE %}">{% trans "Software & Services" %}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-{#                        todo add translations #}
-{#                        <li class="dropdown">#}
-{#                            <a href="#"#}
-{#                               class="dropdown-toggle"#}
-{#                               data-toggle="dropdown"#}
-{#                               aria-expanded="false">#}
-{#                                English#}
-{#                                <span class="caret"></span>#}
-{#                            </a>#}
-{#                            <ul class="dropdown-menu" role="menu">#}
-{#                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>#}
-{#                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">French (to-do)</a></li>#}
-{#                            </ul>#}
-{#                        </li>#}
-                    </ul>
+                        <li class="dropdown">
+                            <a href="#"
+                               class="dropdown-toggle"
+                               data-toggle="dropdown"
+                               aria-expanded="false">
+                                {{ LANGUAGE_CODE|aliased_language_name }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% for lang in language_options %}
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{lang.prefix_url}}">{{lang.display_label}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                  </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
