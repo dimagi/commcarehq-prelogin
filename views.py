@@ -1,6 +1,6 @@
+from django.utils import translation
 import codecs
 import os
-from django.utils.decorators import method_decorator
 import markdown
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
@@ -21,6 +21,11 @@ HUBSPOT_FORM_IDS = {
     SUPPLY_FORM: '6ac30a6d-2ab9-4ad2-8c67-2da973535b4f',
 }
 
+PRELOGIN_LANGUAGES = (
+    ('en', 'English'),
+    ('fra', 'French'),
+)
+
 
 def public_default(request):
     return HttpResponseRedirect(reverse(HomePublicView.urlname))
@@ -35,11 +40,37 @@ class BasePreloginView(TemplateView):
             'portal_id': self.hubspot_portal_id,
             'form_id': self.hubspot_form_id,
         }
+        kwargs['language_options'] = self.language_options()
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @use_bootstrap3
     def dispatch(self, request, *args, **kwargs):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        lang_prefix = kwargs.get('lang_code')
+        if lang_prefix and lang_prefix not in prelogin_lang_codes():
+            return HttpResponseRedirect(reverse(self.urlname))
+        self.activate_language_from_request(request, lang_prefix)
+        return super(BasePreloginView, self).get(request, *args, **kwargs)
+
+    def activate_language_from_request(self, request, lang_prefix):
+        if lang_prefix in prelogin_lang_codes():
+            lang = lang_prefix
+        else:
+            lang = translation.get_language_from_request(request)
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang
+        request.session['django_language'] = lang
+        translation.activate(lang)
+
+    def language_options(self):
+        options = []
+        for lang_code, display_label in PRELOGIN_LANGUAGES:
+            options.append({
+                'display_label': display_label,
+                'prefix_url': reverse(self.urlname, args=[lang_code])
+            })
+        return options
 
 
 class HomePublicView(BasePreloginView):
@@ -110,3 +141,6 @@ class SolutionsPublicView(BasePreloginView):
         kwargs['is_solutions'] = True
         return super(SolutionsPublicView, self).get_context_data(**kwargs)
 
+
+def prelogin_lang_codes():
+    return [code for code, name in PRELOGIN_LANGUAGES]
