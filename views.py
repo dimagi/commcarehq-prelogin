@@ -48,29 +48,24 @@ class BasePreloginView(TemplateView):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
+        # redirect to root if lang_prefix is not a known lang_code
         lang_prefix = kwargs.get('lang_code')
         if lang_prefix and lang_prefix not in prelogin_lang_codes():
             return HttpResponseRedirect(reverse(self.urlname))
+
         self.activate_language_from_request(request, lang_prefix)
         return super(BasePreloginView, self).get(request, *args, **kwargs)
 
     def activate_language_from_request(self, request, lang_prefix):
+        # activate language just for this request
         if lang_prefix in prelogin_lang_codes():
             lang = lang_prefix
         else:
             lang = translation.get_language_from_request(request)
-        request.session[translation.LANGUAGE_SESSION_KEY] = lang
-        request.session['django_language'] = lang
         translation.activate(lang)
 
     def language_options(self):
-        options = []
-        for lang_code, display_label in PRELOGIN_LANGUAGES:
-            options.append({
-                'display_label': display_label,
-                'prefix_url': reverse(self.urlname, args=[lang_code])
-            })
-        return options
+        return [{'display_label': k, 'prefix_url': v} for k, v in PRELOGIN_LANGUAGES]
 
 
 class HomePublicView(BasePreloginView):

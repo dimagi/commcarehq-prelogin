@@ -35,3 +35,14 @@ class TestLanguagePrefixes(SimpleTestCase):
             fetch_redirect_response=True,
             target_status_code=200
         )
+
+    def test_root_url_is_always_english(self):
+        french_url = reverse(HomePublicView.urlname, args=['fra'])
+        root_url = reverse(HomePublicView.urlname)
+
+        french_response = self.client.get(french_url, follow=False)
+        self.assertEqual(french_response._headers['content-language'][1], 'fra')
+
+        # root url should not be back to english
+        root_response = self.client.get(root_url, follow=False)
+        self.assertEqual(root_response._headers['content-language'][1], 'en')
