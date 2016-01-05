@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from django.views.generic import RedirectView
 from corehq.apps.prelogin.views import *
 
-urlpatterns = patterns(
+root_patterns = patterns(
     'corehq.apps.prelogin.views',
     url(r'^home/$', HomePublicView.as_view(), name=HomePublicView.urlname),
     url(r'^impact/$', ImpactPublicView.as_view(), name=ImpactPublicView.urlname),
@@ -15,4 +15,10 @@ urlpatterns = patterns(
     url(r'^solutions/$', SolutionsPublicView.as_view(),
         name=SolutionsPublicView.urlname),
     url(r'^supply/$', RedirectView.as_view(url='/solutions/#supply', permanent=True)),
+)
+
+
+urlpatterns = root_patterns + patterns(
+    'corehq.apps.prelogin.views',
+    url(r'^lang/(?P<lang_code>[\w-]+)/', include(root_patterns)),
 )
