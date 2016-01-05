@@ -1,4 +1,5 @@
 from django.utils import translation
+from django.utils.translation import ugettext as _
 import codecs
 import os
 import markdown
@@ -7,6 +8,8 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.style.decorators import use_bootstrap3
+from corehq.apps.hqwebapp.templatetags.menu_tags import aliased_language_name
+
 
 MAIN_FORM = 'main'
 SUPPLY_FORM = 'supply'
@@ -40,7 +43,7 @@ class BasePreloginView(TemplateView):
             'portal_id': self.hubspot_portal_id,
             'form_id': self.hubspot_form_id,
         }
-        kwargs['language_options'] = self.language_options()
+        kwargs.update(self.i18n_context())
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @use_bootstrap3
@@ -64,8 +67,19 @@ class BasePreloginView(TemplateView):
             lang = translation.get_language_from_request(request)
         translation.activate(lang)
 
-    def language_options(self):
-        return [{'display_label': k, 'prefix_url': v} for k, v in PRELOGIN_LANGUAGES]
+    def i18n_context(self):
+        localized_options = []
+        for lang_code, display_label in PRELOGIN_LANGUAGES:
+            with translation.override(lang_code):
+                localized_options.append({
+                    'display_label': _(display_label),
+                    'prefix_url': reverse(self.urlname, args=[lang_code])
+                })
+
+        return {
+            'language_options': localized_options,
+            'current_lang_name': _(aliased_language_name(translation.get_language()))
+        }
 
 
 class HomePublicView(BasePreloginView):
