@@ -43,6 +43,6 @@ class TestLanguagePrefixes(SimpleTestCase):
         french_response = self.client.get(french_url, follow=False)
         self.assertEqual(french_response._headers['content-language'][1], 'fra')
 
-        # root url should not be back to english
+        # root url should be back to english
         root_response = self.client.get(root_url, follow=False)
         self.assertEqual(root_response._headers['content-language'][1], 'en')
