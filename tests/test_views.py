@@ -1,8 +1,8 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 from corehq.apps.prelogin.views import *
 
 
-class TestViews(SimpleTestCase):
+class TestViews(TestCase):
     def test_status_codes(self):
         for view in [
             HomePublicView,
@@ -16,7 +16,7 @@ class TestViews(SimpleTestCase):
             self.assertEqual(response.status_code, 200)
 
 
-class TestLanguagePrefixes(SimpleTestCase):
+class TestLanguagePrefixes(TestCase):
     def test_prefixed_pages_get_translated(self):
         for lang in ['en', 'fra']:
             prefixed_url = reverse(HomePublicView.urlname, args=[lang])
