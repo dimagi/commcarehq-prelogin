@@ -1,15 +1,12 @@
-from django.utils import translation
-from django.utils.translation import ugettext as _
 import codecs
 import os
+from django.utils.decorators import method_decorator
 import markdown
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.style.decorators import use_bootstrap3
-from corehq.apps.hqwebapp.templatetags.menu_tags import aliased_language_name
-
 
 MAIN_FORM = 'main'
 SUPPLY_FORM = 'supply'
@@ -23,11 +20,6 @@ HUBSPOT_FORM_IDS = {
     MAIN_FORM: '4e28b3a0-1268-42f2-8d58-6a34b05ed08a',
     SUPPLY_FORM: '6ac30a6d-2ab9-4ad2-8c67-2da973535b4f',
 }
-
-PRELOGIN_LANGUAGES = (
-    ('en', 'English'),
-    ('fra', 'French'),
-)
 
 
 def public_default(request):
@@ -43,43 +35,11 @@ class BasePreloginView(TemplateView):
             'portal_id': self.hubspot_portal_id,
             'form_id': self.hubspot_form_id,
         }
-        kwargs.update(self.i18n_context())
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @use_bootstrap3
     def dispatch(self, request, *args, **kwargs):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        # redirect to root if lang_prefix is not a known lang_code
-        lang_prefix = kwargs.get('lang_code')
-        if lang_prefix and lang_prefix not in prelogin_lang_codes():
-            return HttpResponseRedirect(reverse(self.urlname))
-
-        self.activate_language_from_request(request, lang_prefix)
-        return super(BasePreloginView, self).get(request, *args, **kwargs)
-
-    def activate_language_from_request(self, request, lang_prefix):
-        # activate language just for this request
-        if lang_prefix in prelogin_lang_codes():
-            lang = lang_prefix
-        else:
-            lang = translation.get_language_from_request(request)
-        translation.activate(lang)
-
-    def i18n_context(self):
-        localized_options = []
-        for lang_code, display_label in PRELOGIN_LANGUAGES:
-            with translation.override(lang_code):
-                localized_options.append({
-                    'display_label': _(display_label),
-                    'prefix_url': reverse(self.urlname, args=[lang_code])
-                })
-
-        return {
-            'language_options': localized_options,
-            'current_lang_name': _(aliased_language_name(translation.get_language()))
-        }
 
 
 class HomePublicView(BasePreloginView):
@@ -150,6 +110,3 @@ class SolutionsPublicView(BasePreloginView):
         kwargs['is_solutions'] = True
         return super(SolutionsPublicView, self).get_context_data(**kwargs)
 
-
-def prelogin_lang_codes():
-    return [code for code, name in PRELOGIN_LANGUAGES]

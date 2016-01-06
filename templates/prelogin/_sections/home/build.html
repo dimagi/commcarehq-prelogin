@@ -90,7 +90,7 @@
                     {% endblocktrans %}
                 </h3>
                 <p>
-                    {% url 'public_pricing' LANGUAGE_CODE as pricing_url %}
+                    {% url 'public_pricing' as pricing_url %}
                     {% blocktrans %}
                         Support up to 50 mobile users for free. Beyond that,
                         view our <a href="{{ pricing_url }}">software plan pricing</a>.
