@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
-from corehq.apps.style.decorators import use_bootstrap3
+from corehq.apps.style.decorators import use_bootstrap3, use_angular_js
 from corehq.apps.hqwebapp.templatetags.menu_tags import aliased_language_name
 
 
@@ -47,6 +47,7 @@ class BasePreloginView(TemplateView):
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @use_bootstrap3
+    @use_angular_js
     def dispatch(self, request, *args, **kwargs):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
