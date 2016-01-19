@@ -4,11 +4,12 @@ import codecs
 import os
 import markdown
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, resolve
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.style.decorators import use_bootstrap3, use_angular_js
 from corehq.apps.hqwebapp.templatetags.menu_tags import aliased_language_name
+from corehq.util.test_utils import unit_testing_only
 
 
 MAIN_FORM = 'main'
@@ -34,33 +35,33 @@ def public_default(request):
     return HttpResponseRedirect(reverse(HomePublicView.urlname))
 
 
-class BasePreloginView(TemplateView):
-    hubspot_portal_id = HUBSPOT_PORTAL_IDS[MAIN_FORM]
-    hubspot_form_id = HUBSPOT_FORM_IDS[MAIN_FORM]
+class LanguagePrefixMixin(object):
+    """
+    This provides simple i18n utils to class-based Views that have 'lang_code' in its view kwargs
+    (Currently used only in BasePreloginView)
 
-    def get_context_data(self, **kwargs):
-        kwargs['hubspot'] = {
-            'portal_id': self.hubspot_portal_id,
-            'form_id': self.hubspot_form_id,
-        }
-        kwargs.update(self.i18n_context())
-        return super(BasePreloginView, self).get_context_data(**kwargs)
+    These utils are kept seperated from BasePreloginView to make prefix-url i18n unit testing possible.
+    """
 
-    @use_bootstrap3
-    @use_angular_js
-    def dispatch(self, request, *args, **kwargs):
-        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
+    @classmethod
+    @unit_testing_only
+    def from_url(cls, url):
+        """
+        Here is the reason why these functions are seperated from main View into a Mixin.
 
-    def get(self, request, *args, **kwargs):
-        # redirect to root if lang_prefix is not a known lang_code
-        lang_prefix = kwargs.get('lang_code')
-        if lang_prefix and lang_prefix not in prelogin_lang_codes():
-            return HttpResponseRedirect(reverse(self.urlname))
 
-        self.activate_language_from_request(request, lang_prefix)
-        return super(BasePreloginView, self).get(request, *args, **kwargs)
+        """
+        view, args, kwargs = resolve(url)
+        _self = cls()
+        _self.kwargs = kwargs
+        return _self
 
-    def activate_language_from_request(self, request, lang_prefix):
+    def is_unknown_lang_prefix(self):
+        lang_prefix = self.kwargs.get('lang_code')
+        return lang_prefix and lang_prefix not in prelogin_lang_codes()
+
+    def activate_language_from_request(self, request):
+        lang_prefix = self.kwargs.get('lang_code')
         # activate language just for this request
         if lang_prefix in prelogin_lang_codes():
             lang = lang_prefix
@@ -81,6 +82,32 @@ class BasePreloginView(TemplateView):
             'language_options': localized_options,
             'current_lang_name': _(aliased_language_name(translation.get_language()))
         }
+
+
+class BasePreloginView(LanguagePrefixMixin, TemplateView):
+    hubspot_portal_id = HUBSPOT_PORTAL_IDS[MAIN_FORM]
+    hubspot_form_id = HUBSPOT_FORM_IDS[MAIN_FORM]
+
+    def get_context_data(self, **kwargs):
+        kwargs['hubspot'] = {
+            'portal_id': self.hubspot_portal_id,
+            'form_id': self.hubspot_form_id,
+        }
+        kwargs.update(self.i18n_context())
+        return super(BasePreloginView, self).get_context_data(**kwargs)
+
+    @use_bootstrap3
+    @use_angular_js
+    def dispatch(self, request, *args, **kwargs):
+        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        # redirect to root if lang_prefix is not a known lang_code
+        if self.is_unknown_lang_prefix():
+            return HttpResponseRedirect(reverse(self.urlname))
+
+        self.activate_language_from_request(request)
+        return super(BasePreloginView, self).get(request, *args, **kwargs)
 
 
 class HomePublicView(BasePreloginView):
