@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.http import Http404
 from django.utils import translation
 from django.utils.translation import ugettext as _
 import codecs
@@ -24,6 +26,7 @@ HUBSPOT_FORM_IDS = {
     SUPPLY_FORM: '6ac30a6d-2ab9-4ad2-8c67-2da973535b4f',
 }
 
+DEFAULT_LANG = settings.LANGUAGE_CODE
 PRELOGIN_LANGUAGES = (
     ('en', 'English'),
     ('fra', 'French'),
@@ -52,21 +55,26 @@ class BasePreloginView(TemplateView):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        # redirect to root if lang_prefix is not a known lang_code
         lang_prefix = kwargs.get('lang_code')
-        if lang_prefix and lang_prefix not in prelogin_lang_codes():
-            return HttpResponseRedirect(reverse(self.urlname))
-
-        self.activate_language_from_request(request, lang_prefix)
-        return super(BasePreloginView, self).get(request, *args, **kwargs)
-
-    def activate_language_from_request(self, request, lang_prefix):
-        # activate language just for this request
-        if lang_prefix in prelogin_lang_codes():
-            lang = lang_prefix
+        # handle prefix URLs
+        if lang_prefix:
+            if lang_prefix in prelogin_lang_codes():
+                # activate translation if known lang
+                translation.activate(lang_prefix)
+            else:
+                # 404 on unknown langs
+                raise Http404()
+        # handle non-prefix URLs
         else:
-            lang = translation.get_language_from_request(request)
-        translation.activate(lang)
+            # guess user_lang from browser or logged-in user language setting and
+            # try to redirect prefixed URL for that lang
+            user_lang = translation.get_language_from_request(request)
+            if user_lang in prelogin_lang_codes() and not is_default_lang_code(user_lang):
+                return HttpResponseRedirect(reverse(self.urlname, args=[user_lang]))
+            # fall back to english always
+            translation.activate(DEFAULT_LANG)
+
+        return super(BasePreloginView, self).get(request, *args, **kwargs)
 
     def i18n_context(self):
         localized_options = []
@@ -79,7 +87,8 @@ class BasePreloginView(TemplateView):
 
         return {
             'language_options': localized_options,
-            'current_lang_name': _(aliased_language_name(translation.get_language()))
+            'current_lang_name': _(aliased_language_name(translation.get_language())),
+            'url_uses_prefix': bool(self.kwargs.get('lang_code', False))
         }
 
 
@@ -154,3 +163,8 @@ class SolutionsPublicView(BasePreloginView):
 
 def prelogin_lang_codes():
     return [code for code, name in PRELOGIN_LANGUAGES]
+
+
+def is_default_lang_code(lang_code):
+    # DEFAULT_LANG (en-us) is alias of 'en'
+    return lang_code in [DEFAULT_LANG, 'en']
