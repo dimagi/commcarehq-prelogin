@@ -5,14 +5,14 @@
 {% block js-inline %}{{ block.super }}
     <script>
         $(function(){
-            var signUpForm = $('form.form-signup');
             var signUpFormHandler = function() {
+                var submittedForm = $(this);
                 kmqPushSafe(['record', 'Clicked "Sign up"', {}, function() {
-                    signUpForm.off('submit', signUpFormHandler).submit();
+                    submittedForm.off('submit', signUpFormHandler).submit();
                 }]);
                 return false;
             };
-            signUpForm.on('submit', signUpFormHandler);
+            $('form.form-signup').on('submit', signUpFormHandler);
         });
     </script>
 {% endblock %}
