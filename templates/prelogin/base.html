@@ -112,10 +112,10 @@
                         {% trans 'Sign In' %}
                     </a>
                     <ul class="nav navbar-nav">
-                        <li{% if is_home %} class="active"{% endif %}><a href="{% url 'public_home' LANGUAGE_CODE %}">CommCare</a></li>
-                        <li{% if is_solutions %} class="active"{% endif %}><a href="{% url 'public_solutions' LANGUAGE_CODE %}">{% trans "Solutions" %}</a></li>
-                        <li{% if is_impact %} class="active"{% endif %}><a href="{% url 'public_impact' LANGUAGE_CODE %}">{% trans "Impact" %}</a></li>
-                        <li{% if is_software_services %} class="active"{% endif %}><a href="{% url 'public_software_services' LANGUAGE_CODE %}">{% trans "Software & Services" %}</a></li>
+                        <li{% if is_home %} class="active"{% endif %}><a href="{% prelogin_url 'public_home' %}">CommCare</a></li>
+                        <li{% if is_solutions %} class="active"{% endif %}><a href="{% prelogin_url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
+                        <li{% if is_impact %} class="active"{% endif %}><a href="{% prelogin_url 'public_impact' %}">{% trans "Impact" %}</a></li>
+                    <li{% if is_software_services %} class="active"{% endif %}><a href="{% prelogin_url 'public_software_services' %}">{% trans "Software & Services" %}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

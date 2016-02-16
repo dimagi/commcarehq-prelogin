@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load menu_tags %}{% load i18n %}
 <section id="software-services-pricing" class="section section-primary section-software-services-pricing">
     <div class="container">
         <div class="row">
@@ -165,27 +165,27 @@
                 <div class="row pricing-row pricing-row-more">
                     <div class="col-xs-2 col-xs-offset-2">
                         <div class="pricing-more">
-                            <a href="{% url 'public_pricing' LANGUAGE_CODE %}">See More...</a>
+                            <a href="{% prelogin_url 'public_pricing' %}">See More...</a>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-more">
-                            <a href="{% url 'public_pricing' LANGUAGE_CODE %}">See More...</a>
+                            <a href="{% prelogin_url 'public_pricing' %}">See More...</a>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-more">
-                            <a href="{% url 'public_pricing' LANGUAGE_CODE %}">See More...</a>
+                            <a href="{% prelogin_url 'public_pricing' %}">See More...</a>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-more">
-                            <a href="{% url 'public_pricing' LANGUAGE_CODE %}">See More...</a>
+                            <a href="{% prelogin_url 'public_pricing' %}">See More...</a>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-more">
-                            <a href="{% url 'public_pricing' LANGUAGE_CODE %}">See More...</a>
+                            <a href="{% prelogin_url 'public_pricing' %}">See More...</a>
                         </div>
                     </div>
                 </div>

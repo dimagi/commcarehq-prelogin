@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load menu_tags %}{% load i18n %}
 <section id="software-services-bundles" class="section section-default section-primary
                                                section-software-services-bundles appear">
     <div class="container">
@@ -197,11 +197,11 @@
                 </div>
                 <div class="row bundle-row-seemore">
                     <div class="col-xs-2 col-xs-offset-2">
-                        <a href="{% url 'public_services' LANGUAGE_CODE %}">{% trans 'See More...' %}</a>
+                        <a href="{% prelogin_url 'public_services' %}">{% trans 'See More...' %}</a>
                     </div>
                     {% for i in 'xxxx' %}
                     <div class="col-xs-2">
-                        <a href="{% url 'public_services' LANGUAGE_CODE %}">{% trans 'See More...' %}</a>
+                        <a href="{% prelogin_url 'public_services' %}">{% trans 'See More...' %}</a>
                     </div>
                     {% endfor %}
                 </div>
