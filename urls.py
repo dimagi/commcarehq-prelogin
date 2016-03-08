@@ -8,9 +8,11 @@ root_patterns = patterns(
     url(r'^impact/$', ImpactPublicView.as_view(), name=ImpactPublicView.urlname),
     url(r'^pricing/$', SoftwareServicesPublicView.as_view(),
         name=SoftwareServicesPublicView.urlname),
+    url(r'^software_services/$', RedirectView.as_view(
+        pattern_name=SoftwareServicesPublicView.urlname)),  # permanent (301) by default
     url(r'^services/$', ServicesPublicView.as_view(),
         name=ServicesPublicView.urlname),
-    url(r'^services/$', PricingPublicView.as_view(),
+    url(r'^software/$', PricingPublicView.as_view(),
         name=PricingPublicView.urlname),
     url(r'^solutions/$', SolutionsPublicView.as_view(),
         name=SolutionsPublicView.urlname),
