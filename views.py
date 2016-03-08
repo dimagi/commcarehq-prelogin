@@ -1,3 +1,4 @@
+import re
 from django.conf import settings
 from django.http import Http404
 from django.utils import translation
@@ -55,7 +56,14 @@ class BasePreloginView(TemplateView):
         return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        lang_prefix = kwargs.get('lang_code')
+
+        def drop_regiondialect(lang_code):
+            """
+            Drop the "-us" in "en-us"
+            """
+            return re.sub(r'(\w+)[_-]\w+', r'\1', lang_code) if lang_code else lang_code
+
+        lang_prefix = drop_regiondialect(kwargs.get('lang_code'))
         # handle prefix URLs
         if lang_prefix:
             if lang_prefix in prelogin_lang_codes():
@@ -68,7 +76,7 @@ class BasePreloginView(TemplateView):
         else:
             # guess user_lang from browser or logged-in user language setting and
             # try to redirect prefixed URL for that lang
-            user_lang = translation.get_language_from_request(request)
+            user_lang = drop_regiondialect(translation.get_language_from_request(request))
             if user_lang in prelogin_lang_codes() and not is_default_lang_code(user_lang):
                 return HttpResponseRedirect(reverse(self.urlname, args=[user_lang]))
             # fall back to english always
