@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load pricing_tags %}
 <section id="data-security"
          class="section
                 section-default
@@ -11,114 +12,36 @@
                     <div class="row pricing-row pricing-row-main-header">
                         <div class="col-xs-12">
                             <h2>
-                                {% trans 'Data Security' %}
+                                {% trans 'Security' %}
                                 <a href="https://wiki.commcarehq.org/display/commcarepublic/CommCare+Plan+Details">
                                     <i class="fa fa-info-circle"></i>
                                 </a>
                             </h2>
                         </div>
                     </div>
-                    <div class="row pricing-row pricing-row-plan-names">
-                        <div class="col-xs-2 pricing-col-community col-xs-offset-2">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Community' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-standard">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Standard' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-pro">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Pro' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-advanced">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Advanced' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-enterprise">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Enterprise' %}
-                            </h3>
-                        </div>
-                    </div>
+                    {% include 'prelogin/_sections/pricing/partials/section_plan_headers.html' %}
                 </div>
             </div>
             <div class="container">
+                <div class="row pricing-row pricing-row-main pricing-row-double
+                            pricing-row-triple-xs">
+                    {% trans "Two-factor Authentication" as feature_name %}
+                    {% pricing_row_contents feature_name "community" %}
+                </div>
                 <div class="row pricing-row pricing-row-main pricing-row-single
                             pricing-row-double-xs">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Deidentified data
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# * * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Deidentified data" as feature_name %}
+                    {% pricing_row_contents feature_name "pro" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-triple-xs">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                HIPAA compliance assurance
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Security Policy Control and Enforcement" as feature_name %}
+                    {% pricing_row_contents feature_name "advanced" %}
+                </div>
+                <div class="row pricing-row pricing-row-main pricing-row-double
+                            pricing-row-triple-xs">
+                    {% trans "HIPAA compliance assurance" as feature_name %}
+                    {% pricing_row_contents feature_name "advanced" %}
                 </div>
             </div>
         </div>
