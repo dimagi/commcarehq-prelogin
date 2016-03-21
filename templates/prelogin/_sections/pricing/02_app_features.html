@@ -18,33 +18,7 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="row pricing-row pricing-row-plan-names">
-                        <div class="col-xs-2 pricing-col-community col-xs-offset-2">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Community' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-standard">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Standard' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-pro">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Pro' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-advanced">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Advanced' %}
-                            </h3>
-                        </div>
-                        <div class="col-xs-2 pricing-col-enterprise">
-                            <h3 class="pricing-header text-uppercase">
-                                {% trans 'Enterprise' %}
-                            </h3>
-                        </div>
-                    </div>
+                    {% include 'prelogin/_sections/pricing/partials/section_plan_headers.html' %}
                 </div>
             </div>
             <div class="container">
