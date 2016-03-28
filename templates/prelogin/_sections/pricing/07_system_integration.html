@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load pricing_tags %}
 <section id="system-integration"
          class="section
                 section-default
@@ -24,146 +25,22 @@
             <div class="container">
                 <div class="row pricing-row pricing-row-main pricing-row-single
                             pricing-row-double-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Data synchronization
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Data synchronization" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-single">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                API access
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "API access" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-triple-md pricing-row-quad-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Built-in integration (mobile apps, devices)
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Built-in integration (mobile apps, devices)" as feature_name %}
+                    {% pricing_row_contents feature_name "pro" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-triple
                             pricing-row-quad-sm pricing-row-penta-xs">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                External integration framework (mobile apps, devices)
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "External integration framework (mobile apps, devices)" as feature_name %}
+                    {% pricing_row_contents feature_name "advanced" %}
                 </div>
             </div>
         </div>

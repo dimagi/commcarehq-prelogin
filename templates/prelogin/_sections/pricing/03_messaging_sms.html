@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load pricing_tags %}
 <section id="messaging-sms"
          class="section
                 section-default
@@ -31,218 +32,32 @@
             <div class="container">
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-triple-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                One-way messaging (SMS, Email)
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "One-way messaging (SMS, Email)" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-single">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Live SMS chat
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Live SMS chat" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-quad-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Access to Dimagi's in-country gateways
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Access to Dimagi's in-country gateways" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-single
                             pricing-row-double-md">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Android gateway setup
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Android gateway setup" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-triple-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Two-way messaging (SMS, Voice)
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x * * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Two-way messaging (SMS, Voice)" as feature_name %}
+                    {% pricing_row_contents feature_name "pro" %}
                 </div>
                 <div class="row pricing-row pricing-row-main pricing-row-double
                             pricing-row-triple-md">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Support to connect new in-country gateways
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x * * #}
-                    <div class="col-xs-2 pricing-col-community">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-standard">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-pro">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-advanced">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 pricing-col-enterprise">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
+                    {% trans "Support to connect new in-country gateways" as feature_name %}
+                    {% pricing_row_contents feature_name "advanced" %}
                 </div>
             </div>
         </div>
