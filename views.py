@@ -10,8 +10,8 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
+from corehq.apps.hqwebapp.utils import aliased_language_name
 from corehq.apps.style.decorators import use_bootstrap3, use_angular_js
-from corehq.apps.hqwebapp.templatetags.menu_tags import aliased_language_name
 
 
 MAIN_FORM = 'main'
