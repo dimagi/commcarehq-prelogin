@@ -4,9 +4,9 @@
 
 {% block content %}
 {% include 'prelogin/_sections/solutions/lead.html' %}
-<div class="bg-static-fixed bg-solutions-first"></div>
+<div class="bg-static-fixed b-lazy" data-src="{% static 'prelogin/images/bg-solutions/bg-solutions-first-lg.jpg' %}"></div>
 {% include 'prelogin/_sections/solutions/supply_intro.html' %}
 {% include 'prelogin/_sections/solutions/supply_details.html' %}
-<div class="bg-static-fixed bg-solutions-second"></div>
+<div class="bg-static-fixed b-lazy" data-src="{% static 'prelogin/images/bg-solutions/bg-solutions-second-lg.jpg' %}"></div>
 {% include 'prelogin/_sections/solutions/last.html' %}
 {% endblock content %}
