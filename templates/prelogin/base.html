@@ -8,64 +8,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="content-language" content="{{ LANGUAGE_CODE }}">
 
-        <link rel="shortcut icon" href="{% new_static 'style/img/favicon.png' %}" />
+        <link rel="shortcut icon" href="{% static 'style/img/favicon.png' %}" />
         {% if less_debug %}
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/bootstrap.debug.less' %}" />
+                  href="{% static 'style/less/bootstrap.debug.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'font-awesome/less/font-awesome.less' %}" />
+                  href="{% static 'font-awesome/less/font-awesome.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/font-commcare.less' %}" />
+                  href="{% static 'style/less/font-commcare.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/style.debug.less' %}" />
+                  href="{% static 'style/less/style.debug.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'prelogin/less/public-style.debug.less' %}" />
+                  href="{% static 'prelogin/less/public-style.debug.less' %}" />
         {% else %}
         {% compress css %}
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/bootstrap.less' %}" />
+                  href="{% static 'style/less/bootstrap.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'font-awesome/less/font-awesome.less' %}" />
+                  href="{% static 'font-awesome/less/font-awesome.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/font-commcare.less' %}" />
+                  href="{% static 'style/less/font-commcare.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'style/less/style.less' %}" />
+                  href="{% static 'style/less/style.less' %}" />
             <link type="text/less"
                   rel="stylesheet"
                   media="all"
-                  href="{% new_static 'prelogin/less/public-style.less' %}" />
+                  href="{% static 'prelogin/less/public-style.less' %}" />
         {% endcompress %}
         {% endif %}
 
         {% block stylesheets %}{% endblock stylesheets %}
 
         {% compress js %} {# Core Libraries #}
-            <script type="text/javascript" src="{% new_static 'jquery/dist/jquery.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'underscore/underscore.js' %}"></script>
+            <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'underscore/underscore.js' %}"></script>
         {% endcompress %}
 
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
-        <script charset="utf-8" src="{% new_static 'prelogin/js/style_form.js' %}"></script>
+        <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
 
         {% block js-inline %}
         {# needed for child pages #}
@@ -90,7 +90,7 @@
                     }
                 };
             </script>
-            <script src="{% new_static 'less/dist/less-1.7.3.min.js' %}"></script>
+            <script src="{% static 'less/dist/less-1.7.3.min.js' %}"></script>
             {% if less_watch %}<script>less.watch();</script>{% endif %}
         {% endif %}
 
@@ -126,7 +126,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="{% new_static 'prelogin/images/commcare-flower.png' %}"
+                        <img src="{% static 'prelogin/images/commcare-flower.png' %}"
                              alt="CommCare"
                              title="" />
                     </a>
@@ -226,21 +226,21 @@
 
         {# Javascript #}
         {% compress js %}
-            <script type="text/javascript" src="{% new_static 'angular/angular.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'angular-route/angular-route.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'angular-resource/angular-resource.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'angular-sanitize/angular-sanitize.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'style/lib/angular-ui/ui-bootstrap-tpls-0.11.2.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'djangular/js/django-angular.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'prelogin/js/backgrounds.ng.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular/angular.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-route/angular-route.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-resource/angular-resource.js' %}"></script>
+            <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
+            <script type="text/javascript" src="{% static 'style/lib/angular-ui/ui-bootstrap-tpls-0.11.2.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'djangular/js/django-angular.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'prelogin/js/backgrounds.ng.js' %}"></script>
         {% endcompress %}
 
         {# Contact JS #}
         {% compress js %}
-            <script type="text/javascript" src="{% new_static 'ui-select/dist/select.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.appear.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'prelogin/js/jquery.scrollTo.min.js' %}"></script>
-            <script type="text/javascript" src="{% new_static 'prelogin/js/section_appear.js' %}"></script>
+            <script type="text/javascript" src="{% static 'ui-select/dist/select.js' %}"></script>
+            <script type="text/javascript" src="{% static 'prelogin/js/jquery.appear.js' %}"></script>
+            <script type="text/javascript" src="{% static 'prelogin/js/jquery.scrollTo.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'prelogin/js/section_appear.js' %}"></script>
         {% endcompress %}
 
         {# Blazy for async loading images #}
