@@ -2,9 +2,18 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
+{% block js %}{{ block.super }}
+  <script type="text/javascript" src="{% static 'hqwebapp/js/hqModules.js' %}"></script>
+  <script type="text/javascript" src="{% static 'registration/js/signup_ab.js' %}"></script>
+{% endblock %}
+
 {% block js-inline %}{{ block.super }}
     <script>
         $(function(){
+            var $signUpForm = $('form.form-signup');
+
+            hqImport('registration/js/signup_ab.js').init($signUpForm, 'action');
+
             var signUpFormHandler = function() {
                 var submittedForm = $(this);
                 kmqPushSafe(['record', 'Clicked "Sign up"', {}, function() {
@@ -12,7 +21,7 @@
                 }]);
                 return false;
             };
-            $('form.form-signup').on('submit', signUpFormHandler);
+            $signUpForm.on('submit', signUpFormHandler);
         });
     </script>
 {% endblock %}

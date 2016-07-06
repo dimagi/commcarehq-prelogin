@@ -44,7 +44,12 @@
                             {% endblocktrans %}
                         </p>
                     </header>
-                    <form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
+                    <form class="form-signup"
+                          role="form"
+                          method="get"
+                          action="{%  url 'register_user' %}"
+                          data-actionA="{%  url 'register_user' %}"
+                          data-actionB="{%  url 'register_new_user' %}">
                       <label class="sr-only"
                              for="signUpEmail">{% trans "Email" %}</label>
                       <div class="row">
