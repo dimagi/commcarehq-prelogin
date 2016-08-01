@@ -99,6 +99,15 @@ class BasePreloginView(TemplateView):
         }
 
 
+class DemoPublicView(BasePreloginView):
+    urlname = 'public_demo'
+    template_name = 'prelogin/demo.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['is_demo'] = True
+        return super(DemoPublicView, self).get_context_data(**kwargs)
+
+
 class HomePublicView(BasePreloginView):
     urlname = 'public_home'
     template_name = 'prelogin/home.html'

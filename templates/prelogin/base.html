@@ -67,10 +67,6 @@
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
         <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
 
-        {% block js-inline %}
-        {# needed for child pages #}
-        {% endblock js-inline %}
-
         {% if less_debug %}
             <script>
                 less = {
@@ -94,6 +90,17 @@
             {% if less_watch %}<script>less.watch();</script>{% endif %}
         {% endif %}
 
+        {% if is_demo %}
+            {% compress js %}
+                <script src="{% static 'hqwebapp/js/lib/require.js' %}"></script>
+            {% endcompress %}
+        {% endif %}
+
+        {% block js-inline %}
+        {# needed for child pages #}
+        {% endblock js-inline %}
+
+    {% if not is_demo %}
     <script>
         window['_fs_debug'] = false;
         window['_fs_host'] = 'www.fullstory.com';
@@ -108,6 +115,7 @@
                     ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}
         })(window,document,'FS','script','user');
     </script>
+    {% endif %}
 
     </head>
     <body>
@@ -140,6 +148,7 @@
                         <li{% if is_solutions %} class="active"{% endif %}><a href="{% prelogin_url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
                         <li{% if is_impact %} class="active"{% endif %}><a href="{% prelogin_url 'public_impact' %}">{% trans "Impact" %}</a></li>
                         <li{% if is_software_services %} class="active"{% endif %}><a href="{% prelogin_url 'public_software_services' %}">{% trans "Pricing" %}</a></li>
+                        <li{% if is_demo %} class="active"{% endif %}><a href="{% prelogin_url 'public_demo' %}">Demo</a></li>
                     </ul>
                     <div class="navbar-right">
                         <a href="{% url 'login' %}"
@@ -170,6 +179,7 @@
 
         {% block content %}{% endblock content %}
 
+        {% if not is_demo %}
         <footer class="footer">
             <div class="container">
                 <p class="text-copyright text-center">
@@ -222,8 +232,10 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% block modals %}{% endblock modals %}
 
+        {% if not is_demo %}
         {# Javascript #}
         {% compress js %}
             <script type="text/javascript" src="{% static 'angular/angular.min.js' %}"></script>
@@ -283,5 +295,6 @@
 
         {% include 'style/includes/analytics_kissmetrics.html' %}
         {% include 'style/includes/analytics_hubspot.html' %}
+        {% endif %}
     </body>
 </html>
