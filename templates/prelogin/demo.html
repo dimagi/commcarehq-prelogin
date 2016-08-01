@@ -13,6 +13,18 @@
 
 {% block js-inline %}
     <script>
+        $(function(){
+            var signUpFormHandler = function() {
+                var submittedForm = $(this);
+                kmqPushSafe(['record', 'Clicked "Sign up" from demo', {}, function() {
+                    submittedForm.off('submit', signUpFormHandler).submit();
+                }]);
+                return false;
+            };
+            $('form.form-signup').on('submit', signUpFormHandler);
+        });
+    </script>
+    <script>
         // TODO: share with form_designer.html?
         var CKEDITOR_BASEPATH = "{% static "app_manager/js/vellum/lib/ckeditor/" %}";
 
@@ -74,6 +86,7 @@
                         You can add other forms and set up more complex workflows, or just deploy to a mobile
                         device and go!</p>
                     {% endblocktrans %}
+                    <!-- TODO: DRY up? -->
                     <form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
                           <label class="sr-only"
                                  for="signUpEmail">{% trans "Email" %}</label>
