@@ -201,6 +201,35 @@
                 $('#formdesigner').vellum(VELLUM_OPTIONS);
                 $(".fd-ui-container").css("margin-top", "60px");
                 $(".fd-fullscreen-button").addClass("hide");
+
+                var $accessoryScreen = $("<div></div>");
+                $accessoryScreen.css("position", "absolute")
+                               .css("top", 0)
+                               .css("left", 0)
+                               .css("right", 0)
+                               .css("bottom", 0)
+                               .css("background-color", "black")
+                               .css("opacity", 0.4);
+                var $accessoryTease = $("<div></div>");
+                $accessoryTease.css("position", "absolute")
+                               .css("top", "20px")
+                               .css("left", "10%")
+                               .css("width", "80%")
+                               .css("border-radius", "4px")
+                               .css("background-color", "white")
+                               .css("padding", "10px")
+                               .css("opacity", 1)
+                               .addClass("hide")
+                               .html("You should try CommCare for real to create multiple forms and share data between them. Complex workflows are great. <a href='https://confluence.dimagi.com/display/commcarepublic/Case+Management'>Learn more about how great they are.</a>");
+                var $accessoryPane = $(".fd-accessory-pane");
+                $accessoryPane.css("position", "relative");
+                $accessoryPane.append($accessoryScreen);
+                $accessoryPane.append($accessoryTease);
+                $accessoryPane.hover(function() {
+                    $accessoryTease.removeClass("hide");
+                }, function() {
+                    $accessoryTease.addClass("hide");
+                });
             });
         });
 
