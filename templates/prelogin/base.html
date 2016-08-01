@@ -280,6 +280,7 @@
             });
         </script>
         {% block js-uncompressed %}{% endblock %}
+        {% endif %}
 
         {% if GOOGLE_ANALYTICS_API_ID %}
         <script>
@@ -295,6 +296,5 @@
 
         {% include 'style/includes/analytics_kissmetrics.html' %}
         {% include 'style/includes/analytics_hubspot.html' %}
-        {% endif %}
     </body>
 </html>
