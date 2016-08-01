@@ -4,6 +4,11 @@
 
 {% block stylesheets %}
     <link href="{% static "app_manager/js/vellum/style.css" %}" type="text/css" rel="stylesheet"/>
+    <style>
+        .form-signup {
+            margin-left: 0;
+        }
+    </style>
 {% endblock stylesheets %}
 
 {% block js-inline %}
@@ -112,8 +117,9 @@
                 ],
                 dataSourcesEndpoint: function (callback) { callback(dataSources); },
                 invalidCaseProperties: ['name'],
-                saveType: "patch",
-                saveUrl: function (data) {},
+                saveUrl: function (data) {
+                    $("#signupModal").modal();
+                },
                 activityUrl: null,               // may be function or URL string
                 activityTimeout: 5 * 60 * 1000,  // 5 minutes in milliseconds
                 externalLinks: {
@@ -237,5 +243,47 @@
 {% endblock %}
 
 {% block content %}
-<div id="formdesigner" class="clearfix"></div>
+    <div id="formdesigner" class="clearfix"></div>
+{% endblock %}
+
+{% block modals %}
+    <div id="signupModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+                    <h3 class="modal-title">
+                        Account Needed
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    {% blocktrans %}
+                        <p>To save this form, you'll need a CommCare account.</p>
+                        <p>Once that's done, we'll create an application for you with this form.
+                        You can add other forms and set up more complex workflows, or just deploy to a mobile
+                        device and go!</p>
+                    {% endblocktrans %}
+                    <form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
+                          <label class="sr-only"
+                                 for="signUpEmail">{% trans "Email" %}</label>
+                          <div class="row">
+                            <div class="col-xs-6 col-sm-7 col-lg-8">
+                              <input type="text"
+                                     class="form-control input-xl"
+                                     name="e"
+                                     id="signUpEmail"
+                                     placeholder="{% trans 'enter your email' %}" />
+                            </div>
+                            <div class="col-xs-6 col-sm-5 col-lg-4">
+                              <button type="submit"
+                                  class="btn btn-success btn-xl btn-full-width">
+                                {% trans "Sign Up for Free" %}
+                              </button>
+                            </div>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
