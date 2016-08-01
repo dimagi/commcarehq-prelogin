@@ -76,7 +76,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
                     <h3 class="modal-title">
-                        Account Needed
+                        {% trans "Account Needed" %}
                     </h3>
                 </div>
                 <div class="modal-body">
@@ -86,26 +86,7 @@
                         You can add other forms and set up more complex workflows, or just deploy to a mobile
                         device and go!</p>
                     {% endblocktrans %}
-                    <!-- TODO: DRY up? -->
-                    <form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
-                          <label class="sr-only"
-                                 for="signUpEmail">{% trans "Email" %}</label>
-                          <div class="row">
-                            <div class="col-xs-6 col-sm-7 col-lg-8">
-                              <input type="text"
-                                     class="form-control input-xl"
-                                     name="e"
-                                     id="signUpEmail"
-                                     placeholder="{% trans 'enter your email' %}" />
-                            </div>
-                            <div class="col-xs-6 col-sm-5 col-lg-4">
-                              <button type="submit"
-                                  class="btn btn-success btn-xl btn-full-width">
-                                {% trans "Sign Up for Free" %}
-                              </button>
-                            </div>
-                          </div>
-                    </form>
+                    {% include 'prelogin/partials/signup_form.html' %}
                 </div>
             </div>
         </div>
