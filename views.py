@@ -1,6 +1,7 @@
 import re
 from django.conf import settings
 from django.http import Http404
+from django.shortcuts import redirect
 from django.utils import translation
 from django.utils.translation import ugettext as _
 import codecs
@@ -48,6 +49,7 @@ class BasePreloginView(TemplateView):
             'form_id': self.hubspot_form_id,
         }
         kwargs.update(self.i18n_context())
+        kwargs['show_demo'] = not self.request.user.is_authenticated()
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
     @use_angular_js
@@ -102,6 +104,11 @@ class BasePreloginView(TemplateView):
 class DemoPublicView(BasePreloginView):
     urlname = 'public_demo'
     template_name = 'prelogin/demo.html'
+
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated():
+            return redirect("register_user")
+        return super(DemoPublicView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs['is_demo'] = True
