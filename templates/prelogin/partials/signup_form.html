@@ -1,6 +1,9 @@
 {% load i18n %}
 
-<form class="form-signup" role="form" method="get" action="{% url 'register_user' %}">
+<form class="form-signup" role="form" method="post" action="{% url 'register_user' %}">
+      {% csrf_token %}
+      <input type="hidden" name="prelogin_redirect" value="1" />
+      <input type="hidden" name="xform" />
       <label class="sr-only"
              for="signUpEmail">{% trans "Email" %}</label>
       <div class="row">
