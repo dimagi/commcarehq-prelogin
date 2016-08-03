@@ -27,19 +27,45 @@
     <script>
         {% include 'app_manager/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
 
-        require(["options", "jquery", "jquery.vellum"], function (options, $) {
+        require(["jquery", "jquery.vellum"], function ($) {
             $(function () {
-                var VELLUM_OPTIONS = options.options;
-                VELLUM_OPTIONS.plugins = ["modeliteration", "itemset", "atwho"];
-                VELLUM_OPTIONS.core.saveType = 'full';
-                VELLUM_OPTIONS.core.saveUrl = function(data) {
-                    $("#signupModal").modal();
-                };
-                VELLUM_OPTIONS.windowManager = {
-                    leftOffset: 0,
-                    topOffset: 0,
-                };
-                $('#formdesigner').vellum(VELLUM_OPTIONS);
+                $('#formdesigner').vellum({
+                    core: {
+                        loadDelay: 0,
+                        formName: "Untitled Form",
+                        invalidCaseProperties: ['name'],
+                        saveType: "full",
+                        saveUrl: function (data) {
+                            $("#signupModal").modal();
+                        },
+                        externalLinks: {
+                            changeSubscription: "#",
+                        },
+                    },
+                    javaRosa: {
+                        langs: ['en'],  // not ideal, but vellum doesn't have translations anyway
+                        displayLanguage: 'en',
+                    },
+                    intents: {
+                        templates: [{}] // TODO: needed for src/intentManager.js:172
+                    },
+                    uploader: {
+                        uploadUrls: {
+                            image: 'foo',
+                            audio: 'foo',
+                            video: 'foo'
+                        },
+                        objectMap: {}  // todo
+                    },
+                    plugins: [
+                        'atwho',
+                    ],
+                    features: {
+                        'group_in_field_list': true,
+                        'rich_text': true,
+                        'markdown_in_groups': true,
+                    }
+                });
 
                 $(".fd-ui-container").css("margin-top", $("nav.navbar-static-hq").outerHeight());
                 $(".fd-fullscreen-button").addClass("hide");
@@ -48,6 +74,12 @@
                 // cancels out of the modal, force it back to green "save" state.
                 $("#signupModal").on('hide.bs.modal', function() {
                     $('#formdesigner').vellum("get").data.core.saveButton.fire("change");
+                });
+
+                // Don't support multimedia upload; instead redirect to create account.
+                $(".fd-multimedia-modal-container").on('show.bs.modal', function() {
+                    $("#signupModal").modal();
+                    return false;
                 });
             });
         });
@@ -71,7 +103,7 @@
                 </div>
                 <div class="modal-body">
                     {% blocktrans %}
-                        <p>To save this form, you'll need a CommCare account.</p>
+                        <p>To complete this action, you'll need a CommCare account.</p>
                         <p>Once that's done, we'll create an application for you with this form.
                         You can add other forms and set up more complex workflows, or just deploy to a mobile
                         device and go!</p>
