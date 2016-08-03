@@ -25,22 +25,7 @@
         });
     </script>
     <script>
-        // TODO: share with form_designer.html?
-        var CKEDITOR_BASEPATH = "{% static "app_manager/js/vellum/lib/ckeditor/" %}";
-
-        define("jquery", [], function () { return window.jQuery; });
-        define("jquery.bootstrap", ["jquery"], function () {});
-        define("underscore", [], function () { return window._; });
-
-        require.config({
-            baseUrl: "{% static "app_manager/js/vellum/src" %}",
-            // handle very bad connections
-            waitSeconds: 60,
-            urlArgs: 'version={% cachebuster "app_manager/js/vellum/src/main-components.js" %}{% cachebuster "app_manager/js/vellum/src/local-deps.js" %}',
-            paths: {
-                'jquery.vellum': 'main'
-            }
-        });
+        {% include 'app_manager/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
 
         require(["options", "jquery", "jquery.vellum"], function (options, $) {
             $(function () {
