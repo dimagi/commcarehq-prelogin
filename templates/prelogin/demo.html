@@ -41,6 +41,9 @@
                         externalLinks: {
                             changeSubscription: "#",
                         },
+                        bindBeforeUnload: function() {
+                            // empty function to override warning before leaving page
+                        },
                     },
                     javaRosa: {
                         langs: ['en'],  // not ideal, but vellum doesn't have translations anyway
