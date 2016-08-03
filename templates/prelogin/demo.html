@@ -48,7 +48,6 @@
                 VELLUM_OPTIONS.plugins = ["modeliteration", "itemset", "atwho"];
                 VELLUM_OPTIONS.core.saveType = 'full';
                 VELLUM_OPTIONS.core.saveUrl = function(data) {
-                    // TODO: don't un-green the save button if they cancel
                     $("#signupModal").modal();
                 };
                 VELLUM_OPTIONS.windowManager = {
@@ -59,6 +58,12 @@
 
                 $(".fd-ui-container").css("margin-top", $("nav.navbar-static-hq").outerHeight());
                 $(".fd-fullscreen-button").addClass("hide");
+
+                // Clicking "save" causes the button to change to "saved". If user
+                // cancels out of the modal, force it back to green "save" state.
+                $("#signupModal").on('hide.bs.modal', function() {
+                    $('#formdesigner').vellum("get").data.core.saveButton.fire("change");
+                });
             });
         });
 
