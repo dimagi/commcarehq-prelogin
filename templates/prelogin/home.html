@@ -2,21 +2,6 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
-{% block js-inline %}{{ block.super }}
-    <script>
-        $(function(){
-            var signUpFormHandler = function() {
-                var submittedForm = $(this);
-                kmqPushSafe(['record', 'Clicked "Sign up"', {}, function() {
-                    submittedForm.off('submit', signUpFormHandler).submit();
-                }]);
-                return false;
-            };
-            $('form.form-signup').on('submit', signUpFormHandler);
-        });
-    </script>
-{% endblock %}
-
 {% block stylesheets %}
 <link type="text/css"
       rel="stylesheet"

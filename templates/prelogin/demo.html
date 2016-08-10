@@ -13,19 +13,6 @@
 
 {% block js-inline %}
     <script>
-        $(function(){
-            var signUpFormHandler = function() {
-                var submittedForm = $(this);
-                submittedForm.find(".btn[type='submit']").attr('disabled', 'disabled').prepend('<i class="fa fa-refresh fa-spin icon-refresh icon-spin"></i>');
-                kmqPushSafe(['record', 'Clicked "Sign up" from demo', {}, function() {
-                    submittedForm.off('submit', signUpFormHandler).submit();
-                }]);
-                return false;
-            };
-            $('form.form-signup').on('submit', signUpFormHandler);
-        });
-    </script>
-    <script>
         {% include 'app_manager/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
 
         require(["jquery", "jquery.vellum"], function ($) {
@@ -117,7 +104,7 @@
                         You can add other forms and set up more complex workflows, or just deploy to a mobile
                         device and go!</p>
                     {% endblocktrans %}
-                    {% include 'prelogin/partials/signup_form.html' %}
+                    {% include 'prelogin/partials/signup_form.html' with extra_class='demo' %}
                 </div>
             </div>
         </div>

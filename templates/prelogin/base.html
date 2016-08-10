@@ -82,6 +82,19 @@
             })(window,document,'FS','script','user');
         </script>
 
+        <script>
+        $(function(){
+            var signUpFormHandler = function() {
+                var submittedForm = $(this);
+                kmqPushSafe(['record', 'Clicked "Sign up"{% if is_demo %} from demo{% endif %}', {}, function() {
+                    submittedForm.off('submit', signUpFormHandler).submit();
+                }]);
+                return false;
+            };
+            $('form.form-signup').on('submit', signUpFormHandler);
+        });
+        </script>
+
         {% if less_debug %}
             <script>
                 less = {
@@ -107,6 +120,7 @@
 
         {% if is_demo %}
             {% compress js %}
+                <script src="{% static 'style/js/hq.helpers.js' %}"></script>
                 <script src="{% static 'hqwebapp/js/lib/require.js' %}"></script>
             {% endcompress %}
         {% endif %}

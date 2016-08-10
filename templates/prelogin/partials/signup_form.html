@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<form class="form-signup" role="form" method="post" action="{% url 'register_user' %}">
+<form class="form-signup {{ extra_class }}" role="form" method="post" action="{% url 'register_user' %}">
       {% csrf_token %}
       <input type="hidden" name="prelogin_redirect" value="1" />
       <input type="hidden" name="xform" />
@@ -16,7 +16,7 @@
         </div>
         <div class="col-xs-6 col-sm-5 col-lg-4">
           <button type="submit"
-              class="btn btn-success btn-xl">
+              class="btn btn-success btn-xl disable-on-submit">
             {% trans "Sign Up for Free" %}
           </button>
         </div>
