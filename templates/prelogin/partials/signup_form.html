@@ -2,7 +2,6 @@
 
 <form class="form-signup {{ extra_class }}" role="form" method="post" action="{% url 'register_user' %}">
       {% csrf_token %}
-      <input type="hidden" name="prelogin_redirect" value="1" />
       <input type="hidden" name="xform" />
       <label class="sr-only"
              for="signUpEmail">{% trans "Email" %}</label>
