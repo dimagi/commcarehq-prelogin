@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+{% if not postlogin %}
 <div class="row pricing-row pricing-row-lead pricing-row-summary">
     <div class="col-xs-2">
         <h4>{% trans 'Feature Summary' %}</h4>
@@ -133,6 +134,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 <div class="row pricing-row pricing-row-more">
     <div class="col-xs-2 col-xs-offset-2">
         <div class="pricing-more">
