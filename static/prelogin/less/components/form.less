@@ -11,10 +11,14 @@
   .border-top-radius(@border-radius-extra-large);
   .border-bottom-radius(@border-radius-extra-large);
 
-  .btn-xl:not(.btn-full-width) {
+  .btn-xl {
     margin-left: -@grid-gutter-width/2;
     width: 100%;
+  }
+}
 
+.form-signup:not(.demo) {
+  .btn-xl {
     @media (min-width: @screen-sm-min) {
       width: 139px;
     }
@@ -24,6 +28,14 @@
     @media (min-width: @screen-lg-min) {
       width: 180px;
     }
+  }
+}
+
+.form-signup.demo .btn-xl {
+  width: 100%;
+  margin-left: 0;
+  @media (max-width: @screen-xs-max) {
+    width: 95%;
   }
 }
 

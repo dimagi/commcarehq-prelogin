@@ -1,0 +1,116 @@
+{% extends 'prelogin/base.html' %}
+{% load i18n %}
+{% load hq_shared_tags %}
+
+{% block stylesheets %}
+    <link href="{% static "app_manager/js/vellum/style.css" %}" type="text/css" rel="stylesheet"/>
+    <style>
+        .form-signup {
+            margin-left: 0;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block js-inline %}
+    <script>
+        {% include 'app_manager/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
+
+        require(["jquery", "jquery.vellum"], function ($) {
+            $(function () {
+                $('#formdesigner').vellum({
+                    core: {
+                        formName: "Untitled Form",
+                        invalidCaseProperties: ['name'],
+                        saveType: "full",
+                        saveUrl: function (data) {
+                            var $modal = $("#signupModal");
+                            $modal.find("form input[name='xform']").val(data.xform);
+                            $modal.modal();
+                        },
+                        externalLinks: {
+                            changeSubscription: "#",
+                        },
+                        bindBeforeUnload: function() {
+                            // empty function to override warning before leaving page
+                        },
+                    },
+                    javaRosa: {
+                        langs: ['en'],  // not ideal, but vellum doesn't have translations anyway
+                        displayLanguage: 'en',
+                    },
+                    intents: {
+                        templates: [{}] // TODO: needed for src/intentManager.js:172
+                    },
+                    uploader: {
+                        uploadUrls: {
+                            image: 'foo',
+                            audio: 'foo',
+                            video: 'foo'
+                        },
+                        objectMap: {}  // todo
+                    },
+                    plugins: [
+                        'atwho',
+                    ],
+                    features: {
+                        'group_in_field_list': true,
+                        'image_resizing': true,
+                        'rich_text': true,
+                        'markdown_in_groups': true,
+                    }
+                });
+
+                // Force overarching vellum container to correct size
+                $(".fd-ui-container").css("margin-top", $("nav.navbar-static-hq").outerHeight());
+
+                // Hide full-screen button and form tools
+                $(".fd-form-actions .btn-group:not(.fd-save-button)").addClass("hide");
+
+                // Clicking "save" causes the button to change to "saved". If user
+                // cancels out of the modal, force it back to green "save" state.
+                $("#signupModal").on('hide.bs.modal', function() {
+                    $('#formdesigner').vellum("get").data.core.saveButton.fire("change");
+                });
+
+                // Don't support multimedia upload; instead redirect to create account.
+                $(".fd-multimedia-modal-container").on('show.bs.modal', function() {
+                    $("#signupModal").modal();
+                    return false;
+                });
+
+                $("#signupModal").on('show.bs.modal', function() {
+                    kmqPushSafe(['demo_save', 'Saw signup modal in form builder demo', {}]);
+                });
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="formdesigner" class="clearfix"></div>
+{% endblock %}
+
+{% block modals %}
+    <div id="signupModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+                    <h3 class="modal-title">
+                        {% trans "Account Needed" %}
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    {% blocktrans %}
+                        <p>To complete this action, you'll need a CommCare account.</p>
+                        <p>Once that's done, we'll create an application for you with this form.
+                        You can add other forms and set up more complex workflows, or just deploy to a mobile
+                        device and go!</p>
+                    {% endblocktrans %}
+                    {% include 'prelogin/partials/signup_form.html' with extra_class='demo' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

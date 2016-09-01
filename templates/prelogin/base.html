@@ -69,9 +69,43 @@
         {% include 'style/includes/analytics_kissmetrics.html' %}
         {% include 'style/includes/analytics_hubspot.html' %}
 
-        {% block js-inline %}
-        {# needed for child pages #}
-        {% endblock js-inline %}
+        <script>
+            window['_fs_debug'] = false;
+            window['_fs_host'] = 'www.fullstory.com';
+            window['_fs_org'] = '{{ FULLSTORY_ID }}';
+            (function(m,n,e,t,l,o,g,y){
+                g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+                o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+                y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+                g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){FS(l,v)};
+                g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;FS(o,v)};
+                g.clearUserCookie=function(d,i){d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
+                        ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}
+            })(window,document,'FS','script','user');
+        </script>
+
+        <script>
+        $(function(){
+            // Handle account signups
+            var signUpFormHandler = function() {
+                var submittedForm = $(this);
+                kmqPushSafe([
+                    '{% if is_demo %}demo_{% endif %}record',
+                    'Clicked "Sign up"{% if is_demo %} from form builder demo{% endif %}',
+                    {},
+                    function() {
+                        submittedForm.off('submit', signUpFormHandler).submit();
+                    },
+                ]);
+                return false;
+            };
+            $('form.form-signup').on('submit', signUpFormHandler);
+
+            $("#primary-nav li.demo").on('click', function() {
+                kmqPushSafe(['demo_menu', 'Clicked "Demo" in top navigation', {}]);
+            });
+        });
+        </script>
 
         {% if less_debug %}
             <script>
@@ -96,20 +130,16 @@
             {% if less_watch %}<script>less.watch();</script>{% endif %}
         {% endif %}
 
-    <script>
-        window['_fs_debug'] = false;
-        window['_fs_host'] = 'www.fullstory.com';
-        window['_fs_org'] = '{{ FULLSTORY_ID }}';
-        (function(m,n,e,t,l,o,g,y){
-            g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
-            o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
-            y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-            g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){FS(l,v)};
-            g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;FS(o,v)};
-            g.clearUserCookie=function(d,i){d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
-                    ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}
-        })(window,document,'FS','script','user');
-    </script>
+        {% if is_demo %}
+            {% compress js %}
+                <script src="{% static 'style/js/hq.helpers.js' %}"></script>
+                <script src="{% static 'requirejs/require.js' %}"></script>
+            {% endcompress %}
+        {% endif %}
+
+        {% block js-inline %}
+        {# needed for child pages #}
+        {% endblock js-inline %}
 
     </head>
     <body>
@@ -142,6 +172,9 @@
                         <li{% if is_solutions %} class="active"{% endif %}><a href="{% prelogin_url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
                         <li{% if is_impact %} class="active"{% endif %}><a href="{% prelogin_url 'public_impact' %}">{% trans "Impact" %}</a></li>
                         <li{% if is_software_services %} class="active"{% endif %}><a href="{% prelogin_url 'public_software_services' %}">{% trans "Pricing" %}</a></li>
+                        {% if show_demo %}
+                            <li class="{% if is_demo %}active {% endif %}demo"><a href="{% prelogin_url 'public_demo' %}">Demo</a></li>
+                        {% endif %}
                     </ul>
                     <div class="navbar-right">
                         <a href="{% url 'login' %}"
@@ -172,6 +205,7 @@
 
         {% block content %}{% endblock content %}
 
+        {% if not is_demo %}
         <footer class="footer">
             <div class="container">
                 <p class="text-copyright text-center">
@@ -224,8 +258,10 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% block modals %}{% endblock modals %}
 
+        {% if not is_demo %}
         {# Javascript #}
         {% compress js %}
             <script type="text/javascript" src="{% static 'angular/angular.min.js' %}"></script>
@@ -270,6 +306,7 @@
             });
         </script>
         {% block js-uncompressed %}{% endblock %}
+        {% endif %}
 
         {% if GOOGLE_ANALYTICS_API_ID %}
         <script>
