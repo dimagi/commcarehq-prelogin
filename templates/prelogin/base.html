@@ -66,6 +66,8 @@
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
         <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
+        {% include 'style/includes/analytics_kissmetrics.html' %}
+        {% include 'style/includes/analytics_hubspot.html' %}
 
         <script>
             window['_fs_debug'] = false;
@@ -317,8 +319,5 @@
             ga('send', 'pageview');
         </script>
         {% endif %}
-
-        {% include 'style/includes/analytics_kissmetrics.html' %}
-        {% include 'style/includes/analytics_hubspot.html' %}
     </body>
 </html>
