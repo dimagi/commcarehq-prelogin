@@ -79,7 +79,7 @@
                 });
 
                 $("#signupModal").on('show.bs.modal', function() {
-                    kmqPushSafe(['demo_save', 'Saw signup modal in form builder demo', {}]);
+                    analytics.workflow("Saw signup modal in form builder demo");
                 });
             });
         });
