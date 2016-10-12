@@ -89,8 +89,7 @@
             // Handle account signups
             var signUpFormHandler = function() {
                 var submittedForm = $(this);
-                kmqPushSafe([
-                    '{% if is_demo %}demo_{% endif %}record',
+                analytics.workflow(
                     'Clicked "Sign up"{% if is_demo %} from form builder demo{% endif %}',
                     {},
                     function() {
