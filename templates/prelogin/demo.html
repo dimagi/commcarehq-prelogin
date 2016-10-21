@@ -13,7 +13,7 @@
 
 {% block js-inline %}
     <script>
-        {% include 'app_manager/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
+        {% include 'app_manager/v1/partials/form_designer_requirejs_config.html' with vellum_debug=None %}
 
         require(["jquery", "jquery.vellum"], function ($) {
             $(function () {
