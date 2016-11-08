@@ -10,7 +10,8 @@ root_patterns = patterns(
     url(r'^pricing/$', SoftwareServicesPublicView.as_view(),
         name=SoftwareServicesPublicView.urlname),
     url(r'^software_services/$', RedirectView.as_view(
-        pattern_name=SoftwareServicesPublicView.urlname)),  # permanent (301) by default
+        pattern_name=SoftwareServicesPublicView.urlname,
+        permanent=True)),
     url(r'^services/$', ServicesPublicView.as_view(),
         name=ServicesPublicView.urlname),
     url(r'^software/$', PricingPublicView.as_view(),
