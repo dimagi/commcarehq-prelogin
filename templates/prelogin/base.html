@@ -68,6 +68,7 @@
         <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
         {% include 'style/includes/analytics_all.html' %}
 
+        {% if FULLSTORY_ID %}
         <script>
             window['_fs_debug'] = false;
             window['_fs_host'] = 'www.fullstory.com';
@@ -82,6 +83,7 @@
                         ';path=/;expires='+new Date(0);i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}
             })(window,document,'FS','script','user');
         </script>
+        {% endif %}
 
         <script>
         $(function(){
