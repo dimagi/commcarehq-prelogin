@@ -69,6 +69,7 @@
   background-color: @cc-neutral-mid;
   text-align: center;
   color: #ffffff;
+
   @media (max-width: @screen-sm-max) {
     height: 70px;
   }
@@ -79,6 +80,26 @@
     @media (max-width: @screen-xs-max) {
       font-size: 14px;
       padding-bottom: 5px;
+    }
+  }
+}
+
+.bundle-desc {
+  height: 125px;
+  background-color: @cc-neutral-mid;
+  text-align: center;
+
+  p {
+    color: #ffffff;
+    font-weight: 300;
+    padding: 8px 10px;
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: @screen-sm-max) {
+    height: 103px;
+    p {
+      font-size: 1rem;
     }
   }
 }
@@ -99,21 +120,34 @@
   }
 }
 
-.bundle-plan-community {
+.bundle-plan-community,
+.bundle-desc-community {
   background-color: @cc-brand-mid;
 }
 
-.bundle-plan-pro {
+.bundle-plan-pro,
+.bundle-desc-pro {
   background-color: @cc-light-cool-accent-mid;
 }
 
-.bundle-plan-advanced {
+.bundle-plan-advanced,
+.bundle-desc-advanced{
   background-color: @cc-dark-cool-accent-mid;
 }
 
 .bundle-row-plan {
-  background-color: @cc-bg;
+  background-color: @cc-neutral-low;
   border-top: 5px solid @cc-neutral-low;
+  border-bottom: 5px solid @cc-neutral-low;
+
+  h4 {
+    color: white;
+    font-weight: 300;
+    padding-top: 10px;
+    &.bundle-section-header {
+      font-weight: 400;
+    }
+  }
 }
 
 .bundle-row-services {
@@ -265,4 +299,25 @@
       line-height: 50px;
     }
   }
+}
+
+.bundle-row-tall-sm {
+  @media (max-width: @screen-sm-max) {
+    .pricing-info {
+      height: 122px;
+    }
+    .pricing-info > p {
+      line-height: 88px;
+    }
+  }
+}
+
+p.bundle-row-info {
+  font-size: 12px;
+  color: @cc-brand-low;
+
+  a, a:link, a:visited, a:focus {
+    color: @cc-brand-low;
+  }
+
 }

@@ -67,16 +67,133 @@
                         <div class="bundle-price bundle-price-community">{% trans '$10,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-pro">{% trans '$35,000' %}</div>
+                        <div class="bundle-price bundle-price-pro">{% trans '$40,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-pro">{% trans '$50,000' %}</div>
+                        <div class="bundle-price bundle-price-pro">{% trans '$60,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-advanced">{% trans '$80,000' %}</div>
+                        <div class="bundle-price bundle-price-advanced">{% trans '$90,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-advanced">{% trans '$150,000' %}</div>
+                        <div class="bundle-price bundle-price-advanced">{% trans '$160,000' %}</div>
+                    </div>
+                </div>
+                <div class="row bundle-row-plan">
+                    <div class="col-xs-2">
+                        <h4 class="bundle-section-header">
+                            {% trans 'Description' %}
+                        </h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-community">
+                            <p>
+                                {% blocktrans %}
+                                    Research and develop a comprehensive plan for your future digital system.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-pro">
+                            <p>
+                                {% blocktrans %}
+                                Launch a comprehensive pilot system deployed at test sites.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-pro">
+                            <p>
+                                {% blocktrans %}
+                                Strengthen your initial pilot with extra capacity building services.
+                                {% endblocktrans %}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-advanced">
+                            <p>
+                                {% blocktrans %}
+                                Further prep for scale with dedicated capacity building and technology services.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-advanced">
+                            <p>
+                                {% blocktrans %}
+                                Go from a pilot through scale with dedicated capacity building and technology.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bundle-row-services">
+                    <div class="col-xs-2">
+                        <h4 class="bundle-section-header">
+                            {% blocktrans %}
+                                Application Development &amp; Implementation Support
+                            {% endblocktrans %}
+                        </h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul class="list-unstyled text-center bundle-details bundle-community">
+                            <li>{% blocktrans %}On-Site Scoping Visit{% endblocktrans %}</li>
+                            <li>{% blocktrans %}Requirements Analysis{% endblocktrans %}</li>
+                            <li>{% blocktrans %}Application Workflow Design{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul class="list-unstyled text-center bundle-details bundle-pro">
+                            <li>
+                                {% blocktrans %}
+                                    Everything in<br />
+                                    Scope, plus:
+                                {% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}Field Testing &amp; Iteration{% endblocktrans %}</li>
+                            <li>{% blocktrans %}Training of Trainers{% endblocktrans %}</li>
+                            <li>{% blocktrans %}Build &amp; Launch Application{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul class="list-unstyled text-center bundle-details bundle-pro">
+                            <li>
+                                {% blocktrans %}
+                                    Everything in<br />
+                                    Launch, plus:
+                                {% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}2 of any program capacity services{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul class="list-unstyled text-center bundle-details bundle-advanced">
+                            <li>
+                                {% blocktrans %}
+                                    Everything in<br />
+                                    Boost, plus:
+                                {% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}2 of any program capacity services{% endblocktrans %}</li>
+                            <li>{% blocktrans %}1 technology capacity service{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul class="list-unstyled text-center bundle-details bundle-advanced">
+                            <li>
+                                {% blocktrans %}
+                                    Everything in<br />
+                                    Growth, plus:
+                                {% endblocktrans %}
+                            </li>
+                            <li>{% blocktrans %}4 of any program capacity services{% endblocktrans %}</li>
+                            <li>{% blocktrans %}2 of any technology capacity services{% endblocktrans %}</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="row bundle-row-plan">
@@ -90,8 +207,8 @@
                             <p class="lead">
                                 {% trans 'Community' %}
                             </p>
-                            <p class="text-uppercase">
-                                <small>{% trans "Free" %}</small>
+                            <p>
+                                <small>{% trans "Indefinitely" %}</small>
                             </p>
                         </div>
                     </div>
@@ -126,74 +243,6 @@
                             </p>
                             <p><small>{% trans "18 months" %}</small></p>
                         </div>
-                    </div>
-                </div>
-                <div class="row bundle-row-services">
-                    <div class="col-xs-2">
-                        <h4 class="bundle-section-header">
-                            {% blocktrans %}
-                                Application Development &amp; Implementation Support
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    <div class="col-xs-2">
-                        <ul class="list-unstyled text-center bundle-details bundle-community">
-                            <li>{% blocktrans %}Workflow Design{% endblocktrans %}</li>
-                            <li>{% blocktrans %}On-Site Scoping Visit{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Mobile System Workflow Design{% endblocktrans %}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-2">
-                        <ul class="list-unstyled text-center bundle-details bundle-pro">
-                            <li>
-                                {% blocktrans %}
-                                    Everything in<br />
-                                    Scope, plus:
-                                {% endblocktrans %}
-                            </li>
-                            <li>{% blocktrans %}Build &amp; Launch Application{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Field Testing &amp; Iteration{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Users Training{% endblocktrans %}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-2">
-                        <ul class="list-unstyled text-center bundle-details bundle-pro">
-                            <li>
-                                {% blocktrans %}
-                                    Everything in<br />
-                                    Launch, plus:
-                                {% endblocktrans %}
-                            </li>
-                            <li>{% blocktrans %}Technology for Outcomes Monitoring{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Capacity Building for Worker Performance Monitoring{% endblocktrans %}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-2">
-                        <ul class="list-unstyled text-center bundle-details bundle-advanced">
-                            <li>
-                                {% blocktrans %}
-                                    Everything in<br />
-                                    Boost, plus:
-                                {% endblocktrans %}
-                            </li>
-                            <li>{% blocktrans %}Refined Application{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Additional Supervisor App{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Application Troubleshooting Capacity Building{% endblocktrans %}</li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-2">
-                        <ul class="list-unstyled text-center bundle-details bundle-advanced">
-                            <li>
-                                {% blocktrans %}
-                                    Everything in<br />
-                                    Growth, plus:
-                                {% endblocktrans %}
-                            </li>
-                            <li>{% blocktrans %}Monitored Application Usage{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Additional Tech for Reminder Messages{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Training of Trainers{% endblocktrans %}</li>
-                            <li>{% blocktrans %}Capacity to Build Applications{% endblocktrans %}</li>
-                        </ul>
                     </div>
                 </div>
                 <div class="row bundle-row-seemore">

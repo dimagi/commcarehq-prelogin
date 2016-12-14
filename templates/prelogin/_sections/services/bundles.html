@@ -33,19 +33,19 @@
                 </div>
                 <div class="row bundle-row-header">
                     <div class="col-xs-2 col-xs-offset-2">
-                        <div class="bundle-name text-uppercase">{% trans 'Scope' %}</div>
+                        <div class="bundle-name bundle-name-community text-uppercase">{% trans 'Scope' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-name text-uppercase">{% trans 'Launch' %}</div>
+                        <div class="bundle-name bundle-name-pro text-uppercase">{% trans 'Launch' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-name text-uppercase">{% trans 'Boost' %}</div>
+                        <div class="bundle-name bundle-name-pro text-uppercase">{% trans 'Boost' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-name text-uppercase">{% trans 'Growth' %}</div>
+                        <div class="bundle-name bundle-name-advanced text-uppercase">{% trans 'Growth' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-name text-uppercase">{% trans 'Scale' %}</div>
+                        <div class="bundle-name bundle-name-advanced text-uppercase">{% trans 'Scale' %}</div>
                     </div>
                 </div>
                 <div class="row bundle-row bundle-row-single">
@@ -56,320 +56,69 @@
                         <div class="bundle-price bundle-price-community">{% trans '$10,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-pro">{% trans '$35,000' %}</div>
+                        <div class="bundle-price bundle-price-pro">{% trans '$40,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-pro">{% trans '$50,000' %}</div>
+                        <div class="bundle-price bundle-price-pro">{% trans '$60,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-advanced">{% trans '$80,000' %}</div>
+                        <div class="bundle-price bundle-price-advanced">{% trans '$90,000' %}</div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-price bundle-price-advanced">{% trans '$150,000' %}</div>
+                        <div class="bundle-price bundle-price-advanced">{% trans '$160,000' %}</div>
                     </div>
                 </div>
                 <div class="row bundle-row">
                     <div class="col-xs-2">
                         <h4>
-                            {% trans 'Included Software Plan' %}
+                            {% trans 'Description' %}
                         </h4>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-plan bundle-plan-community">
-                            <p class="lead">
-                                {% trans 'Community' %}
+                        <div class="bundle-desc bundle-desc-community">
+                            <p>
+                                {% blocktrans %}
+                                    Research and develop a comprehensive plan for your future digital system.
+                                {% endblocktrans %}
                             </p>
-                            <p class="text-uppercase">
-                                <small>{% trans "Free" %}</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="bundle-desc bundle-desc-pro">
+                            <p>
+                                {% blocktrans %}
+                                Launch a comprehensive pilot system deployed at test sites.
+                                {% endblocktrans %}
                             </p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-plan bundle-plan-pro">
-                            <p class="lead">
-                                {% trans 'Pro' %}
+                        <div class="bundle-desc bundle-desc-pro">
+                            <p>
+                                {% blocktrans %}
+                                Strengthen your initial pilot with extra capacity building services.
+                                {% endblocktrans %}
                             </p>
-                            <p><small>{% trans "12 months" %}</small></p>
+
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-plan bundle-plan-pro">
-                            <p class="lead">
-                                {% trans 'Pro' %}
+                        <div class="bundle-desc bundle-desc-advanced">
+                            <p>
+                                {% blocktrans %}
+                                Further prep for scale with dedicated capacity building and technology services.
+                                {% endblocktrans %}
                             </p>
-                            <p><small>{% trans "12 months" %}</small></p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="bundle-plan bundle-plan-advanced">
-                            <p class="lead">
-                                {% trans 'Advanced' %}
+                        <div class="bundle-desc bundle-desc-advanced">
+                            <p>
+                                {% blocktrans %}
+                                Go from a pilot through scale with dedicated capacity building and technology.
+                                {% endblocktrans %}
                             </p>
-                            <p><small>{% trans "12 months" %}</small></p>
                         </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="bundle-plan bundle-plan-advanced">
-                            <p class="lead">
-                                {% trans 'Advanced' %}
-                            </p>
-                            <p><small>{% trans "18 months" %}</small></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row-section-header">
-                    <div class="col-xs-6">
-                        <h3>{% trans 'Application Development Support' %}</h3>
-                    </div>
-                </div>
-                <div class="row bundle-row bundle-row-single">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Workflow Design
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# * * * * * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Launch &amp; Tested Application
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x * * * * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row bundle-row-triple-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Additional Tech for Monitoring Outcomes
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x * * * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Launched v2 application
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x * * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Supervisor Application
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x * * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Monitored app usage
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x x * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row bundle-row-triple-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Additional Tech for Reminder Messages
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x x * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row-section-header">
-                    <div class="col-xs-6">
-                        <h3>{% trans 'Implementation Services' %}</h3>
                     </div>
                 </div>
                 <div class="row bundle-row bundle-row-single">
@@ -407,11 +156,46 @@
                         </div>
                     </div>
                 </div>
+                <div class="row bundle-row bundle-row-single">
+                    <div class="col-xs-2">
+                        <h4>
+                            {% blocktrans %}
+                                Requirements Analysis
+                            {% endblocktrans %}
+                        </h4>
+                    </div>
+                    {# * * * * * #}
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                </div>
                 <div class="row bundle-row">
                     <div class="col-xs-2">
                         <h4>
                             {% blocktrans %}
-                                Mobile System Workflow Design
+                                Application Workflow Design
                             {% endblocktrans %}
                         </h4>
                     </div>
@@ -481,7 +265,7 @@
                     <div class="col-xs-2">
                         <h4>
                             {% blocktrans %}
-                                Pilot Users Training
+                                Training of Trainers
                             {% endblocktrans %}
                         </h4>
                     </div>
@@ -512,15 +296,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bundle-row bundle-row-triple bundle-row-quad-sm">
+                <div class="row bundle-row">
                     <div class="col-xs-2">
                         <h4>
                             {% blocktrans %}
-                                Capacity Service: Worker Performance Monitoring
+                                Build &amp; Launch App
                             {% endblocktrans %}
                         </h4>
                     </div>
-                    {# x x * * * #}
+                    {# x * * * * #}
                     <div class="col-xs-2">
                         <div class="pricing-info">
                             <p><i class="fa fa-minus"></i></p>
@@ -528,7 +312,7 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
+                            <p><i class="fa fa-check"></i></p>
                         </div>
                     </div>
                     <div class="col-xs-2">
@@ -547,13 +331,58 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bundle-row bundle-row-triple bundle-row-quad-sm">
+                <div class="row bundle-row bundle-row-triple bundle-row-tall-sm">
                     <div class="col-xs-2">
                         <h4>
                             {% blocktrans %}
-                                Capacity Service: Application Troubleshooting
+                                Additional Program Capacity Services
                             {% endblocktrans %}
                         </h4>
+                        <p class="bundle-row-info">
+                            {% blocktrans %}
+                            (<a href="#services-capacity">See capacity services</a>)
+                            {% endblocktrans %}
+                        </p>
+                    </div>
+                    {# x x * * * #}
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-minus"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p><i class="fa fa-minus"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p>2</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p>2</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="pricing-info">
+                            <p>4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bundle-row bundle-row-triple bundle-row-tall-sm">
+                    <div class="col-xs-2">
+                        <h4>
+                            {% blocktrans %}
+                                Additional Technology Capacity Services
+                            {% endblocktrans %}
+                        </h4>
+                        <p class="bundle-row-info">
+                            {% blocktrans %}
+                            (<a href="#services-capacity">See capacity services</a>)
+                            {% endblocktrans %}
+                        </p>
                     </div>
                     {# x x x * * #}
                     <div class="col-xs-2">
@@ -573,82 +402,61 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
+                            <p>1</p>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row bundle-row bundle-row-triple-sm">
-                    <div class="col-xs-2">
-                        <h4>
-                            {% blocktrans %}
-                                Capacity Service: Training of Trainers
-                            {% endblocktrans %}
-                        </h4>
-                    </div>
-                    {# x x x x * #}
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
+                            <p>2</p>
                         </div>
                     </div>
                 </div>
-                <div class="row bundle-row bundle-row-triple-sm">
+                <div class="row bundle-row-plan">
                     <div class="col-xs-2">
                         <h4>
-                            {% blocktrans %}
-                                Capacity Service: App Building
-                            {% endblocktrans %}
+                            {% trans 'Included CommCare Software Plan' %}
                         </h4>
                     </div>
-                    {# x x x x * #}
                     <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
+                        <div class="bundle-plan bundle-plan-community">
+                            <p class="lead">
+                                {% trans 'Community' %}
+                            </p>
+                            <p>
+                                <small>{% trans "Indefinitely" %}</small>
+                            </p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
+                        <div class="bundle-plan bundle-plan-pro">
+                            <p class="lead">
+                                {% trans 'Pro' %}
+                            </p>
+                            <p><small>{% trans "12 months" %}</small></p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
+                        <div class="bundle-plan bundle-plan-pro">
+                            <p class="lead">
+                                {% trans 'Pro' %}
+                            </p>
+                            <p><small>{% trans "12 months" %}</small></p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-minus"></i></p>
+                        <div class="bundle-plan bundle-plan-advanced">
+                            <p class="lead">
+                                {% trans 'Advanced' %}
+                            </p>
+                            <p><small>{% trans "12 months" %}</small></p>
                         </div>
                     </div>
                     <div class="col-xs-2">
-                        <div class="pricing-info">
-                            <p><i class="fa fa-check"></i></p>
+                        <div class="bundle-plan bundle-plan-advanced">
+                            <p class="lead">
+                                {% trans 'Advanced' %}
+                            </p>
+                            <p><small>{% trans "18 months" %}</small></p>
                         </div>
                     </div>
                 </div>
