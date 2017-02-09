@@ -12,3 +12,6 @@
 <div class="bg-static-fixed bg-position-center b-lazy" data-src="{% static 'prelogin/images/bg-software-services/bg-software-services-third-lg.jpg' %}"></div>
 {% include 'prelogin/_sections/software_services/faq.html' %}
 {% endblock content %}
+{% block js %}
+    {% include 'prelogin/partials/schedule_once.html' %}
+{% endblock js %}

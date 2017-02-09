@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
+
 {% block content %}
 {% include 'prelogin/_sections/pricing/lead.html' %}
 <div class="bg-static-fixed bg-pricing bg-pricing-first b-lazy" data-src="{% static 'prelogin/images/bg-pricing/bg-pricing-web-lg.jpg' %}"></div>
@@ -24,3 +25,6 @@
 <div class="bg-static-fixed bg-position-left-bottom b-lazy" data-src="{% static 'prelogin/images/bg-pricing/bg-pricing-last-lg.jpg' %}"></div>
 {% include 'prelogin/_sections/pricing/last.html' %}
 {% endblock content %}
+{% block js %}
+    {% include 'prelogin/partials/schedule_once.html' %}
+{% endblock js %}
