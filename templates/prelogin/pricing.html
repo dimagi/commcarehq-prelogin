@@ -2,6 +2,11 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
+{% block js-inline %}
+    <script src="{% static 'prelogin/js/drift.js' %}"></script>
+    <script src="{% static 'prelogin/js/hubspot_drift.js' %}"></script>
+{% endblock js-inline %}
+
 {% block content %}
 {% include 'prelogin/_sections/pricing/lead.html' %}
 <div class="bg-static-fixed bg-pricing bg-pricing-first b-lazy" data-src="{% static 'prelogin/images/bg-pricing/bg-pricing-web-lg.jpg' %}"></div>
