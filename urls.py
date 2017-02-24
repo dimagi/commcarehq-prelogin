@@ -18,6 +18,8 @@ root_patterns = [
         name=PricingPublicView.urlname),
     url(r'^solutions/$', SolutionsPublicView.as_view(),
         name=SolutionsPublicView.urlname),
+    url(r'^askdemo/$', DemoFormCTA.as_view(),
+        name=DemoFormCTA.urlname),
     url(r'^supply/$', RedirectView.as_view(url='/solutions/#supply', permanent=True)),
 ]
 

@@ -173,11 +173,12 @@
                         <li{% if is_solutions %} class="active"{% endif %}><a href="{% prelogin_url 'public_solutions' %}">{% trans "Solutions" %}</a></li>
                         <li{% if is_impact %} class="active"{% endif %}><a href="{% prelogin_url 'public_impact' %}">{% trans "Impact" %}</a></li>
                         <li{% if is_software_services %} class="active"{% endif %}><a href="{% prelogin_url 'public_software_services' %}">{% trans "Pricing" %}</a></li>
-                        {% if show_demo %}
-                            <li class="{% if is_demo %}active {% endif %}demo"><a href="{% prelogin_url 'public_demo' %}">Demo</a></li>
-                        {% endif %}
                     </ul>
                     <div class="navbar-right">
+                        <a href="{% prelogin_url 'public_demo_cta' %}"
+                           class="btn btn-purple navbar-btn">
+                          {% trans "Ask for a Demo" %}
+                        </a>
                         <a href="{% url 'login' %}"
                            class="btn btn-primary navbar-btn">
                             {% trans 'Sign In' %}
