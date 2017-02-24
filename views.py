@@ -125,6 +125,15 @@ class HomePublicView(BasePreloginView):
         return super(HomePublicView, self).get_context_data(**kwargs)
 
 
+class DemoFormCTA(BasePreloginView):
+    urlname = 'public_demo_cta'
+    template_name = 'prelogin/demo_cta.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['is_demo_cta'] = True
+        return super(DemoFormCTA, self).get_context_data(**kwargs)
+
+
 class ImpactPublicView(BasePreloginView):
     urlname = 'public_impact'
     template_name = 'prelogin/impact.html'
