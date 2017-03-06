@@ -96,7 +96,7 @@
             var signUpFormHandler = function() {
                 var submittedForm = $(this);
                 analytics.workflow(
-                    'Clicked "Sign up"{% if is_demo %} from form builder demo{% endif %}',
+                    'Clicked "Sign up"',
                     {},
                     function() {
                         submittedForm.off('submit', signUpFormHandler).submit();
@@ -129,13 +129,6 @@
             </script>
             <script src="{% static 'less/dist/less-1.7.3.min.js' %}"></script>
             {% if less_watch %}<script>less.watch();</script>{% endif %}
-        {% endif %}
-
-        {% if is_demo %}
-            {% compress js %}
-                <script src="{% static 'style/js/hq.helpers.js' %}"></script>
-                <script src="{% static 'requirejs/require.js' %}"></script>
-            {% endcompress %}
         {% endif %}
 
         {% block js-inline %}
@@ -207,7 +200,6 @@
 
         {% block content %}{% endblock content %}
 
-        {% if not is_demo %}
         <footer class="footer">
             <div class="container">
                 <p class="text-copyright text-center">
@@ -260,10 +252,8 @@
                 </div>
             </div>
         </div>
-        {% endif %}
         {% block modals %}{% endblock modals %}
 
-        {% if not is_demo %}
         {# Javascript #}
         {% compress js %}
             <script type="text/javascript" src="{% static 'angular/angular.min.js' %}"></script>
@@ -308,6 +298,5 @@
             });
         </script>
         {% block js-uncompressed %}{% endblock %}
-        {% endif %}
     </body>
 </html>
