@@ -5,7 +5,6 @@ from corehq.apps.prelogin.views import *
 
 root_patterns = [
     url(r'^home/$', HomePublicView.as_view(), name=HomePublicView.urlname),
-    url(r'^demo/$', DemoPublicView.as_view(), name=DemoPublicView.urlname),
     url(r'^impact/$', ImpactPublicView.as_view(), name=ImpactPublicView.urlname),
     url(r'^pricing/$', SoftwareServicesPublicView.as_view(),
         name=SoftwareServicesPublicView.urlname),
