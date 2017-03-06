@@ -5,7 +5,6 @@ from corehq.apps.prelogin.views import *
 class TestViews(TestCase):
     def test_status_codes(self):
         for view in [
-            DemoPublicView,
             HomePublicView,
             ImpactPublicView,
             PricingPublicView,
