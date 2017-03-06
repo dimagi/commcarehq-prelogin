@@ -130,11 +130,6 @@
             <script src="{% static 'less/dist/less-1.7.3.min.js' %}"></script>
             {% if less_watch %}<script>less.watch();</script>{% endif %}
         {% endif %}
-
-        {% block js-inline %}
-        {# needed for child pages #}
-        {% endblock js-inline %}
-
     </head>
     <body>
         <nav class="navbar navbar-default navbar-static-hq navbar-fixed-top" role="navigation">
