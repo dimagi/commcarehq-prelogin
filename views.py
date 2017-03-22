@@ -8,7 +8,7 @@ import codecs
 import os
 import markdown
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.hqwebapp.utils import aliased_language_name
