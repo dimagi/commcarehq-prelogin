@@ -68,11 +68,6 @@
         <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
         {% include 'style/includes/analytics_all.html' %}
 
-        {# drift and drift hubspot integration #}
-        <script src="{% static 'style/js/drift.js' %}"></script>
-        <script src="{% static 'style/js/hubspot_drift.js' %}"></script>
-
-
         {% if FULLSTORY_ID %}
         <script>
             window['_fs_debug'] = false;
@@ -89,6 +84,10 @@
             })(window,document,'FS','script','user');
         </script>
         {% endif %}
+
+        {# drift and drift hubspot integration #}
+        <script src="{% static 'style/js/drift.js' %}"></script>
+        <script src="{% static 'style/js/hubspot_drift.js' %}"></script>
 
         <script>
         $(function(){
