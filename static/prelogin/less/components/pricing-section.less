@@ -2,73 +2,150 @@
 PLEASE READ THIS BEFORE EDITING THE LESS BELOW!
 
 NOTE: When editing the sizes below AND the templates please be sure to test the
-layout in the following screen sizes of minimum width
+layout in the following screen sizes of minimum width and check on the different
+languages (supported: en, fra)
 
-*-lg:  1200px
-*-md: 992px
-*-sm: 768px
-*-xs: 480px
+*-lg-(lang): 1200px
+*-md-(lang): 992px
+*-sm-(lang): 768px
+*-xs-(lang): 480px
 
 and update the heights below.
 
 Please also be aware of the row heights for each feature at each of these screen
 widths and adjust the classes for each row accordingly. The classes for the
-row heights can be found in components/pricing.less
+row heights can be found in components/pricing-row.less
 
 */
 
-@pricing-first-section-height-xs: 257px;
-@pricing-first-section-height-sm: 257px;
-@pricing-first-section-height-md: 252px;
-@pricing-first-section-height-lg: 289px;
+//// FIRST SECTION /////
 
-@pricing-second-section-height-xs: 700px;
-@pricing-second-section-height-sm: 700px;
-@pricing-second-section-height-md: 690px;
-@pricing-second-section-height-lg: 788px;
+// English
+@first-xs-en: 232px;
+@first-sm-en: 247px;
+@first-md-en: 252px;
+@first-lg-en: 274px;
 
-@pricing-third-section-height-xs: 532px;
-@pricing-third-section-height-sm: 532px;
-@pricing-third-section-height-md: 487px;
-@pricing-third-section-height-lg: 518px;
-
-@pricing-fourth-section-height-xs: 440px;
-@pricing-fourth-section-height-sm: 440px;
-@pricing-fourth-section-height-md: 435px;
-@pricing-fourth-section-height-lg: 496px;
-
-@pricing-fifth-section-height-xs: 348px;
-@pricing-fifth-section-height-sm: 323px;
-@pricing-fifth-section-height-md: 318px;
-@pricing-fifth-section-height-lg: 363px;
-
-@pricing-sixth-section-height-xs: 444px;
-@pricing-sixth-section-height-sm: 448px;
-@pricing-sixth-section-height-md: 421px;
-@pricing-sixth-section-height-lg: 486px;
-
-@pricing-seventh-section-height-xs: 369px;
-@pricing-seventh-section-height-sm: 359px;
-@pricing-seventh-section-height-md: 333px;
-@pricing-seventh-section-height-lg: 365px;
-
-@pricing-eighth-section-height-xs: 295px;
-@pricing-eighth-section-height-sm: 257px;
-@pricing-eighth-section-height-md: 252px;
-@pricing-eighth-section-height-lg: 289px;
+// French
+@first-xs-fra: 280px;
+@first-sm-fra: 277px;
+@first-md-fra: 267px;
+@first-lg-fra: 306px;
 
 
-.make-pricing-heights (@xsH, @smH, @mdH, @lgH) {
+//// SECOND SECTION ////
+
+// English
+@second-xs-en: 605px;
+@second-sm-en: 615px;
+@second-md-en: 690px;
+@second-lg-en: 761px;
+
+// French
+@second-xs-fra: 710px;
+@second-sm-fra: 720px;
+@second-md-fra: 705px;
+@second-lg-fra: 776px;
+
+
+//// THIRD SECTION ////
+
+// English
+@third-xs-en: 514px;
+@third-sm-en: 492px;
+@third-md-en: 476px;
+@third-lg-en: 523px;
+
+// French
+@third-xs-fra: 612px;
+@third-sm-fra: 558px;
+@third-md-fra: 558px;
+@third-lg-fra: 589px;
+
+
+//// FOURTH SECTION ////
+
+// English
+@fourth-xs-en: 370px;
+@fourth-sm-en: 370px;
+@fourth-md-en: 420px;
+@fourth-lg-en: 436px;
+
+// French
+@fourth-xs-fra: 475px;
+@fourth-sm-fra: 475px;
+@fourth-md-fra: 450px;
+@fourth-lg-fra: 511px;
+
+
+//// FOURTH SECTION ////
+
+// English
+@fifth-xs-en: 323px;
+@fifth-sm-en: 303px;
+@fifth-md-en: 318px;
+@fifth-lg-en: 363px;
+
+// French
+@fifth-xs-fra: 326px;
+@fifth-sm-fra: 341px;
+@fifth-md-fra: 333px;
+@fifth-lg-fra: 380px;
+
+
+//// SIXTH SECTION ////
+
+// English
+@sixth-xs-en: 438px;
+@sixth-sm-en: 438px;
+@sixth-md-en: 443px;
+@sixth-lg-en: 483px;
+
+// French
+@sixth-xs-fra: 518px;
+@sixth-sm-fra: 530px;
+@sixth-md-fra: 506px;
+@sixth-lg-fra: 556px;
+
+
+//// SEVENTH SECTION ////
+
+// English
+@seventh-xs-en: 356px;
+@seventh-sm-en: 336px;
+@seventh-md-en: 317px;
+@seventh-lg-en: 365px;
+
+// French
+@seventh-xs-fra: 399px;
+@seventh-sm-fra: 374px;
+@seventh-md-fra: 348px;
+@seventh-lg-fra: 397px;
+
+
+//// EIGHTH SECTION ////
+
+// English
+@eighth-xs-en: 257px;
+@eighth-sm-en: 262px;
+@eighth-md-en: 252px;
+@eighth-lg-en: 289px;
+
+// French
+@eighth-xs-fra: 282px;
+@eighth-sm-fra: 277px;
+@eighth-md-fra: 297px;
+@eighth-lg-fra: 304px;
+
+
+.make-pricing-section-heights (@xsH, @smH, @mdH, @lgH) {
   height: @xsH;
-
   @media (min-width: @screen-sm-min) {
     height: @smH;
   }
-
   @media (min-width: @screen-md-min) {
     height: @mdH;
   }
-
   @media (min-width: @screen-lg-min) {
     height: @lgH;
   }
@@ -76,92 +153,71 @@ row heights can be found in components/pricing.less
 
 .make-pricing-margins (@xsH, @smH, @mdH, @lgH) {
   margin-top: -@xsH;
-
   @media (min-width: @screen-sm-min) {
     margin-top: -@smH;
   }
-
   @media (min-width: @screen-md-min) {
     margin-top: -@mdH;
   }
-
   @media (min-width: @screen-lg-min) {
     margin-top: -@lgH;
   }
 }
 
-.bg-pricing-first {
-  .make-pricing-heights(@pricing-first-section-height-xs, @pricing-first-section-height-sm, @pricing-first-section-height-md, @pricing-first-section-height-lg);
+.make-pricing-section(@lang, @suffix, @Hxs, @Hsm, @Hmd, @Hlg) {
+  .body-lang-@{lang} .bg-pricing-@{suffix} {
+    .make-pricing-section-heights(@Hxs, @Hsm, @Hmd, @Hlg);
+  }
+  .body-lang-@{lang} .section-pricing-@{suffix}{
+    .make-pricing-margins(@Hxs, @Hsm, @Hmd, @Hlg);
+    .make-pricing-section-heights(@Hxs, @Hsm, @Hmd, @Hlg);
+  }
+  @media (max-width: @smallest-table-width) {
+    .body-lang-@{lang} .section-pricing-@{suffix} .pricing-table-container {
+      height: @Hxs;
+    }
+  }
 }
 
-.section-pricing-first {
-  .make-pricing-margins(@pricing-first-section-height-xs, @pricing-first-section-height-sm, @pricing-first-section-height-md, @pricing-first-section-height-lg);
-  .make-pricing-heights(@pricing-first-section-height-xs, @pricing-first-section-height-sm, @pricing-first-section-height-md, @pricing-first-section-height-lg);
-}
+// first
+.make-pricing-section(en, first, @first-xs-en, @first-sm-en, @first-md-en, @first-lg-en);
+.make-pricing-section(en-us, first, @first-xs-en, @first-sm-en, @first-md-en, @first-lg-en);
+.make-pricing-section(fra, first, @first-xs-fra, @first-sm-fra, @first-md-fra, @first-lg-fra);
 
-.bg-pricing-second {
-  .make-pricing-heights(@pricing-second-section-height-xs, @pricing-second-section-height-sm, @pricing-second-section-height-md, @pricing-second-section-height-lg);
-}
+// second
+.make-pricing-section(en, second, @second-xs-en, @second-sm-en, @second-md-en, @second-lg-en);
+.make-pricing-section(en-us, second, @second-xs-en, @second-sm-en, @second-md-en, @second-lg-en);
+.make-pricing-section(fra, second, @second-xs-fra, @second-sm-fra, @second-md-fra, @second-lg-fra);
 
-.section-pricing-second {
-  .make-pricing-margins(@pricing-second-section-height-xs, @pricing-second-section-height-sm, @pricing-second-section-height-md, @pricing-second-section-height-lg);
-  .make-pricing-heights(@pricing-second-section-height-xs, @pricing-second-section-height-sm, @pricing-second-section-height-md, @pricing-second-section-height-lg);
-}
+// third
+.make-pricing-section(en, third, @third-xs-en, @third-sm-en, @third-md-en, @third-lg-en);
+.make-pricing-section(en-us, third, @third-xs-en, @third-sm-en, @third-md-en, @third-lg-en);
+.make-pricing-section(fra, third, @third-xs-fra, @third-sm-fra, @third-md-fra, @third-lg-fra);
 
-.bg-pricing-third {
-  .make-pricing-heights(@pricing-third-section-height-xs, @pricing-third-section-height-sm, @pricing-third-section-height-md, @pricing-third-section-height-lg);
-}
+// fourth
+.make-pricing-section(en, fourth, @fourth-xs-en, @fourth-sm-en, @fourth-md-en, @fourth-lg-en);
+.make-pricing-section(en-us, fourth, @fourth-xs-en, @fourth-sm-en, @fourth-md-en, @fourth-lg-en);
+.make-pricing-section(fra, fourth, @fourth-xs-fra, @fourth-sm-fra, @fourth-md-fra, @fourth-lg-fra);
 
-.section-pricing-third {
-  .make-pricing-margins(@pricing-third-section-height-xs, @pricing-third-section-height-sm, @pricing-third-section-height-md, @pricing-third-section-height-lg);
-  .make-pricing-heights(@pricing-third-section-height-xs, @pricing-third-section-height-sm, @pricing-third-section-height-md, @pricing-third-section-height-lg);
-}
+// fifth
+.make-pricing-section(en, fifth, @fifth-xs-en, @fifth-sm-en, @fifth-md-en, @fifth-lg-en);
+.make-pricing-section(en-us, fifth, @fifth-xs-en, @fifth-sm-en, @fifth-md-en, @fifth-lg-en);
+.make-pricing-section(fra, fifth, @fifth-xs-fra, @fifth-sm-fra, @fifth-md-fra, @fifth-lg-fra);
 
-.bg-pricing-fourth {
-  .make-pricing-heights(@pricing-fourth-section-height-xs, @pricing-fourth-section-height-sm, @pricing-fourth-section-height-md, @pricing-fourth-section-height-lg);
-}
+// sixth
+.make-pricing-section(en, sixth, @sixth-xs-en, @sixth-sm-en, @sixth-md-en, @sixth-lg-en);
+.make-pricing-section(en-us, sixth, @sixth-xs-en, @sixth-sm-en, @sixth-md-en, @sixth-lg-en);
+.make-pricing-section(fra, sixth, @sixth-xs-fra, @sixth-sm-fra, @sixth-md-fra, @sixth-lg-fra);
 
-.section-pricing-fourth {
-  .make-pricing-margins(@pricing-fourth-section-height-xs, @pricing-fourth-section-height-sm, @pricing-fourth-section-height-md, @pricing-fourth-section-height-lg);
-  .make-pricing-heights(@pricing-fourth-section-height-xs, @pricing-fourth-section-height-sm, @pricing-fourth-section-height-md, @pricing-fourth-section-height-lg);
-}
+// seventh
+.make-pricing-section(en, seventh, @seventh-xs-en, @seventh-sm-en, @seventh-md-en, @seventh-lg-en);
+.make-pricing-section(en-us, seventh, @seventh-xs-en, @seventh-sm-en, @seventh-md-en, @seventh-lg-en);
+.make-pricing-section(fra, seventh, @seventh-xs-fra, @seventh-sm-fra, @seventh-md-fra, @seventh-lg-fra);
 
-.bg-pricing-fifth {
-  .make-pricing-heights(@pricing-fifth-section-height-xs, @pricing-fifth-section-height-sm, @pricing-fifth-section-height-md, @pricing-fifth-section-height-lg);
-}
-
-.section-pricing-fifth {
-  .make-pricing-margins(@pricing-fifth-section-height-xs, @pricing-fifth-section-height-sm, @pricing-fifth-section-height-md, @pricing-fifth-section-height-lg);
-  .make-pricing-heights(@pricing-fifth-section-height-xs, @pricing-fifth-section-height-sm, @pricing-fifth-section-height-md, @pricing-fifth-section-height-lg);
-}
-
-.bg-pricing-sixth {
-  .make-pricing-heights(@pricing-sixth-section-height-xs, @pricing-sixth-section-height-sm, @pricing-sixth-section-height-md, @pricing-sixth-section-height-lg);
-}
-
-.section-pricing-sixth {
-  .make-pricing-margins(@pricing-sixth-section-height-xs, @pricing-sixth-section-height-sm, @pricing-sixth-section-height-md, @pricing-sixth-section-height-lg);
-  .make-pricing-heights(@pricing-sixth-section-height-xs, @pricing-sixth-section-height-sm, @pricing-sixth-section-height-md, @pricing-sixth-section-height-lg);
-}
-
-.bg-pricing-seventh {
-  .make-pricing-heights(@pricing-seventh-section-height-xs, @pricing-seventh-section-height-sm, @pricing-seventh-section-height-md, @pricing-seventh-section-height-lg);
-}
-
-.section-pricing-seventh {
-  .make-pricing-margins(@pricing-seventh-section-height-xs, @pricing-seventh-section-height-sm, @pricing-seventh-section-height-md, @pricing-seventh-section-height-lg);
-  .make-pricing-heights(@pricing-seventh-section-height-xs, @pricing-seventh-section-height-sm, @pricing-seventh-section-height-md, @pricing-seventh-section-height-lg);
-}
-
-.bg-pricing-eighth {
-  .make-pricing-heights(@pricing-eighth-section-height-xs, @pricing-eighth-section-height-sm, @pricing-eighth-section-height-md, @pricing-eighth-section-height-lg);
-}
-
-.section-pricing-eighth {
-  .make-pricing-margins(@pricing-eighth-section-height-xs, @pricing-eighth-section-height-sm, @pricing-eighth-section-height-md, @pricing-eighth-section-height-lg);
-  .make-pricing-heights(@pricing-eighth-section-height-xs, @pricing-eighth-section-height-sm, @pricing-eighth-section-height-md, @pricing-eighth-section-height-lg);
-}
-
+// eighth
+.make-pricing-section(en, eighth, @eighth-xs-en, @eighth-sm-en, @eighth-md-en, @eighth-lg-en);
+.make-pricing-section(en-us, eighth, @eighth-xs-en, @eighth-sm-en, @eighth-md-en, @eighth-lg-en);
+.make-pricing-section(fra, eighth, @eighth-xs-fra, @eighth-sm-fra, @eighth-md-fra, @eighth-lg-fra);
 
 @smallest-table-width: 715px;
 
@@ -181,22 +237,6 @@ row heights can be found in components/pricing.less
   .pricing-table-container {
     @media (max-width: @smallest-table-width) {
       height: 269px;
-    }
-  }
-}
-
-.section-pricing-first {
-  .pricing-table-container {
-    @media (max-width: @smallest-table-width) {
-      height: @pricing-first-section-height-xs;
-    }
-  }
-}
-
-.section-pricing-second {
-  .pricing-table-container {
-    @media (max-width: @smallest-table-width) {
-      height: @pricing-second-section-height-xs;
     }
   }
 }

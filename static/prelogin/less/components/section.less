@@ -555,29 +555,34 @@
   }
 }
 
-.section-pricing-lead {
-  height: 450px;
-
+.make-section-pricing-lead(@Hsm, @Hmd, @Hlg) {
   header {
     margin-top: 40px;
   }
-
   @media (min-width: @screen-sm-min) {
-    height: 460px;
+    height: @Hsm;
   }
-
   @media (min-width: @screen-md-min) {
-    height: 449px;
+    height: @Hmd;
   }
-
   @media (min-width: @screen-lg-min) {
-    height: 487px;
+    height: @Hlg;
   }
   @media (max-width: @screen-xs-max) {
     height: auto;
-    min-height: auto;
+    min-height: inherit;
     padding-bottom: 0;
+    margin-bottom: -23px;
   }
+}
+
+.body-lang-en-us .section-pricing-lead,
+.body-lang-en .section-pricing-lead {
+  .make-section-pricing-lead(427px, 430px, 469px);
+}
+
+.body-lang-fra .section-pricing-lead {
+  .make-section-pricing-lead(446px, 468px, 499px);
 }
 
 .section-pricing {

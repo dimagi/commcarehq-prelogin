@@ -23,28 +23,38 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row pricing-row pricing-row-main pricing-row-single">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en
+                            pricing-row-1x-lg-fra pricing-row-2x-sm-fra">
                     {% trans "User groups" as feature_name %}
                     {% pricing_row_contents feature_name "community" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-single">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en
+                            pricing-row-1x-lg-fra pricing-row-2x-sm-fra">
                     {% trans "Case Sharing" as feature_name %}
                     {% pricing_row_contents feature_name "community" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-single
-                            pricing-row-double-sm">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en pricing-row-2x-sm-en
+                            pricing-row-2x-lg-fra">
                     {% trans "Role-based access" as feature_name %}
                     {% pricing_row_contents feature_name "standard" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-single">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en
+                            pricing-row-2x-lg-fra pricing-row-3x-sm-fra">
                     {% trans "Bulk user upload" as feature_name %}
                     {% pricing_row_contents feature_name "standard" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-double pricing-row-triple-sm">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-2x-lg pricing-row-3x-sm">
                     {% trans "Organization-based case sharing" as feature_name %}
                     {% pricing_row_contents feature_name "standard" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-triple">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-3x-lg-en pricing-row-4x-md-en pricing-row-5x-sm-en
+                            pricing-row-5x-lg-fra pricing-row-6x-md-fra">
                     {% trans "Organization-based data export and user management restrictions" as feature_name %}
                     {% pricing_row_contents feature_name "pro" %}
                 </div>

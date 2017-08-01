@@ -23,16 +23,21 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row pricing-row pricing-row-main pricing-row-double">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-2x-lg-en
+                            pricing-row-2x-lg-fra pricing-row-3x-md-fra">
                     {% trans "Online learning resources" as feature_name %}
                     {% pricing_row_contents feature_name "community" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-single
-                            pricing-row-double-sm">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en pricing-row-2x-sm-en
+                            pricing-row-2x-lg-fra">
                     {% trans "Direct email support" as feature_name %}
                     {% pricing_row_contents feature_name "standard" %}
                 </div>
-                <div class="row pricing-row pricing-row-main pricing-row-double pricing-row-penta-xs">
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-2x-lg-en pricing-row-3x-sm-en
+                            pricing-row-2x-lg-fra pricing-row-3x-md-fra">
                     {% trans "Guaranteed Response Time" as feature_name %}
                     <div class="col-xs-2">
                         <h4>{{ feature_name }}</h4>
