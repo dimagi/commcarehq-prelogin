@@ -103,7 +103,6 @@ h3.pricing-header {
 
 .pricing-info .pricing-info-center {
   line-height: @height-2x-md;
-
   @media (min-width: @screen-lg-min) {
     line-height: @height-2x-lg;
   }
@@ -112,57 +111,41 @@ h3.pricing-header {
 .pricing-row-plan-names h3.pricing-header {
   font-size: 11px;
   line-height: 30px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
+.make-pricing-row(@numRows, @suffix, @Hxs, @Hsm, @Hmd, @Hlg, @Mxs, @Msm, @Mmd, @Mlg) {
+  .pricing-row-@{numRows}x-@{suffix},
+  .body-lang-en-us .pricing-row-@{numRows}x-@{suffix}-en,
+  .body-lang-en .pricing-row-@{numRows}x-@{suffix}-en,
+  .body-lang-fra .pricing-row-@{numRows}x-@{suffix}-fra {
+    .make-row-heights(@Hxs, @Hsm, @Hmd, @Hlg);
+    .make-icon-margin(@Mxs, @Msm, @Mmd, @Mlg);
+  }
+}
 
-.make-row-sizes(@abbr) {
-  .pricing-row-1x-@{abbr},
-  .body-lang-en-us .pricing-row-1x-@{abbr}-en,
-  .body-lang-en .pricing-row-1x-@{abbr}-en,
-  .body-lang-fra .pricing-row-1x-@{abbr}-fra {
-    .make-row-heights(@height-1x-xs, @height-1x-sm, @height-1x-md, @height-1x-lg);
-    .make-icon-margin(3px, 4px, 8px, 12px);
-  }
-  .pricing-row-2x-@{abbr},
-  .body-lang-en-us .pricing-row-2x-@{abbr}-en,
-  .body-lang-en .pricing-row-2x-@{abbr}-en,
-  .body-lang-fra .pricing-row-2x-@{abbr}-fra {
-    .make-row-heights(@height-2x-xs, @height-2x-sm, @height-2x-md, @height-2x-lg);
-    .make-icon-margin(11px, 15px, 15px, 18px);
-  }
-  .pricing-row-3x-@{abbr},
-  .body-lang-en-us .pricing-row-3x-@{abbr}-en,
-  .body-lang-en .pricing-row-3x-@{abbr}-en,
-  .body-lang-fra .pricing-row-3x-@{abbr}-fra {
-    .make-row-heights(@height-3x-xs, @height-3x-sm, @height-3x-md, @height-3x-lg);
-    .make-icon-margin(21px, 21px, 21px, 25px);
-  }
-  .pricing-row-4x-@{abbr},
-  .body-lang-en-us .pricing-row-4x-@{abbr}-en,
-  .body-lang-en .pricing-row-4x-@{abbr}-en,
-  .body-lang-fra .pricing-row-4x-@{abbr}-fra {
-    .make-row-heights(@height-4x-xs, @height-4x-sm, @height-4x-md, @height-4x-lg);
-    .make-icon-margin(27px, 29px, 29px, 30px);
-  }
-  .pricing-row-5x-@{abbr},
-  .body-lang-en-us .pricing-row-5x-@{abbr}-en,
-  .body-lang-en .pricing-row-5x-@{abbr}-en,
-  .body-lang-fra .pricing-row-5x-@{abbr}-fra {
-    .make-row-heights(@height-5x-xs, @height-5x-sm, @height-5x-md, @height-5x-lg);
-    .make-icon-margin(40px, 40px, 33px, 41px);
-  }
-  .pricing-row-6x-@{abbr},
-  .body-lang-en-us .pricing-row-6x-@{abbr}-en,
-  .body-lang-en .pricing-row-6x-@{abbr}-en,
-  .body-lang-fra .pricing-row-6x-@{abbr}-fra {
-    .make-row-heights(@height-6x-xs, @height-6x-sm, @height-6x-md, @height-6x-lg);
-    .make-icon-margin(45px, 42px, 43px, 51px);
-  }
+.make-row-sizes(@suffix) {
+  .make-pricing-row(1, @suffix,
+          @height-1x-xs, @height-1x-sm, @height-1x-md, @height-1x-lg,
+          3px, 4px, 8px, 12px);
+  .make-pricing-row(2, @suffix,
+          @height-2x-xs, @height-2x-sm, @height-2x-md, @height-2x-lg,
+          11px, 15px, 15px, 18px);
+  .make-pricing-row(3, @suffix,
+          @height-3x-xs, @height-3x-sm, @height-3x-md, @height-3x-lg,
+          21px, 21px, 21px, 25px);
+  .make-pricing-row(4, @suffix,
+          @height-4x-xs, @height-4x-sm, @height-4x-md, @height-4x-lg,
+          27px, 29px, 29px, 30px);
+  .make-pricing-row(5, @suffix,
+          @height-5x-xs, @height-5x-sm, @height-5x-md, @height-5x-lg,
+          40px, 40px, 33px, 41px);
+  .make-pricing-row(6, @suffix,
+          @height-6x-xs, @height-6x-sm, @height-6x-md, @height-6x-lg,
+          45px, 42px, 43px, 51px);
 }
 
 .make-row-sizes(lg);
-
 @media (max-width: @screen-md-max) {
   .make-row-sizes(md);
 }
