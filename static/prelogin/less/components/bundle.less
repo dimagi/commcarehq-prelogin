@@ -37,7 +37,6 @@
 }
 
 .bundle-price {
-  line-height: 50px;
   display: block;
   text-align: center;
   border-left: 1px solid @cc-neutral-low;
@@ -85,7 +84,6 @@
 }
 
 .bundle-desc {
-  height: 125px;
   background-color: @cc-neutral-mid;
   text-align: center;
 
@@ -93,14 +91,38 @@
     color: #ffffff;
     font-weight: 300;
     padding: 8px 10px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   @media (max-width: @screen-sm-max) {
-    height: 103px;
     p {
       font-size: 1rem;
     }
+  }
+}
+.body-lang-fra .bundle-desc {
+  height: 150px;
+  @media (min-width: @screen-sm-min) {
+    height: 130px;
+  }
+  @media (min-width: @screen-md-min) {
+    height: 170px;
+  }
+  @media (min-width: @screen-lg-min) {
+    height: 140px;
+  }
+}
+.body-lang-en .bundle-desc,
+.body-lang-en-us .bundle-desc {
+  height: 110px;
+  @media (min-width: @screen-sm-min) {
+    height: 105px;
+  }
+  @media (min-width: @screen-md-min) {
+    height: 130px;
+  }
+  @media (min-width: @screen-lg-min) {
+    height: 100px;
   }
 }
 
@@ -254,13 +276,8 @@
   }
 
   .pricing-info {
-    line-height: 100%;
     border: 1px solid @cc-neutral-low;
     border-top: none;
-
-    > p {
-      height: 100%;
-    }
   }
 }
 
@@ -270,46 +287,58 @@
   }
 }
 
-.bundle-row-triple {
-  .pricing-info {
-    height: 70px;
+.make-bundle-heights (@xsH, @smH, @mdH, @lgH) {
+  height: @xsH;
+  .pricing-info {height: @xsH; }
+  .bundle-price {line-height: @xsH; }
+  .pricing-info > p {line-height: @xsH - 10; }
+
+  @media (min-width: @screen-sm-min) {
+    height: @smH;
+    .pricing-info {height: @smH; }
+    .bundle-price {line-height: @smH; }
+    .pricing-info > p {line-height: @smH - 10; }
   }
-  .pricing-info > p {
-    line-height: 40px;
+
+  @media (min-width: @screen-md-min) {
+    height: @mdH;
+    .pricing-info {height: @mdH; }
+    .bundle-price {line-height: @mdH; }
+    .pricing-info > p {line-height: @mdH - 10; }
+  }
+
+  @media (min-width: @screen-lg-min) {
+    height: @lgH;
+    .pricing-info {height: @lgH;}
+    .bundle-price {line-height: @lgH; }
+    .pricing-info > p {line-height: @lgH - 10; }
   }
 }
 
-.bundle-row-triple-sm {
-  @media (max-width: @screen-sm-max) {
-    .pricing-info {
-      height: 70px;
-    }
-    .pricing-info > p {
-      line-height: 40px;
-    }
+.make-bundle-row(@numRows, @abbr, @Hxs, @Hsm, @Hmd, @Hlg) {
+  .bundle-row-@{numRows}x-@{abbr},
+  .body-lang-en-us .bundle-row-@{numRows}x-@{abbr}-en,
+  .body-lang-en .bundle-row-@{numRows}x-@{abbr}-en,
+  .body-lang-fra .bundle-row-@{numRows}x-@{abbr}-fra {
+    .make-bundle-heights(@Hxs, @Hsm, @Hmd, @Hlg);
   }
 }
 
-.bundle-row-quad-sm {
-  @media (max-width: @screen-sm-max) {
-    .pricing-info {
-      height: 80px;
-    }
-    .pricing-info > p {
-      line-height: 50px;
-    }
-  }
+.bundle-row-sizes(@abbr) {
+  .make-bundle-row(1, @abbr, 40px, 40px, 50px, 58px);
+  .make-bundle-row(2, @abbr, 55px, 60px, 65px, 73px);
+  .make-bundle-row(3, @abbr, 80px, 75px, 80px, 90px);
+  .make-bundle-row(4, @abbr, 123px, 123px, 123px, 133px);
 }
-
-.bundle-row-tall-sm {
-  @media (max-width: @screen-sm-max) {
-    .pricing-info {
-      height: 122px;
-    }
-    .pricing-info > p {
-      line-height: 88px;
-    }
-  }
+.bundle-row-sizes(lg);
+@media (max-width: @screen-md-max) {
+  .bundle-row-sizes(md);
+}
+@media (max-width: @screen-sm-max) {
+  .bundle-row-sizes(sm);
+}
+@media (max-width: @screen-xs-max) {
+  .bundle-row-sizes(xs);
 }
 
 p.bundle-row-info {

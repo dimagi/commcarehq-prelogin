@@ -1,0 +1,157 @@
+@height-1x-xs: 40px;
+@height-1x-sm: 40px;
+@height-1x-md: 50px;
+@height-1x-lg: 58px;
+
+@height-2x-xs: 55px;
+@height-2x-sm: 60px;
+@height-2x-md: 65px;
+@height-2x-lg: 73px;
+
+@height-3x-xs: 80px;
+@height-3x-sm: 75px;
+@height-3x-md: 80px;
+@height-3x-lg: 90px;
+
+@height-4x-xs: 93px;
+@height-4x-sm: 93px;
+@height-4x-md: 103px;
+@height-4x-lg: 113px;
+
+@height-5x-xs: 113px;
+@height-5x-sm: 113px;
+@height-5x-md: 123px;
+@height-5x-lg: 133px;
+
+@height-6x-xs: 123px;
+@height-6x-sm: 130px;
+@height-6x-md: 137px;
+@height-6x-lg: 149px;
+
+
+.make-row-heights (@xsH, @smH, @mdH, @lgH) {
+  height: @xsH;
+  .pricing-info {height: @xsH; }
+  .pricing-cost {line-height: @xsH; }
+
+  @media (min-width: @screen-sm-min) {
+    height: @smH;
+    .pricing-info {height: @smH; }
+    .pricing-cost {line-height: @smH; }
+  }
+
+  @media (min-width: @screen-md-min) {
+    height: @mdH;
+    .pricing-info {height: @mdH; }
+    .pricing-cost {line-height: @mdH; }
+  }
+
+  @media (min-width: @screen-lg-min) {
+    height: @lgH;
+    .pricing-info {height: @lgH;}
+    .pricing-cost {line-height: @lgH; }
+  }
+}
+
+.make-icon-margin(@xsMargin, @smMargin, @mdMargin, @lgMargin) {
+  .pricing-info .fa {margin-top: @xsMargin;}
+
+  @media (min-width: @screen-sm-min) {
+    .pricing-info .fa {margin-top: @smMargin;}
+  }
+
+  @media (min-width: @screen-md-min) {
+    .pricing-info .fa {margin-top: @mdMargin;}
+  }
+
+  @media (min-width: @screen-lg-min) {
+    .pricing-info .fa {margin-top: @lgMargin;}
+  }
+}
+
+
+.pricing-row {
+  h4 {
+    font-weight: 200;
+    font-size: 14px;
+    padding-top: 5px;
+    line-height: 1.3em;
+    color: #FFFFFF;
+
+    a, a:link, a:visited, a:focus {
+      color: @cc-brand-hi;
+    }
+    @media (max-width: @screen-sm-max) {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    @media (min-width: @screen-lg-min) {
+      font-size: 16px;
+    }
+  }
+}
+
+h3.pricing-header {
+  line-height: @height-1x-md;
+  @media (max-width: @screen-sm-max) {
+    line-height: @height-1x-sm;
+  }
+  @media (min-width: @screen-lg-min) {
+    line-height: @height-1x-lg;
+  }
+}
+
+.pricing-info .pricing-info-center {
+  line-height: @height-2x-md;
+  @media (min-width: @screen-lg-min) {
+    line-height: @height-2x-lg;
+  }
+}
+
+.pricing-row-plan-names h3.pricing-header {
+  font-size: 11px;
+  line-height: 30px;
+  margin-top: 0;
+}
+
+.make-pricing-row(@numRows, @suffix, @Hxs, @Hsm, @Hmd, @Hlg, @Mxs, @Msm, @Mmd, @Mlg) {
+  .pricing-row-@{numRows}x-@{suffix},
+  .body-lang-en-us .pricing-row-@{numRows}x-@{suffix}-en,
+  .body-lang-en .pricing-row-@{numRows}x-@{suffix}-en,
+  .body-lang-fra .pricing-row-@{numRows}x-@{suffix}-fra {
+    .make-row-heights(@Hxs, @Hsm, @Hmd, @Hlg);
+    .make-icon-margin(@Mxs, @Msm, @Mmd, @Mlg);
+  }
+}
+
+.make-row-sizes(@suffix) {
+  .make-pricing-row(1, @suffix,
+          @height-1x-xs, @height-1x-sm, @height-1x-md, @height-1x-lg,
+          3px, 4px, 8px, 12px);
+  .make-pricing-row(2, @suffix,
+          @height-2x-xs, @height-2x-sm, @height-2x-md, @height-2x-lg,
+          11px, 15px, 15px, 18px);
+  .make-pricing-row(3, @suffix,
+          @height-3x-xs, @height-3x-sm, @height-3x-md, @height-3x-lg,
+          21px, 21px, 21px, 25px);
+  .make-pricing-row(4, @suffix,
+          @height-4x-xs, @height-4x-sm, @height-4x-md, @height-4x-lg,
+          27px, 29px, 29px, 30px);
+  .make-pricing-row(5, @suffix,
+          @height-5x-xs, @height-5x-sm, @height-5x-md, @height-5x-lg,
+          40px, 40px, 33px, 41px);
+  .make-pricing-row(6, @suffix,
+          @height-6x-xs, @height-6x-sm, @height-6x-md, @height-6x-lg,
+          45px, 42px, 43px, 51px);
+}
+
+.make-row-sizes(lg);
+@media (max-width: @screen-md-max) {
+  .make-row-sizes(md);
+}
+@media (max-width: @screen-sm-max) {
+  .make-row-sizes(sm);
+}
+@media (max-width: @screen-xs-max) {
+  .make-row-sizes(xs);
+}
