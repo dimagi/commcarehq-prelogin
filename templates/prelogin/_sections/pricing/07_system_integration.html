@@ -31,6 +31,11 @@
                 </div>
                 <div class="row pricing-row pricing-row-main
                             pricing-row-1x-lg">
+                    {% trans "Zapier Integration" as feature_name %}
+                    {% pricing_row_contents feature_name "standard" %}
+                </div>
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg">
                     {% trans "API access" as feature_name %}
                     {% pricing_row_contents feature_name "standard" %}
                 </div>
