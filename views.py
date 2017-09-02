@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.hqwebapp.utils import aliased_language_name
-from corehq.apps.style.decorators import use_angular_js
+from corehq.apps.hqwebapp.decorators import use_angular_js
 
 
 MAIN_FORM = 'main'
