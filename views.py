@@ -102,7 +102,7 @@ class BasePreloginView(TemplateView):
 
 class HomePublicView(BasePreloginView):
     urlname = 'public_home'
-    template_name = 'prelogin/home.html'
+    template_name = u'prelogin/home.html'
     slug = 'home'
 
     def get_context_data(self, **kwargs):
@@ -112,7 +112,7 @@ class HomePublicView(BasePreloginView):
 
 class DemoFormCTA(BasePreloginView):
     urlname = 'public_demo_cta'
-    template_name = 'prelogin/demo_cta.html'
+    template_name = u'prelogin/demo_cta.html'
     slug = 'askdemo'
 
     def get_context_data(self, **kwargs):
@@ -122,7 +122,7 @@ class DemoFormCTA(BasePreloginView):
 
 class ImpactPublicView(BasePreloginView):
     urlname = 'public_impact'
-    template_name = 'prelogin/impact.html'
+    template_name = u'prelogin/impact.html'
     slug = 'impact'
 
     def get_context_data(self, **kwargs):
@@ -145,7 +145,7 @@ class ImpactPublicView(BasePreloginView):
 
 class SoftwareServicesPublicView(BasePreloginView):
     urlname = 'public_software_services'
-    template_name = 'prelogin/software_services.html'
+    template_name = u'prelogin/software_services.html'
     slug = 'software_services'
 
     def get_context_data(self, **kwargs):
@@ -155,7 +155,7 @@ class SoftwareServicesPublicView(BasePreloginView):
 
 class PricingPublicView(BasePreloginView):
     urlname = 'public_pricing'
-    template_name = 'prelogin/pricing.html'
+    template_name = u'prelogin/pricing.html'
     slug = 'pricing'
 
     def get_context_data(self, **kwargs):
@@ -165,7 +165,7 @@ class PricingPublicView(BasePreloginView):
 
 class ServicesPublicView(BasePreloginView):
     urlname = 'public_services'
-    template_name = 'prelogin/services.html'
+    template_name = u'prelogin/services.html'
     slug = 'services'
 
     def get_context_data(self, **kwargs):
@@ -175,7 +175,7 @@ class ServicesPublicView(BasePreloginView):
 
 class SolutionsPublicView(BasePreloginView):
     urlname = 'public_solutions'
-    template_name = 'prelogin/solutions.html'
+    template_name = u'prelogin/solutions.html'
     hubspot_portal_id = HUBSPOT_PORTAL_IDS[SUPPLY_FORM]
     hubspot_form_id = HUBSPOT_FORM_IDS[SUPPLY_FORM]
     slug = 'solutions'
