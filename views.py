@@ -12,7 +12,6 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.hqwebapp.utils import aliased_language_name
-from corehq.apps.hqwebapp.decorators import use_angular_js
 
 
 MAIN_FORM = 'main'
@@ -50,10 +49,6 @@ class BasePreloginView(TemplateView):
         }
         kwargs.update(self.i18n_context())
         return super(BasePreloginView, self).get_context_data(**kwargs)
-
-    @use_angular_js
-    def dispatch(self, request, *args, **kwargs):
-        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
 

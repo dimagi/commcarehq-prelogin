@@ -1,4 +1,4 @@
-{% load menu_tags %}{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}{% load crispy_forms_tags %}{% load djangular_tags %}<!DOCTYPE html>
+{% load menu_tags %}{% load i18n %}{% load hq_shared_tags %}{% load cache %}{% load compress %}{% load crispy_forms_tags %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -262,20 +262,9 @@
         </div>
         {% block modals %}{% endblock modals %}
 
-        {# Javascript #}
-        {% compress js %}
-            <script type="text/javascript" src="{% static 'angular/angular.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'angular-route/angular-route.js' %}"></script>
-            <script type="text/javascript" src="{% static 'angular-resource/angular-resource.js' %}"></script>
-            <script type="text/javascript" src="{% static 'angular-sanitize/angular-sanitize.js' %}"></script>
-            <script type="text/javascript" src="{% static 'style/lib/angular-ui/ui-bootstrap-tpls-0.11.2.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'djangular/js/django-angular.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'prelogin/js/backgrounds.ng.js' %}"></script>
-        {% endcompress %}
 
         {# Contact JS #}
         {% compress js %}
-            <script type="text/javascript" src="{% static 'ui-select/dist/select.js' %}"></script>
             <script type="text/javascript" src="{% static 'prelogin/js/jquery.appear.js' %}"></script>
             <script type="text/javascript" src="{% static 'prelogin/js/jquery.scrollTo.min.js' %}"></script>
             <script type="text/javascript" src="{% static 'prelogin/js/section_appear.js' %}"></script>
