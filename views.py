@@ -50,9 +50,6 @@ class BasePreloginView(TemplateView):
         kwargs.update(self.i18n_context())
         return super(BasePreloginView, self).get_context_data(**kwargs)
 
-    def dispatch(self, request, *args, **kwargs):
-        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
-
     def get(self, request, *args, **kwargs):
 
         def drop_regiondialect(lang_code):
