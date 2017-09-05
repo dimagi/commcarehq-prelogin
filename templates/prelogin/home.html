@@ -2,13 +2,6 @@
 {% load i18n %}
 {% load hq_shared_tags %}
 
-{% block stylesheets %}
-<link type="text/css"
-      rel="stylesheet"
-      media="all"
-      href="{% static 'ui-select/dist/select.min.css' %}" />
-{% endblock stylesheets %}
-
 {% block content %}
 {% include 'prelogin/_sections/home/lead.html' %}
 <div class="bg-static-fixed bg-position-bottom b-lazy" data-src="{% static 'prelogin/images/bg-home/bg-home-main-lg.jpg' %}"></div>
