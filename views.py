@@ -146,7 +146,7 @@ class ImpactPublicView(BasePreloginView):
 class SoftwareServicesPublicView(BasePreloginView):
     urlname = 'public_software_services'
     template_name = u'prelogin/software_services.html'
-    slug = 'software_services'
+    slug = 'pricing'
 
     def get_context_data(self, **kwargs):
         kwargs['is_software_services'] = True
@@ -156,7 +156,7 @@ class SoftwareServicesPublicView(BasePreloginView):
 class PricingPublicView(BasePreloginView):
     urlname = 'public_pricing'
     template_name = u'prelogin/pricing.html'
-    slug = 'pricing'
+    slug = 'software'
 
     def get_context_data(self, **kwargs):
         kwargs['is_software_services'] = True
