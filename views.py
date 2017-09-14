@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from corehq.apps.hqwebapp.utils import aliased_language_name
-
+from corehq.middleware import always_allow_browser_caching
 
 MAIN_FORM = 'main'
 SUPPLY_FORM = 'supply'
@@ -43,6 +43,10 @@ class BasePreloginView(TemplateView):
     hubspot_form_id = HUBSPOT_FORM_IDS[MAIN_FORM]
 
     slug = '' # doing this because the reverse() lookup takes waaaay too long on initial load
+
+    @always_allow_browser_caching
+    def dispatch(self, request, *args, **kwargs):
+        return super(BasePreloginView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs['hubspot'] = {
