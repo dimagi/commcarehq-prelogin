@@ -90,6 +90,11 @@
         <script src="{% static 'hqwebapp/js/drift.js' %}"></script>
         <script src="{% static 'hqwebapp/js/hubspot_drift.js' %}"></script>
 
+        {% compress js %}
+        <script src="{% static 'hqwebapp/js/hqModules.js' %}"></script>
+        <script src="{% static 'hqwebapp/js/initial_page_data.js' %}"></script>
+        {% endcompress %}
+
         <script>
         $(function(){
             // Handle account signups
@@ -282,6 +287,12 @@
         <script type="text/javascript">
             $(function () {
                 $('.flower-home [data-toggle="tooltip"]').tooltip();
+                var ab_test = hqImport('hqwebapp/js/initial_page_data').get('ab_test');
+                if (ab_test) {
+                    var options = {};
+                    options[ab_test.name] = ab_test.version;
+                    _kmq.push(["set", options]);
+                }
             });
         </script>
         {% block js-uncompressed %}{% endblock %}
