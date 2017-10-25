@@ -3,9 +3,10 @@
 {% load hq_shared_tags %}
 
 {% block content %}
+{% initial_page_data 'ab_test' ab_test %}
 {% include 'prelogin/_sections/home/lead.html' %}
 <div class="bg-static-fixed bg-position-bottom b-lazy" data-src="{% static 'prelogin/images/bg-home/bg-home-main-lg.jpg' %}"></div>
-<section class="section section-aside">
+<section class="section section-aside{% if show_video %} section-aside-video{% endif %}">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
