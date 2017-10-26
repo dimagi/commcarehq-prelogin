@@ -1,39 +1,52 @@
 {% load i18n %}
-<section class="section section-primary section-lead section-fullheader appear">
+<section class="section section-primary section-lead section-fullheader appear{% if show_video %} section-primary-video{% endif %}">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 flower-container">
-                <div class="flower-home">
-                    <a href="#home-build"
-                       class="flower-icon flower-icon-first"
-                       data-toggle="tooltip"
-                       data-placement="bottom"
-                       title="{% trans "Build mobile apps in days, not months." %}">
-                        <span class="sr-only">{% trans "Build mobile apps in days, not months." %}</span>
-                    </a>
-                    <a href="#home-use"
-                       class="flower-icon flower-icon-second"
-                       data-toggle="tooltip"
-                       data-placement="bottom"
-                       title="{% trans "Apps that improve service delivery." %}">
-                        <span class="sr-only">{% trans "Apps that improve service delivery." %}</span>
-                    </a>
-                    <a href="#home-analyze"
-                       class="flower-icon flower-icon-third"
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="{% trans "Make data-driven decisions in real time." %}">
-                        <span class="sr-only">{% trans "Make data-driven decisions in real time." %}</span>
-                    </a>
-                    <a href="#home-track"
-                       class="flower-icon flower-icon-fourth"
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="{% trans "Do more with case management." %}">
-                        <span class="sr-only">{% trans "Do more with case management." %}</span>
-                    </a>
+            {% if show_video %}
+                <div class="col-sm-6 video-container">
+                    <script src="https://fast.wistia.com/embed/medias/9uvnpbecdy.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <div class="wistia_embed wistia_async_9uvnpbecdy videoFoam=true"
+                             style="height:100%;width:100%">&nbsp;</div>
+                      </div>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="col-sm-6 flower-container">
+                    <div class="flower-home">
+                        <a href="#home-build"
+                           class="flower-icon flower-icon-first"
+                           data-toggle="tooltip"
+                           data-placement="bottom"
+                           title="{% trans "Build mobile apps in days, not months." %}">
+                            <span class="sr-only">{% trans "Build mobile apps in days, not months." %}</span>
+                        </a>
+                        <a href="#home-use"
+                           class="flower-icon flower-icon-second"
+                           data-toggle="tooltip"
+                           data-placement="bottom"
+                           title="{% trans "Apps that improve service delivery." %}">
+                            <span class="sr-only">{% trans "Apps that improve service delivery." %}</span>
+                        </a>
+                        <a href="#home-analyze"
+                           class="flower-icon flower-icon-third"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="{% trans "Make data-driven decisions in real time." %}">
+                            <span class="sr-only">{% trans "Make data-driven decisions in real time." %}</span>
+                        </a>
+                        <a href="#home-track"
+                           class="flower-icon flower-icon-fourth"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="{% trans "Do more with case management." %}">
+                            <span class="sr-only">{% trans "Do more with case management." %}</span>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
             <div class="col-sm-6 container-welcome">
                 <div class="welcome-container-inner">
                     <header>

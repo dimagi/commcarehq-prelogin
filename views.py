@@ -11,8 +11,12 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
+
+from corehq.apps.analytics.ab_tests import ABTest
+from corehq.apps.prelogin import ab_tests
 from corehq.apps.hqwebapp.utils import aliased_language_name
 from corehq.middleware import always_allow_browser_caching
+from dimagi.utils.decorators.memoized import memoized
 
 MAIN_FORM = 'main'
 SUPPLY_FORM = 'supply'
@@ -109,8 +113,22 @@ class HomePublicView(BasePreloginView):
     template_name = u'prelogin/home.html'
     slug = 'home'
 
+    def dispatch(self, request, *args, **kwargs):
+        response = super(HomePublicView, self).dispatch(request, *args, **kwargs)
+        self.ab.update_response(response)
+        return response
+
+    @property
+    @memoized
+    def ab(self):
+        return ABTest(ab_tests.PRELOGIN_VIDEO, self.request)
+
     def get_context_data(self, **kwargs):
-        kwargs['is_home'] = True
+        kwargs.update({
+            'is_home': True,
+            'ab_test': self.ab.context,
+            'show_video': self.ab.version == ab_tests.PRELOGIN_VIDEO_ON,
+        })
         return super(HomePublicView, self).get_context_data(**kwargs)
 
 
