@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from corehq.apps.analytics.ab_tests import ABTestConfig
 
 PRELOGIN_VIDEO_ON = 'on'
