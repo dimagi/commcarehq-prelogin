@@ -50,6 +50,12 @@
                 <div class="row pricing-row pricing-row-main
                             pricing-row-1x-lg-en pricing-row-2x-xs-en
                             pricing-row-1x-lg-fra pricing-row-2x-sm-fra">
+                    {% trans "Report Builder" as feature_name %}
+                    {% pricing_row_contents feature_name "pro" %}
+                </div>
+                <div class="row pricing-row pricing-row-main
+                            pricing-row-1x-lg-en pricing-row-2x-xs-en
+                            pricing-row-1x-lg-fra pricing-row-2x-sm-fra">
                     {% trans "Data management" as feature_name %}
                     {% pricing_row_contents feature_name "pro" %}
                 </div>
