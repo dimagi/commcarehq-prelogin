@@ -290,7 +290,7 @@
                 // Handle account signups
                 var signUpFormHandler = function() {
                     var submittedForm = $(this);
-                    analytics.workflow(
+                    hqImport('analytics/js/kissmetrics').track.event(
                         'Clicked "Sign up"',
                         {},
                         function() {
