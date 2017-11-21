@@ -279,12 +279,6 @@
         <script type="text/javascript">
             $(function () {
                 $('.flower-home [data-toggle="tooltip"]').tooltip();
-                var ab_test = hqImport('hqwebapp/js/initial_page_data').get('ab_test');
-                if (ab_test) {
-                    var options = {};
-                    options[ab_test.name] = ab_test.version;
-                    _kmq.push(["set", options]);
-                }
             });
             $(function(){
                 // Handle account signups
