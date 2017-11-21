@@ -67,7 +67,6 @@
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
         <script charset="utf-8" src="{% static 'prelogin/js/style_form.js' %}"></script>
-        {% include 'hqwebapp/includes/analytics_all.html' %}
 
         {% if FULLSTORY_ID %}
         <script>
@@ -86,32 +85,10 @@
         </script>
         {% endif %}
 
-        {# drift and drift hubspot integration #}
-        <script src="{% static 'hqwebapp/js/drift.js' %}"></script>
-        <script src="{% static 'hqwebapp/js/hubspot_drift.js' %}"></script>
-
         {% compress js %}
         <script src="{% static 'hqwebapp/js/hqModules.js' %}"></script>
         <script src="{% static 'hqwebapp/js/initial_page_data.js' %}"></script>
         {% endcompress %}
-
-        <script>
-        $(function(){
-            // Handle account signups
-            var signUpFormHandler = function() {
-                var submittedForm = $(this);
-                analytics.workflow(
-                    'Clicked "Sign up"',
-                    {},
-                    function() {
-                        submittedForm.off('submit', signUpFormHandler).submit();
-                    }
-                );
-                return false;
-            };
-            $('form.form-signup').on('submit', signUpFormHandler);
-        });
-        </script>
 
         {% if less_debug %}
             <script>
@@ -258,6 +235,21 @@
         {% block modals %}{% endblock modals %}
 
 
+        {% include 'analytics/initial/all.html' %}
+        {% initial_analytics_data 'drift.apiId' '7456r8nz2u34' %}
+        <div class="initial-analytics-data hide">
+        {% block initial_analytics_data %}
+            {# do not override this block, use initial_analytics_data template tag to populate #}
+        {% endblock %}
+        </div>
+        <div class="analytics-ab-tests hide">
+        {% block analytics_ab_test %}
+            {# do not override this block, use analytics_ab_test template tag to populate #}
+        {% endblock %}
+        </div>
+
+        {% include 'analytics/analytics_js.html' %}
+
         {# Contact JS #}
         {% compress js %}
             <script type="text/javascript" src="{% static 'prelogin/js/jquery.appear.js' %}"></script>
@@ -287,12 +279,21 @@
         <script type="text/javascript">
             $(function () {
                 $('.flower-home [data-toggle="tooltip"]').tooltip();
-                var ab_test = hqImport('hqwebapp/js/initial_page_data').get('ab_test');
-                if (ab_test) {
-                    var options = {};
-                    options[ab_test.name] = ab_test.version;
-                    _kmq.push(["set", options]);
-                }
+            });
+            $(function(){
+                // Handle account signups
+                var signUpFormHandler = function() {
+                    var submittedForm = $(this);
+                    hqImport('analytics/js/kissmetrics').track.event(
+                        'Clicked "Sign up"',
+                        {},
+                        function() {
+                            submittedForm.off('submit', signUpFormHandler).submit();
+                        }
+                    );
+                    return false;
+                };
+                $('form.form-signup').on('submit', signUpFormHandler);
             });
         </script>
         {% block js-uncompressed %}{% endblock %}
