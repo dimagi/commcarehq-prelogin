@@ -28,7 +28,7 @@ class PricingInfo(object):
             'enterprise': PricingInfo.ENTERPRISE,
         }
         if plan_name not in lookup:
-            raise ValueError('Plan name {} must be one of {}'.format(plan_name, ', '.join(lookup.keys())))
+            raise ValueError('Plan name {} must be one of {}'.format(plan_name, ', '.join(lookup)))
         return lookup[plan_name]
 
     @staticmethod
