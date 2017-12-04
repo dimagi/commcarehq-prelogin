@@ -58,11 +58,7 @@
 
         {% block stylesheets %}{% endblock stylesheets %}
 
-        {% compress js %} {# Core Libraries #}
-            <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'underscore/underscore.js' %}"></script>
-        {% endcompress %}
+        {% javascript_libraries underscore=True analytics=True hq=True %}
 
         {# Hubspot #}
         <script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
@@ -84,11 +80,6 @@
             })(window,document,'FS','script','user');
         </script>
         {% endif %}
-
-        {% compress js %}
-        <script src="{% static 'hqwebapp/js/hqModules.js' %}"></script>
-        <script src="{% static 'hqwebapp/js/initial_page_data.js' %}"></script>
-        {% endcompress %}
 
         {% if less_debug %}
             <script>
@@ -247,8 +238,6 @@
             {# do not override this block, use analytics_ab_test template tag to populate #}
         {% endblock %}
         </div>
-
-        {% include 'analytics/analytics_js.html' %}
 
         {# Contact JS #}
         {% compress js %}
