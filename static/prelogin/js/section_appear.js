@@ -29,7 +29,7 @@ $(function () {
             var $nextNav = $('<a class="next-nav" style="display: none;"/>');
             var navId = '.section-lead';
             if ($nextSection) {
-                navId = '#' + $nextSection.attr('id')
+                navId = '#' + $nextSection.attr('id');
             }
             $nextNav.attr('href', navId);
 
@@ -46,11 +46,11 @@ $(function () {
                 var oldAppender = $(this).data('appender');
                 $.scrollTo($($(this).attr('href')), 1000, {
                     offset: {
-                        top: -55
+                        top: -55,
                     },
                     onAfter: function (t, s) {
                         removeNext($(oldAppender));
-                    }
+                    },
                 });
             });
 
