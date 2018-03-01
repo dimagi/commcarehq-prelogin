@@ -17,7 +17,7 @@ from corehq.apps.analytics.ab_tests import ABTest
 from corehq.apps.prelogin import ab_tests
 from corehq.apps.hqwebapp.utils import aliased_language_name
 from corehq.middleware import always_allow_browser_caching
-from dimagi.utils.decorators.memoized import memoized
+from memoized import memoized
 
 MAIN_FORM = 'main'
 SUPPLY_FORM = 'supply'
