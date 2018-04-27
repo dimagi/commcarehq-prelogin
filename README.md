@@ -1,3 +1,5 @@
+### :lock: This repository has been archived
+
 # CommCare HQ Prelogin
 
 This site is visible before a user logs in to [CommCare HQ](http://www.commcarehq.org/home/)
